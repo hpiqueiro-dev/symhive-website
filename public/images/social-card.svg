@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <pattern id="grid" width="56" height="56" patternUnits="userSpaceOnUse">
+      <path d="M56 0H0V56" fill="none" stroke="#5d8582" stroke-opacity=".12"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#0b1213"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <circle cx="1070" cy="110" r="340" fill="none" stroke="#e7b23d" stroke-opacity=".13"/>
+  <circle cx="1070" cy="110" r="255" fill="none" stroke="#69d6d1" stroke-opacity=".13"/>
+  <path d="M72 90h45" stroke="#e7b23d" stroke-width="3"/>
+  <text x="135" y="101" fill="#e7b23d" font-family="Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="3">SYMHIVE</text>
+  <text x="72" y="294" fill="#f5f5ef" font-family="Arial, sans-serif" font-size="65" font-weight="700">Da complexidade operacional</text>
+  <text x="72" y="392" fill="#e7b23d" font-family="Arial, sans-serif" font-size="80" font-weight="700">à decisão informada.</text>
+  <text x="72" y="480" fill="#b3c6c1" font-family="Arial, sans-serif" font-size="29">Simulação · IA · Otimização</text>
+  <path d="M72 548H1128" stroke="#e7b23d" stroke-opacity=".55"/>
+</svg>

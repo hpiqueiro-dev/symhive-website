@@ -1,0 +1,38 @@
+---
+import '../styles/global.css';
+import { site } from '../config/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = 'SymHive — Simulação para decidir melhor', description = site.description } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : undefined;
+const socialImage = Astro.site
+  ? new URL(`${base}images/social-card.png`, Astro.site).toString()
+  : `${base}images/social-card.png`;
+---
+
+<!doctype html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b1213" />
+    <meta name="description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_PT" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={socialImage} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <link rel="icon" type="image/png" href={`${base}images/favicon.png`} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#conteudo">Saltar para o conteúdo</a>
+    <slot />
+  </body>
+</html>
