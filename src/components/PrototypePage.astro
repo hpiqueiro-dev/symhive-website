@@ -1,0 +1,117 @@
+---
+import '../styles/prototypes.css';
+
+interface Props { concept: 'precisao' | 'operacao' | 'sistema' | 'materia' }
+const { concept } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const names = { precisao: 'Precisão clara', operacao: 'Operação viva', sistema: 'Sistema em ação', materia: 'Matéria & método' };
+const links = [
+  ['precisao', '01'], ['operacao', '02'], ['sistema', '03'], ['materia', '04'],
+];
+---
+
+<!doctype html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <meta name="description" content={`Protótipo ${names[concept]} para a página da SymHive.`} />
+    <title>{names[concept]} — protótipo SymHive</title>
+  </head>
+  <body class={`prototype prototype-${concept}`}>
+    <a class="p-skip" href="#conteudo">Saltar para o conteúdo</a>
+    {concept === 'precisao' && <>
+      <header class="p1-header p-container">
+        <a class="p-brand" href="#inicio" aria-label="SymHive, voltar ao início"><span class="p-brand-icon">⬡</span> SymHive</a>
+        <nav aria-label="Navegação principal"><a href="#metodo">Método</a><a href="#aplicacoes">Aplicações</a><a href="#contacto">Contacto</a></nav>
+        <a class="p1-header-link" href="#contacto">Explorar um desafio <span aria-hidden="true">↗</span></a>
+      </header>
+      <main id="conteudo">
+        <section class="p1-hero p-container" id="inicio">
+          <div class="p1-hero-copy">
+            <p class="p1-kicker"><span></span> Simulação para a indústria</p>
+            <h1>A fábrica antes de acontecer.</h1>
+            <p>Transformamos processos reais em modelos de simulação para testar cenários, antecipar impactos e decidir com mais clareza.</p>
+            <div class="p1-actions"><a class="p1-button" href="#metodo">Conhecer o método <span aria-hidden="true">↗</span></a><a href="#aplicacoes">Ver aplicações</a></div>
+          </div>
+          <div class="p1-plan" role="img" aria-label="Planta esquemática de uma operação, dos dados aos cenários de decisão">
+            <div class="p1-plan-head"><span>Modelo operacional</span><span>Vista de sistema <b>●</b></span></div>
+            <svg viewBox="0 0 620 500" aria-hidden="true">
+              <defs><pattern id="p1-grid" width="25" height="25" patternUnits="userSpaceOnUse"><path d="M25 0H0V25" fill="none" stroke="#d6e2df" stroke-width="1"/></pattern></defs>
+              <rect width="620" height="500" fill="url(#p1-grid)"/>
+              <path d="M70 148H220V105H368V152H538M70 336H205V365H382V312H538" fill="none" stroke="#1a788c" stroke-width="3" stroke-dasharray="8 7"/>
+              <path d="M245 144V311M318 144V311" stroke="#afc7c7" stroke-width="2"/>
+              <rect x="50" y="95" width="143" height="100" fill="#f2f7f5" stroke="#537d85" stroke-width="2"/><rect x="50" y="284" width="143" height="100" fill="#f2f7f5" stroke="#537d85" stroke-width="2"/>
+              <rect x="230" y="160" width="159" height="154" fill="#f8b92d" stroke="#1b3940" stroke-width="2"/>
+              <rect x="422" y="95" width="145" height="100" fill="#e2eff1" stroke="#537d85" stroke-width="2"/><rect x="422" y="284" width="145" height="100" fill="#e2eff1" stroke="#537d85" stroke-width="2"/>
+              <circle cx="310" cy="237" r="44" fill="none" stroke="#23424a" stroke-width="2"/><path d="M287 238h46m-23-23v46" stroke="#23424a" stroke-width="2"/>
+              <text x="64" y="139">DADOS</text><text x="64" y="328">RESTRIÇÕES</text><text x="247" y="289">MODELO</text><text x="437" y="139">CENÁRIOS</text><text x="437" y="328">DECISÃO</text>
+            </svg>
+            <div class="p1-plan-foot"><span>Do sistema real às alternativas possíveis</span><span>SH / 001</span></div>
+          </div>
+          <span class="p1-hero-index">Uma visão completa da operação, antes da mudança.</span>
+        </section>
+        <section class="p1-signal" aria-label="Capacidades"><div class="p-container"><span>Compreender o sistema</span><span>Testar alternativas</span><span>Decidir com evidência</span></div></section>
+        <section class="p1-method p-container" id="metodo">
+          <div class="p1-section-head"><p>O método SymHive</p><h2>Um modelo útil começa na operação real.</h2></div>
+          <div class="p1-method-grid">
+            <article><span>01</span><h3>Compreender</h3><p>Organizamos dados, processos e restrições que definem o funcionamento do sistema.</p></article>
+            <article><span>02</span><h3>Modelar</h3><p>Geramos componentes de simulação configuráveis e reutilizáveis.</p></article>
+            <article><span>03</span><h3>Explorar</h3><p>Comparamos cenários e indicadores antes de alterar a operação.</p></article>
+          </div>
+        </section>
+        <section class="p1-apps" id="aplicacoes"><div class="p-container p1-apps-grid"><div><p>Onde aplicar</p><h2>Decisões que merecem ser testadas.</h2></div><ul><li>Layout e capacidade <span>Antecipar novas configurações.</span></li><li>Planeamento de produção <span>Responder à procura e aos recursos disponíveis.</span></li><li>Logística interna <span>Dimensionar fluxos, buffers e frotas.</span></li><li>Novos equipamentos <span>Comparar alternativas antes de investir.</span></li></ul></div></section>
+        <section class="p1-contact p-container" id="contacto"><h2>E se pudesse ver o efeito da próxima decisão?</h2><p>A SymHive está a preparar o seu canal de contacto público.</p></section>
+      </main>
+      <footer class="p1-footer p-container"><span>⬡ SymHive</span><span>Protótipo 01 · Precisão clara</span></footer>
+    </>}
+
+    {concept === 'operacao' && <>
+      <header class="p2-header p-container"><a class="p-brand" href="#inicio" aria-label="SymHive, voltar ao início"><span class="p-brand-icon">⬡</span> SymHive</a><nav aria-label="Navegação principal"><a href="#capacidade">Capacidade</a><a href="#abordagem">Abordagem</a><a href="#contacto">Contacto</a></nav><a class="p2-menu-link" href="#contacto">Vamos conversar <span aria-hidden="true">↗</span></a></header>
+      <main id="conteudo">
+        <section class="p2-hero" id="inicio"><div class="p-container p2-hero-inner">
+          <div class="p2-copy"><p class="p2-overline"><i></i> Inteligência para operações complexas</p><h1>Decidir<br/>antes de<br/><span>mover.</span></h1><p>Modelos de simulação gerados para explorar possibilidades antes de as levar para a fábrica ou para a cadeia logística.</p><a class="p2-button" href="#capacidade">Descobrir o que fazemos <span aria-hidden="true">↗</span></a></div>
+          <div class="p2-visual" aria-hidden="true"><div class="p2-ring p2-ring-a"></div><div class="p2-ring p2-ring-b"></div><div class="p2-ring p2-ring-c"></div><div class="p2-core"><span>SYMHIVE</span><strong>✳</strong><small>SIMULAÇÃO</small></div><div class="p2-node p2-node-a"><b>Dados</b><span>Operação real</span></div><div class="p2-node p2-node-b"><b>Cenários</b><span>Alternativas</span></div><div class="p2-node p2-node-c"><b>Decisão</b><span>Indicadores</span></div><div class="p2-beam p2-beam-a"></div><div class="p2-beam p2-beam-b"></div><div class="p2-beam p2-beam-c"></div></div>
+          <div class="p2-hero-footer"><span>Simular antes de agir</span><span>↓ Explorar</span></div>
+        </div></section>
+        <section class="p2-statement" id="capacidade"><div class="p-container"><p>O que muda</p><h2>Da pergunta «e se?» a uma resposta que a equipa pode usar.</h2><div class="p2-statement-bottom"><span>Menos tempo a construir modelos. Mais tempo a compreender alternativas.</span><a href="#abordagem">Ver a abordagem <span aria-hidden="true">↗</span></a></div></div></section>
+        <section class="p2-capabilities p-container" id="abordagem"><div class="p2-cap-intro"><p>Um sistema, várias decisões</p><h2>Complexidade operacional, tornada explorável.</h2></div><div class="p2-cap-list"><article><span>Modelação automática</span><p>Estruturamos processos e restrições em componentes de simulação reutilizáveis.</p></article><article><span>Cenários comparáveis</span><p>Testamos planos, capacidades e configurações com os mesmos critérios.</p></article><article><span>Decisão fundamentada</span><p>Organizamos indicadores para tornar claros os efeitos de cada alternativa.</p></article></div></section>
+        <section class="p2-use"><div class="p-container"><p>Aplicações</p><div class="p2-use-grid"><span>Produção</span><span>Logística interna</span><span>Novos equipamentos</span><span>Layout e capacidade</span></div></div></section>
+        <section class="p2-contact p-container" id="contacto"><p>Próximo passo</p><h2>Traga o sistema.<br/>Exploramos as possibilidades.</h2><span>Canal de contacto público em preparação</span></section>
+      </main><footer class="p2-footer p-container"><span>⬡ SymHive</span><span>Protótipo 02 · Operação viva</span></footer>
+    </>}
+
+    {concept === 'sistema' && <>
+      <header class="p3-header p-container"><a class="p-brand" href="#inicio" aria-label="SymHive, voltar ao início"><span class="p-brand-icon">⬡</span> SymHive</a><nav aria-label="Navegação principal"><a href="#simulador">Experimentar</a><a href="#processo">Como funciona</a><a href="#contacto">Contacto</a></nav><a class="p3-header-cta" href="#simulador">Ver cenários <span aria-hidden="true">↗</span></a></header>
+      <main id="conteudo"><section class="p3-hero" id="inicio"><div class="p-container p3-hero-grid"><div class="p3-copy"><p>Simulação industrial, sem pontos cegos.</p><h1>Testa.<br/>Compara.<br/>Decide.</h1><div class="p3-copy-bottom"><p>Um modo mais rápido de transformar a complexidade da produção e da logística em opções claras.</p><a href="#simulador">Experimentar a ideia <span aria-hidden="true">↘</span></a></div></div><div class="p3-hero-shape" aria-hidden="true"><div class="p3-shape-main">S</div><span class="p3-shape-tag tag-a">dados</span><span class="p3-shape-tag tag-b">modelo</span><span class="p3-shape-tag tag-c">decisão</span></div></div></section>
+      <section class="p3-demo p-container" id="simulador"><div class="p3-demo-heading"><div><p>Laboratório de cenários</p><h2>A mesma operação. Outras possibilidades.</h2></div><p>Exemplo ilustrativo de como diferentes decisões podem ser comparadas num modelo de simulação.</p></div><div class="p3-demo-board"><div class="p3-demo-menu"><span>Escolhe uma hipótese</span><div role="group" aria-label="Cenário ilustrativo"><button class="is-active" type="button" data-scenario="base" aria-pressed="true">Situação atual</button><button type="button" data-scenario="layout" aria-pressed="false">Novo layout</button><button type="button" data-scenario="equipa" aria-pressed="false">Nova distribuição de equipa</button></div></div><div class="p3-demo-result" aria-live="polite"><div class="p3-result-top"><span>Modelo / cenário</span><span id="p3-scenario-name">Situação atual</span></div><div class="p3-flow" aria-hidden="true"><span>Entrada</span><i></i><span>Produção</span><i></i><span>Expedição</span></div><h3 id="p3-scenario-title">O ponto de partida</h3><p id="p3-scenario-description">Representa o fluxo atual e ajuda a identificar onde surgem filas, esperas e capacidade por utilizar.</p><div class="p3-result-foot"><span>Comparação conceptual</span><span>Sem dados reais</span></div></div></div></section>
+      <section class="p3-process" id="processo"><div class="p-container"><p>Da operação ao modelo</p><h2>Um processo em três movimentos.</h2><div class="p3-process-grid"><article><span>Compreender</span><p>Dados, processos e restrições do sistema real.</p></article><article><span>Modelar</span><p>Componentes configuráveis e reutilizáveis.</p></article><article><span>Explorar</span><p>Indicadores para comparar decisões.</p></article></div></div></section>
+      <section class="p3-contact p-container" id="contacto"><h2>Que decisão quer testar?</h2><p>Canal de contacto público em preparação.</p></section></main><footer class="p3-footer p-container"><span>⬡ SymHive</span><span>Protótipo 03 · Sistema em ação</span></footer>
+      <script>
+        const scenarios = {
+          base: { name: 'Situação atual', title: 'O ponto de partida', description: 'Representa o fluxo atual e ajuda a identificar onde surgem filas, esperas e capacidade por utilizar.' },
+          layout: { name: 'Novo layout', title: 'E se o percurso mudasse?', description: 'Compara uma nova disposição dos postos e observa como ela pode alterar deslocações e pontos de espera.' },
+          equipa: { name: 'Nova distribuição de equipa', title: 'E se os recursos mudassem?', description: 'Explora uma distribuição diferente de pessoas e turnos antes de alterar o plano de produção.' },
+        };
+        document.querySelectorAll<HTMLButtonElement>('[data-scenario]').forEach((button) => button.addEventListener('click', () => {
+          const key = button.dataset.scenario as keyof typeof scenarios;
+          const scenario = scenarios[key];
+          document.querySelectorAll<HTMLButtonElement>('[data-scenario]').forEach((item) => { item.classList.toggle('is-active', item === button); item.setAttribute('aria-pressed', String(item === button)); });
+          const name = document.getElementById('p3-scenario-name'); const title = document.getElementById('p3-scenario-title'); const description = document.getElementById('p3-scenario-description');
+          if (name && title && description) { name.textContent = scenario.name; title.textContent = scenario.title; description.textContent = scenario.description; }
+        }));
+      </script>
+    </>}
+
+    {concept === 'materia' && <>
+      <header class="p4-header p-container"><a class="p-brand" href="#inicio" aria-label="SymHive, voltar ao início"><span class="p-brand-icon">⬡</span> SymHive</a><nav aria-label="Navegação principal"><a href="#visao">Visão</a><a href="#trabalho">O trabalho</a><a href="#contacto">Contacto</a></nav><span>Simulação para decisões reais</span></header>
+      <main id="conteudo"><section class="p4-hero p-container" id="inicio"><div class="p4-hero-top"><span>Uma nova leitura da operação</span><span>SymHive / Portugal</span></div><div class="p4-hero-grid"><div class="p4-copy"><h1>Dar forma ao que vem a seguir.</h1><p>Antes de alterar uma linha, investir numa máquina ou redesenhar um fluxo, é possível explorar o que pode acontecer.</p><a href="#visao">Conhecer a abordagem <span aria-hidden="true">↗</span></a></div><div class="p4-art" role="img" aria-label="Ilustração de um sistema industrial interligado com linhas de produção e caminhos alternativos"><svg viewBox="0 0 600 590" aria-hidden="true"><rect width="600" height="590" fill="#d7dfd2"/><path d="M0 495H600M0 520H600M0 545H600M0 570H600" stroke="#a8bba9"/><path d="M50 100V492M150 100V492M250 100V492M350 100V492M450 100V492M550 100V492" stroke="#b7c6b7"/><path d="M40 445h90V250h75v195h80V180h105v265h65V315h105v130h40" fill="#3c5d4f"/><path d="M40 445h90V250h75v195h80V180h105v265h65V315h105v130h40" fill="none" stroke="#213e34" stroke-width="3"/><path d="M72 332h43m-43 38h43m-43 38h43m180-175h85m-85 40h85m-85 40h85m93 52h65m-65 40h65" stroke="#acc2ad" stroke-width="9"/><path d="M115 180c95-70 160-55 220-12 52 36 109 47 177-9" fill="none" stroke="#e5ab30" stroke-width="13"/><circle cx="115" cy="180" r="14" fill="#e5ab30"/><circle cx="335" cy="168" r="14" fill="#e5ab30"/><circle cx="512" cy="159" r="14" fill="#e5ab30"/><path d="M80 491V135H520V491" fill="none" stroke="#263e33" stroke-width="2" stroke-dasharray="8 8"/></svg><div class="p4-art-caption"><span>01 / Sistema real</span><span>02 / Possibilidades</span></div></div></div><div class="p4-hero-bottom"><span>Produção</span><span>Logística</span><span>Otimização</span></div></section>
+      <section class="p4-vision" id="visao"><div class="p-container p4-vision-grid"><p>O ponto de partida</p><div><h2>Uma operação é mais do que a soma das suas partes.</h2><p>Uma mudança num posto pode afetar uma linha inteira. A SymHive ajuda a representar essas relações para que as equipas consigam ver as consequências de cada escolha.</p></div></div></section>
+      <section class="p4-work p-container" id="trabalho"><div class="p4-work-head"><p>O trabalho</p><h2>Do terreno à próxima decisão.</h2></div><div class="p4-work-grid"><article><span>Escutar o sistema</span><p>Reunimos dados e conhecimento de quem trabalha com a operação todos os dias.</p></article><article><span>Construir o modelo</span><p>Geramos modelos de simulação com componentes que podem evoluir.</p></article><article><span>Abrir possibilidades</span><p>Exploramos cenários e tornamos os seus efeitos comparáveis.</p></article></div></section>
+      <section class="p4-note"><div class="p-container"><span>SymHive</span><p>Experiência em simulação. Foco na operação.</p><small>MVP de geração automática validado em casos de uso industriais.</small></div></section>
+      <section class="p4-contact p-container" id="contacto"><p>Vamos começar por uma pergunta.</p><h2>Que mudança precisa de compreender melhor?</h2><span>Canal de contacto público em preparação</span></section></main><footer class="p4-footer p-container"><span>⬡ SymHive</span><span>Protótipo 04 · Matéria & método</span></footer>
+    </>}
+    <nav class="prototype-switcher" aria-label="Alternar entre protótipos"><a class="switcher-all" href={`${base}prototipos/`}>Ver os 4</a>{links.map(([id, number]) => <a href={`${base}prototipos/${id}/`} aria-label={`Protótipo ${number}: ${names[id as keyof typeof names]}`} aria-current={concept === id ? 'page' : undefined}>{number}</a>)}</nav>
+  </body>
+</html>

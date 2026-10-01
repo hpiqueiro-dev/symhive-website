@@ -1,0 +1,26 @@
+---
+import type { IndustryKey } from '../i18n/cases';
+
+interface Props {
+  industry: IndustryKey;
+}
+
+const { industry } = Astro.props;
+---
+
+<svg class="industry-icon" viewBox="0 0 64 64" aria-hidden="true">
+  {industry === 'manufacturing' && <>
+    <path d="M6 54V30l14 8v-8l14 8v-8l14 8V14h10v40Z" />
+    <path class="am" d="M14 46h6M28 46h6M42 46h6" />
+  </>}
+  {industry === 'warehouse' && <>
+    <path d="M6 56V24L32 10l26 14v32" />
+    <path d="M14 56V32h36v24M14 40h36M14 48h36M32 32v24" />
+    <path class="am" d="M18 35h8v4h-8zM36 43h8v4h-8z" />
+  </>}
+  {industry === 'logistics' && <>
+    <path d="M4 44V18h34v26M38 26h12l10 10v8H38" />
+    <circle cx="16" cy="48" r="5" /><circle cx="48" cy="48" r="5" />
+    <path class="am" d="M10 26h14M10 33h20" />
+  </>}
+</svg>

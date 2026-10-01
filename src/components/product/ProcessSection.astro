@@ -1,0 +1,52 @@
+---
+import { contactHref } from '../../config/site';
+import type { ProductContent, ProcessGroup } from '../../i18n/product';
+
+interface Props {
+  process: ProductContent['process'];
+  /** Fecha a página no lugar da secção de contacto; por isso usa o id 'contact'. */
+  id?: string;
+}
+
+const { process, id = 'process' } = Astro.props;
+const cta = contactHref(process.cta.subject);
+const phases = process.phases;
+// Cada grupo ocupa as colunas das suas fases consecutivas (para a chaveta por cima das setas).
+const spans = phases.reduce<{ group: ProcessGroup; start: number; size: number }[]>((acc, phase, i) => {
+  const last = acc[acc.length - 1];
+  if (last && last.group === phase.group) last.size += 1;
+  else acc.push({ group: phase.group, start: i + 1, size: 1 });
+  return acc;
+}, []);
+---
+
+<section class="sec process" id={id} aria-labelledby="process-title">
+  <div class="container">
+    <div class="sectitle"><h2 id="process-title">{process.title}</h2><p>{process.description}</p></div>
+    <div class="pipeline" style={`--n:${phases.length}`}>
+      <div class="brackets" aria-hidden="true">
+        {spans.map((span) => (
+          <span class:list={['bracket', span.group]} style={`grid-column:${span.start} / span ${span.size}`}><b>{process.groups[span.group]}</b></span>
+        ))}
+      </div>
+      <ol class="phases">
+        {phases.map((phase, i) => (
+          <li class:list={['phase', phase.group]} style={`--i:${i}`}>
+            <div class="chev">
+              <span class="chev-n">{String(i + 1).padStart(2, '0')}</span>
+              <h3>{phase.title}</h3>
+              {phase.group === 'subscription' && (
+                <svg class="loop-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 13.7-5.6L20 8.5M20 4v4.5h-4.5M20 12a8 8 0 0 1-13.7 5.6L4 15.5M4 20v-4.5h4.5" /></svg>
+              )}
+            </div>
+            <small class="phase-group">{process.groups[phase.group]}</small>
+            <p>{phase.description}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+    <div class="process-cta">
+      {cta ? <a class="btn amber" href={cta}>{process.cta.label}</a> : <span class="pending">{process.cta.pending}</span>}
+    </div>
+  </div>
+</section>

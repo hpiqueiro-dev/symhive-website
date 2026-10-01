@@ -1,0 +1,106 @@
+---
+import type { HomeContent } from '../../i18n/home';
+
+interface Props {
+  steps: HomeContent['steps'];
+}
+
+const { steps } = Astro.props;
+---
+
+<section class="sec s-steps" id="steps" aria-labelledby="steps-title">
+  <div class="container">
+    <h2 id="steps-title">{steps.title}</h2>
+    <div class="row4" data-flow>
+      <div class="rail" aria-hidden="true"></div><div class="ball" aria-hidden="true"></div>
+      {steps.items.map((item, i) => (
+        <div class="step"><div class="hexi" aria-hidden="true"><span>{i + 1}</span></div><h3>{item.title}</h3><p>{item.description}</p></div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  // Uma bola percorre os passos e acende cada hexágono à passagem.
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const PAUSE = 700;
+  const TRAVEL = 1200;
+  const REST = 800;
+  const ease = (x: number) => (x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2);
+
+  document.querySelectorAll<HTMLElement>('[data-flow]').forEach((row) => {
+    const rail = row.querySelector<HTMLElement>('.rail');
+    const ball = row.querySelector<HTMLElement>('.ball');
+    const steps = [...row.querySelectorAll<HTMLElement>('.step')];
+    const hexes = steps.map((step) => step.querySelector<HTMLElement>('.hexi')).filter((hex): hex is HTMLElement => hex !== null);
+    if (!rail || !ball || hexes.length < 2) return;
+
+    const centers = () => hexes.map((h) => ({ x: h.offsetLeft + h.offsetWidth / 2, y: h.offsetTop + h.offsetHeight / 2 }));
+    const layoutRail = () => {
+      const c = centers();
+      const a = c[0];
+      const b = c[c.length - 1];
+      const horizontal = Math.abs(a.y - b.y) < 4;
+      rail.className = `rail ${horizontal ? 'h' : 'v'}`;
+      rail.style.cssText = horizontal
+        ? `left:${a.x}px;top:${a.y - 0.5}px;width:${b.x - a.x}px;height:1px`
+        : `left:${a.x - 0.5}px;top:${a.y}px;width:1px;height:${b.y - a.y}px`;
+    };
+    layoutRail();
+    window.addEventListener('resize', layoutRail);
+    document.fonts?.ready.then(layoutRail);
+    if (reduce) return;
+
+    const count = hexes.length;
+    const total = count * PAUSE + (count - 1) * TRAVEL + REST;
+    let visible = false;
+    let raf = 0;
+
+    const frame = (ts: number) => {
+      if (!visible) {
+        raf = 0;
+        return;
+      }
+      const t = ts % total;
+      const c = centers();
+      let { x, y } = c[0];
+      let opacity = 0;
+      let reached = -1;
+      let acc = 0;
+      for (let i = 0; i < count; i++) {
+        if (t < acc + PAUSE) {
+          ({ x, y } = c[i]);
+          opacity = 1;
+          reached = i;
+          break;
+        }
+        acc += PAUSE;
+        if (i < count - 1) {
+          if (t < acc + TRAVEL) {
+            const p = ease((t - acc) / TRAVEL);
+            x = c[i].x + (c[i + 1].x - c[i].x) * p;
+            y = c[i].y + (c[i + 1].y - c[i].y) * p;
+            opacity = 1;
+            reached = i;
+            break;
+          }
+          acc += TRAVEL;
+        }
+      }
+      ball.style.transform = `translate(${x}px,${y}px)`;
+      ball.style.opacity = String(opacity);
+      steps.forEach((step, k) => step.classList.toggle('on', k <= reached));
+      raf = requestAnimationFrame(frame);
+    };
+
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver((entries) => {
+        visible = entries[0].isIntersecting;
+        if (visible && !raf) raf = requestAnimationFrame(frame);
+      }, { threshold: 0.25 }).observe(row);
+    } else {
+      visible = true;
+      raf = requestAnimationFrame(frame);
+    }
+  });
+</script>

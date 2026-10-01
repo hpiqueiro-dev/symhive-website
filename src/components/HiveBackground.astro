@@ -1,0 +1,119 @@
+<canvas id="hive" aria-hidden="true"></canvas>
+
+<script>
+  // Fundo em grelha hexagonal: células acendem ao acaso e seguem o cursor.
+  const canvas = document.getElementById('hive');
+  const ctx = canvas instanceof HTMLCanvasElement ? canvas.getContext('2d') : null;
+
+  if (canvas instanceof HTMLCanvasElement && ctx) {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const COLORS = ['245,166,35', '25,211,230'];
+    interface Cell { q: number; r: number; x: number; y: number }
+    interface Lit { c: Cell; t0: number; dur: number; rgb: string }
+
+    let W = 0;
+    let H = 0;
+    let dpr = 1;
+    let R = 15;
+    let cw = 0;
+    let grid: HTMLCanvasElement | null = null;
+    const lit: Lit[] = [];
+    const trail = new Map<string, { c: Cell; t: number }>();
+    let lastSpawn = 0;
+
+    const hexPath = (c: CanvasRenderingContext2D, x: number, y: number, r: number) => {
+      c.beginPath();
+      for (let i = 0; i < 6; i++) {
+        const a = (Math.PI / 180) * (60 * i - 30);
+        const px = x + r * Math.cos(a);
+        const py = y + r * Math.sin(a);
+        if (i === 0) c.moveTo(px, py);
+        else c.lineTo(px, py);
+      }
+      c.closePath();
+    };
+
+    const cellAt = (x: number, y: number): Cell => {
+      const r = Math.round(y / (1.5 * R));
+      const offset = r % 2 ? cw / 2 : 0;
+      const q = Math.round((x - offset) / cw);
+      return { q, r, x: q * cw + offset, y: r * 1.5 * R };
+    };
+
+    const fillCell = (c: Cell, rgb: string, a: number) => {
+      hexPath(ctx, c.x, c.y, R - 1);
+      ctx.fillStyle = `rgba(${rgb},${a * 0.18})`;
+      ctx.fill();
+      ctx.strokeStyle = `rgba(${rgb},${a * 0.7})`;
+      ctx.lineWidth = 1.2;
+      ctx.stroke();
+    };
+
+    const draw = (now: number) => {
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      if (grid && grid.width > 0 && grid.height > 0) ctx.drawImage(grid, 0, 0);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      if (!reduce && now - lastSpawn > 260 && lit.length < 26) {
+        lastSpawn = now;
+        lit.push({
+          c: cellAt(Math.random() * W, Math.random() * H),
+          t0: now,
+          dur: 2600 + Math.random() * 2600,
+          rgb: COLORS[Math.random() < 0.55 ? 0 : 1],
+        });
+      }
+      for (let i = lit.length - 1; i >= 0; i--) {
+        const p = (now - lit[i].t0) / lit[i].dur;
+        if (p >= 1) lit.splice(i, 1);
+        else fillCell(lit[i].c, lit[i].rgb, Math.sin(Math.PI * p));
+      }
+      trail.forEach((cell, key) => {
+        const age = (now - cell.t) / 700;
+        if (age >= 1) trail.delete(key);
+        else fillCell(cell.c, COLORS[0], 1 - age);
+      });
+      if (!reduce) requestAnimationFrame(draw);
+    };
+
+    const size = () => {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = window.innerWidth;
+      H = window.innerHeight;
+      canvas.width = Math.round(W * dpr);
+      canvas.height = Math.round(H * dpr);
+      R = W < 700 ? 10 : 15;
+      cw = Math.sqrt(3) * R;
+      grid = document.createElement('canvas');
+      grid.width = canvas.width;
+      grid.height = canvas.height;
+      const g = grid.getContext('2d');
+      if (g) {
+        g.scale(dpr, dpr);
+        g.strokeStyle = 'rgba(25,211,230,0.10)';
+        g.lineWidth = 1;
+        const rows = Math.ceil(H / (1.5 * R)) + 2;
+        const cols = Math.ceil(W / cw) + 2;
+        for (let r = -1; r < rows; r++) {
+          for (let q = -1; q < cols; q++) {
+            hexPath(g, q * cw + (r % 2 ? cw / 2 : 0), r * 1.5 * R, R);
+            g.stroke();
+          }
+        }
+      }
+      if (reduce) draw(performance.now());
+    };
+
+    window.addEventListener('pointermove', (e) => {
+      const c = cellAt(e.clientX, e.clientY);
+      trail.set(`${c.q}_${c.r}`, { c, t: performance.now() });
+    }, { passive: true });
+    let resizeTimer = 0;
+    window.addEventListener('resize', () => {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(size, 150);
+    });
+    size();
+    if (!reduce) requestAnimationFrame(draw);
+  }
+</script>

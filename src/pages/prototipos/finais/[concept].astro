@@ -1,0 +1,8 @@
+---
+import FinalPrototypePage from '../../../components/FinalPrototypePage.astro';
+export function getStaticPaths() {
+  return ['leitura-clara', 'centro-comando'].map((concept) => ({ params: { concept } }));
+}
+const concept = Astro.params.concept as 'leitura-clara' | 'centro-comando';
+---
+<FinalPrototypePage concept={concept} />

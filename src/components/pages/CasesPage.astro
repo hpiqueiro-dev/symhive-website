@@ -1,0 +1,68 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import PageHero from '../PageHero.astro';
+import IndustryIcon from '../IndustryIcon.astro';
+import { casesContent, type IndustryKey } from '../../i18n/cases';
+import type { Locale } from '../../i18n/locales';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = casesContent[locale];
+const industries = Object.entries(t.industries.items) as [IndustryKey, { title: string; description: string }][];
+const p = t.problems;
+const pad = (n: number) => String(n).padStart(2, '0');
+---
+
+<SiteLayout locale={locale} page="cases" title={t.meta.title} description={t.meta.description}>
+  <PageHero hero={t.hero} />
+
+  <section class="sec s-sim" id="industries" aria-labelledby="industries-title">
+    <div class="container">
+      <h2 class="sec-h2" id="industries-title">{t.industries.title}</h2>
+      <ul class="industries">
+        {industries.map(([key, item]) => (
+          <li><IndustryIcon industry={key} /><h3>{item.title}</h3><p>{item.description}</p></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" id="problems" aria-labelledby="problems-title">
+    <div class="container">
+      <h2 class="sec-h2" id="problems-title">{p.title}</h2>
+      <p class="sec-lead problems-lead">{p.description}</p>
+      <div class="problems">
+        {p.items.map((problem, i) => (
+          <details class="problem" open={i === 0}>
+            <summary>
+              <span class="row-n">{pad(i + 1)}</span>
+              <h3>{problem.title}</h3>
+              <span class="problem-desc">{problem.description}</span>
+              <span class="problem-count">{problem.cases.length} {problem.cases.length === 1 ? p.labels.caseOne : p.labels.caseMany}</span>
+              <span class="plus" aria-hidden="true"></span>
+            </summary>
+            <div class="problem-cases">
+              {problem.cases.map((item) => (
+                <article class="case">
+                  <header>
+                    <h4>{item.title}</h4>
+                    <span class="tag"><IndustryIcon industry={item.industry} />{t.industries.items[item.industry].title}</span>
+                  </header>
+                  <dl>
+                    <div><dt>{p.labels.challenge}</dt><dd>{item.challenge}</dd></div>
+                    <div><dt>{p.labels.approach}</dt><dd>{item.approach}</dd></div>
+                    <div><dt>{p.labels.result}</dt><dd class="y">{item.result}</dd></div>
+                  </dl>
+                </article>
+              ))}
+            </div>
+          </details>
+        ))}
+      </div>
+      <p class="ill">{t.note}</p>
+    </div>
+  </section>
+</SiteLayout>

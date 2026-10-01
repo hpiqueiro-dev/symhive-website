@@ -1,0 +1,24 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import HeroSection from '../home/HeroSection.astro';
+import SimulatorSection from '../home/SimulatorSection.astro';
+import ImpactSection from '../home/ImpactSection.astro';
+import StepsSection from '../home/StepsSection.astro';
+import { commonContent } from '../../i18n/common';
+import { homeContent } from '../../i18n/home';
+import type { Locale } from '../../i18n/locales';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = homeContent[locale];
+---
+
+<SiteLayout locale={locale} page="home" title={t.meta.title} description={t.meta.description}>
+  <HeroSection hero={t.hero} contact={commonContent[locale].contact} />
+  <SimulatorSection simulator={t.simulator} />
+  <ImpactSection impact={t.impact} stats={t.stats} />
+  <StepsSection steps={t.steps} />
+</SiteLayout>

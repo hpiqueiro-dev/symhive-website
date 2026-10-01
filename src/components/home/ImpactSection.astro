@@ -1,0 +1,64 @@
+---
+import type { HomeContent } from '../../i18n/home';
+
+interface Props {
+  impact: HomeContent['impact'];
+  stats: HomeContent['stats'];
+}
+
+const { impact, stats } = Astro.props;
+---
+
+<section class="sec s-impact impact" id="impact" aria-labelledby="impact-title" data-impact data-weeks={impact.weeks}>
+  <div class="container">
+    <h2 id="impact-title">{impact.title}</h2>
+    <div class="brow"><span class="bl">{impact.manual.label}</span><div class="track"><i class="man"></i></div><b class="bv">{impact.manual.value}</b></div>
+    <div class="brow"><span class="bl">{impact.symhive.label}</span><div class="track"><i class="sym" style="width:20%" data-bar></i></div><b class="bv y" data-val>{impact.symhive.value}</b></div>
+    <p class="src">{impact.source}</p>
+    <ul class="stats" aria-label={stats.label}>
+      {stats.items.map((item) => <li><b>{item.value}</b><span>{item.label}</span></li>)}
+    </ul>
+  </div>
+</section>
+
+<script>
+  // A barra começa nas 40 semanas do processo manual e encolhe até às 8 semanas quando a secção entra no ecrã.
+  const MAX = 40;
+  const MIN = 8;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  document.querySelectorAll<HTMLElement>('[data-impact]').forEach((section) => {
+    const bar = section.querySelector<HTMLElement>('[data-bar]');
+    const val = section.querySelector<HTMLElement>('[data-val]');
+    if (!bar || !val || reduce || !('IntersectionObserver' in window)) return;
+    const finalText = val.textContent ?? '';
+    const weeks = section.dataset.weeks ?? '';
+    const set = (v: number) => {
+      bar.style.width = `${(v / MAX) * 100}%`;
+      val.textContent = `${Math.round(v)} ${weeks}`;
+    };
+    set(MAX);
+
+    const observer = new IntersectionObserver((entries) => {
+      if (!entries.some((entry) => entry.isIntersecting)) return;
+      observer.disconnect();
+      const delay = 500;
+      const duration = 2200;
+      let start: number | null = null;
+      const step = (ts: number) => {
+        start ??= ts;
+        const t = ts - start - delay;
+        if (t < 0) {
+          requestAnimationFrame(step);
+          return;
+        }
+        const p = Math.min(1, t / duration);
+        set(MAX - (MAX - MIN) * (1 - Math.pow(1 - p, 3)));
+        if (p < 1) requestAnimationFrame(step);
+        else val.textContent = finalText;
+      };
+      requestAnimationFrame(step);
+    }, { threshold: 1 });
+    observer.observe(bar.parentElement ?? bar);
+  });
+</script>

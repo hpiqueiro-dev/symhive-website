@@ -1,0 +1,53 @@
+---
+import '../../styles/prototypes.css';
+const base = import.meta.env.BASE_URL;
+
+const concepts = [
+  { id: 'precisao', number: '01', title: 'Precisão clara', tone: 'light', description: 'Uma linguagem técnica e luminosa, com a simulação apresentada como uma planta legível.', tags: ['Clareza', 'Engenharia', 'Confiança'] },
+  { id: 'operacao', number: '02', title: 'Operação viva', tone: 'dark', description: 'Uma experiência mais imersiva, em que fluxos e decisões parecem estar em movimento.', tags: ['Imersão', 'Tecnologia', 'Energia'] },
+  { id: 'sistema', number: '03', title: 'Sistema em ação', tone: 'blue', description: 'Uma direção gráfica e interativa que permite experimentar a comparação de cenários.', tags: ['Produto', 'Interação', 'Ousadia'] },
+  { id: 'materia', number: '04', title: 'Matéria & método', tone: 'earth', description: 'Uma abordagem editorial e humana, próxima do terreno industrial e das equipas.', tags: ['Proximidade', 'Rigor', 'Caráter'] },
+];
+---
+
+<!doctype html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Quatro direções visuais — SymHive</title>
+    <meta name="description" content="Quatro protótipos visuais para a nova página da SymHive." />
+  </head>
+  <body class="prototype-gallery">
+    <main class="gallery-wrap">
+      <header class="gallery-header">
+        <a class="gallery-brand" href={base}>⬡ <span>SymHive</span></a>
+        <a class="gallery-back" href={base}>Ver página atual <span aria-hidden="true">↗</span></a>
+      </header>
+      <div class="gallery-intro">
+        <p>Exploração visual para a SymHive</p>
+        <h1>Quatro maneiras de mostrar o que a simulação torna possível.</h1>
+        <div class="gallery-intro-bottom"><span>Escolhe uma proposta para a explorar em toda a página.</span><span>01 — 04</span></div>
+      </div>
+      <a class="gallery-next" href={`${base}prototipos/novos/`}>Ver mais quatro direções visuais <span aria-hidden="true">↗</span></a>
+      <div class="gallery-grid">
+        {concepts.map((concept) => (
+          <a class={`gallery-card gallery-card-${concept.tone}`} href={`${base}prototipos/${concept.id}/`}>
+            <div class="gallery-card-art" aria-hidden="true">
+              <span class="card-brand">⬡ SymHive</span>
+              <span class="card-art-title">{concept.id === 'precisao' ? 'A fábrica antes de acontecer.' : concept.id === 'operacao' ? 'Decidir antes de mover.' : concept.id === 'sistema' ? 'Testa. Compara. Decide.' : 'Dar forma ao que vem a seguir.'}</span>
+              <span class="card-art-symbol">{concept.id === 'precisao' ? '▦' : concept.id === 'operacao' ? '◎' : concept.id === 'sistema' ? '▤' : '✳'}</span>
+            </div>
+            <div class="gallery-card-info">
+              <div class="gallery-card-heading"><span>{concept.number}</span><h2>{concept.title}</h2><b aria-hidden="true">↗</b></div>
+              <p>{concept.description}</p>
+              <div class="gallery-tags">{concept.tags.map((tag) => <span>{tag}</span>)}</div>
+            </div>
+          </a>
+        ))}
+      </div>
+      <footer class="gallery-footer">Protótipos exploratórios · Conteúdo baseado na página atual da SymHive</footer>
+    </main>
+  </body>
+</html>

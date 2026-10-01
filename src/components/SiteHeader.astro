@@ -1,29 +1,74 @@
 ---
+import { contactHref } from '../config/site';
+import { localeMeta, locales, pagePath, type Locale, type Page } from '../i18n/locales';
+import type { CommonContent } from '../i18n/common';
+
+interface Props {
+  locale: Locale;
+  page: Page;
+  nav: CommonContent['nav'];
+  demoSubject: string;
+}
+
+const { locale, page, nav, demoSubject } = Astro.props;
 const logo = `${import.meta.env.BASE_URL}images/symhive-logo.png`;
+const other = locales.find((code) => code !== locale) ?? locale;
+const home = pagePath(locale, 'home');
+const homeLinks = [
+  { href: home, label: nav.pages.home, current: page === 'home' },
+  ...nav.homeSections.map((section) => ({ href: `${home}#${section.id}`, label: section.label, current: false })),
+];
+const pageLinks = (['product', 'cases', 'about'] as const).map((key) => ({
+  href: pagePath(locale, key),
+  label: nav.pages[key],
+  current: page === key,
+}));
 ---
 
-<header class="site-header">
-  <div class="container header-inner">
-    <a class="brand" href="#inicio" aria-label="SymHive — início">
-      <img src={logo} alt="SymHive" width="193" height="57" />
-    </a>
-
-    <nav class="desktop-nav" aria-label="Navegação principal">
-      <a href="#abordagem">Abordagem</a>
-      <a href="#aplicacoes">Aplicações</a>
-      <a href="#sobre">Sobre</a>
+<header class="top">
+  <div class="container">
+    <nav class="nav" aria-label={nav.label}>
+      <a class="brand" href={home}><img class="logo" src={logo} alt="SymHive" width="191" height="56" /></a>
+      <ul class="nav-links">
+        <li>
+          <details class="sub" data-close-outside>
+            <summary class:list={{ active: page === 'home' }}>{nav.home}<span class="caret" aria-hidden="true"></span></summary>
+            <ul>{homeLinks.map((link) => <li><a href={link.href} aria-current={link.current ? 'page' : undefined}>{link.label}</a></li>)}</ul>
+          </details>
+        </li>
+        {pageLinks.map((link) => <li><a href={link.href} aria-current={link.current ? 'page' : undefined}>{link.label}</a></li>)}
+      </ul>
+      <div class="nav-actions">
+        <a class="lang" href={pagePath(other, page)} hreflang={localeMeta[other].htmlLang} lang={localeMeta[other].htmlLang} aria-label={nav.languageLabel}>{localeMeta[other].label}</a>
+        <a class="btn amber sm" href={contactHref(demoSubject) ?? '#contact'}>{nav.cta}</a>
+        <details class="menu" data-close-outside>
+          <summary aria-label={nav.menu}><span></span><span></span><span></span></summary>
+          <div class="menu-panel">
+            <p>{nav.home}</p>
+            <ul>{homeLinks.map((link) => <li><a href={link.href} aria-current={link.current ? 'page' : undefined}>{link.label}</a></li>)}</ul>
+            <ul>{pageLinks.map((link) => <li><a href={link.href} aria-current={link.current ? 'page' : undefined}>{link.label}</a></li>)}</ul>
+          </div>
+        </details>
+      </div>
     </nav>
-
-    <a class="header-contact" href="#contacto">Falar connosco <span aria-hidden="true">↗</span></a>
-
-    <details class="mobile-nav">
-      <summary aria-label="Abrir menu"><span></span><span></span></summary>
-      <nav aria-label="Navegação móvel">
-        <a href="#abordagem">Abordagem</a>
-        <a href="#aplicacoes">Aplicações</a>
-        <a href="#sobre">Sobre</a>
-        <a href="#contacto">Contacto</a>
-      </nav>
-    </details>
   </div>
 </header>
+
+<script>
+  // Fecha os menus ao clicar fora, ao escolher um link ou com Escape.
+  const menus = [...document.querySelectorAll<HTMLDetailsElement>('[data-close-outside]')];
+  document.addEventListener('click', (event) => {
+    menus.forEach((menu) => {
+      const target = event.target instanceof Node ? event.target : null;
+      if (menu.open && (!target || !menu.contains(target) || (target instanceof Element && target.closest('a')))) menu.open = false;
+    });
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return;
+    menus.forEach((menu) => {
+      if (!menu.open) return;
+      menu.open = false;
+      menu.querySelector('summary')?.focus();
+    });
+  });
+</script>

@@ -1,0 +1,20 @@
+<div class="final-hypothesis" aria-label="Escolher uma hipótese ilustrativa">
+  <div class="final-hypothesis-head"><span>Escolhe uma hipótese</span><span aria-hidden="true">✳</span></div>
+  <div class="final-hypothesis-options" role="group" aria-label="Hipóteses para explorar">
+    <button type="button" data-hypothesis="atual" aria-pressed="true">Situação atual</button>
+    <button type="button" data-hypothesis="layout" aria-pressed="false">Novo layout</button>
+    <button type="button" data-hypothesis="equipa" aria-pressed="false">Nova distribuição de equipa</button>
+  </div>
+  <div class="final-hypothesis-choice" aria-live="polite"><small>Hipótese selecionada</small><strong data-hypothesis-choice>Situação atual</strong></div>
+</div>
+<script>
+  document.querySelectorAll<HTMLElement>('.final-hypothesis').forEach((panel) => {
+    panel.querySelectorAll<HTMLButtonElement>('[data-hypothesis]').forEach((button) => {
+      button.addEventListener('click', () => {
+        panel.querySelectorAll<HTMLButtonElement>('[data-hypothesis]').forEach((option) => option.setAttribute('aria-pressed', String(option === button)));
+        const choice = panel.querySelector<HTMLElement>('[data-hypothesis-choice]');
+        if (choice) choice.textContent = button.textContent?.trim() ?? '';
+      });
+    });
+  });
+</script>

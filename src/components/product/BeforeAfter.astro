@@ -1,0 +1,42 @@
+---
+import type { ProductContent } from '../../i18n/product';
+
+interface Props {
+  beforeAfter: ProductContent['beforeAfter'];
+}
+
+const { beforeAfter: t } = Astro.props;
+---
+
+<section class="sec s-sim" id="before-after" aria-labelledby="ba-title">
+  <div class="container">
+    <div class="sectitle"><h2 id="ba-title">{t.title}</h2><p>{t.description}</p></div>
+    <div class="ba" data-ba style="--pos:50%" aria-hidden="true">
+      <div class="ba-layer ba-before">
+        <span class="ba-tag">{t.before}</span>
+        <dl>{t.rows.map((row) => <div><dt>{row.label}</dt><dd>{row.before}</dd></div>)}</dl>
+      </div>
+      <div class="ba-layer ba-after">
+        <span class="ba-tag">{t.after}</span>
+        <dl>{t.rows.map((row) => <div><dt>{row.label}</dt><dd>{row.after}</dd></div>)}</dl>
+      </div>
+      <div class="ba-divider"><span></span></div>
+      <input class="ba-range" type="range" min="0" max="100" value="50" tabindex="-1" aria-label={t.sliderLabel} />
+    </div>
+    <dl class="ba-list" aria-label={`${t.before} / ${t.after}`}>
+      {t.rows.map((row) => <div><dt>{row.label}</dt><dd><s>{row.before}</s><b>{row.after}</b></dd></div>)}
+    </dl>
+    <p class="ill ba-note">{t.note}</p>
+  </div>
+</section>
+
+<script>
+  // O divisor revela a camada «depois» por cima da camada «antes».
+  document.querySelectorAll<HTMLElement>('[data-ba]').forEach((root) => {
+    const range = root.querySelector<HTMLInputElement>('.ba-range');
+    if (!range) return;
+    const update = () => root.style.setProperty('--pos', `${range.value}%`);
+    range.addEventListener('input', update);
+    update();
+  });
+</script>

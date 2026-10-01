@@ -1,7 +1,9 @@
 export const site = {
   name: 'SymHive',
-  description:
-    'A SymHive cria modelos de simulação automaticamente para explorar cenários e apoiar decisões em produção e logística.',
-  // Substituir pelo endereço público quando estiver definido.
+  // Substituir pelo endereço público quando estiver definido. Ativa os botões de contacto.
   contactEmail: null as string | null,
 };
+
+export function contactHref(subject: string): string | null {
+  return site.contactEmail ? `mailto:${site.contactEmail}?subject=${encodeURIComponent(subject)}` : null;
+}

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 580" role="img" aria-labelledby="title desc">
+  <title id="title">Oficina de hipóteses</title><desc id="desc">Peças avançam numa linha de produção ilustrada, passam por uma prensa e saem como opções comparáveis.</desc>
+  <style>
+    .belt{animation:belt 2s linear infinite}.crate{animation:travel 7s linear infinite}.crate.second{animation-delay:-3.5s}.press{animation:press 3.5s ease-in-out infinite}.spark{animation:spark 3.5s ease-in-out infinite}
+    @keyframes belt{to{stroke-dashoffset:-46}}@keyframes travel{from{transform:translateX(-170px)}to{transform:translateX(850px)}}@keyframes press{0%,25%,55%,100%{transform:translateY(0)}39%{transform:translateY(58px)}}@keyframes spark{0%,35%,45%,100%{opacity:0}40%{opacity:1}}
+    @media(prefers-reduced-motion:reduce){*{animation:none!important}.crate{transform:translateX(150px)}}
+  </style>
+  <rect width="900" height="580" fill="#fbf3e5"/>
+  <g stroke="#562e25" stroke-width="7" fill="none"><path d="M65 470H835M95 495H805"/><circle cx="134" cy="490" r="30" fill="#f6b84a"/><circle cx="769" cy="490" r="30" fill="#f6b84a"/><path d="M285 475V530M615 475V530"/></g>
+  <path class="belt" d="M105 467H799" fill="none" stroke="#df6b4d" stroke-width="14" stroke-dasharray="25 21"/>
+  <g class="crate"><rect x="35" y="379" width="91" height="88" rx="3" fill="#75c9b0" stroke="#562e25" stroke-width="6"/><path d="M50 395L110 455M110 395L50 455" stroke="#3e8c7e" stroke-width="5"/></g>
+  <g class="crate second"><rect x="35" y="392" width="89" height="75" rx="38" fill="#edb34b" stroke="#562e25" stroke-width="6"/><circle cx="80" cy="428" r="19" fill="none" stroke="#562e25" stroke-width="5"/></g>
+  <g stroke="#562e25" stroke-width="8" fill="#d65a3f"><path d="M350 143H552V379H350Z"/><path d="M319 142H582V181H319Z" fill="#f5b648"/><path d="M401 0V143M500 0V143"/></g>
+  <g class="press"><rect x="374" y="275" width="153" height="49" fill="#f4b847" stroke="#562e25" stroke-width="7"/><path d="M450 181V275" stroke="#562e25" stroke-width="15"/></g>
+  <g class="spark" fill="#f2aa33"><path d="M355 393l-22-16 8 29-25 13 32 1 5 26 13-32 29-4-28-12z"/><path d="M540 393l23-16-8 29 25 13-32 1-5 26-13-32-29-4 28-12z"/></g>
+  <path d="M690 238h95v94h-95z" fill="#75c9b0" stroke="#562e25" stroke-width="7"/><path d="M704 254h68m-68 23h68m-68 23h48" stroke="#562e25" stroke-width="5"/>
+  <g fill="#562e25" font-family="Arial,sans-serif" font-size="18" font-weight="700"><text x="55" y="94">ENTRADA</text><text x="394" y="94">MODELO</text><text x="711" y="94">OPÇÕES</text></g>
+</svg>

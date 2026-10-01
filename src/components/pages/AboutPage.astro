@@ -1,0 +1,66 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import PageHero from '../PageHero.astro';
+import { aboutContent, inescTecLogo } from '../../i18n/about';
+import type { Locale } from '../../i18n/locales';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = aboutContent[locale];
+const base = import.meta.env.BASE_URL;
+const initials = (name: string) => name.split(' ').map((part) => part[0]).filter((_, i, all) => i === 0 || i === all.length - 1).join('');
+---
+
+<SiteLayout locale={locale} page="about" title={t.meta.title} description={t.meta.description}>
+  <PageHero hero={t.hero} />
+
+  <section class="sec s-sim" aria-labelledby="story-title">
+    <div class="container split">
+      <h2 class="sec-h2" id="story-title">{t.story.title}</h2>
+      <div class="prose">
+        {t.story.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+        <p class="proof"><span class="pill"><i></i>{t.story.proof}</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="team" aria-labelledby="team-title">
+    <div class="container">
+      <div class="sectitle"><h2 id="team-title">{t.team.title}</h2><p>{t.team.description}</p></div>
+      <ul class="team">
+        {t.team.members.map((member) => (
+          <li class="member">
+            <div class="avatar">
+              <span>
+                {member.photo
+                  ? <img src={`${base}${member.photo}`} alt="" width="160" height="160" loading="lazy" />
+                  : <b aria-hidden="true">{initials(member.name)}</b>}
+              </span>
+            </div>
+            <h3>{member.name}</h3>
+            <small>{member.role}</small>
+            <p>{member.bio}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec s-sim" id="origins" aria-labelledby="origins-title">
+    <div class="container split origins">
+      <div class="origins-logo">
+        {inescTecLogo
+          ? <img src={`${base}${inescTecLogo}`} alt={t.origins.logoAlt} loading="lazy" />
+          : <span class="wordmark">{t.origins.logoAlt}</span>}
+      </div>
+      <div>
+        <span class="pill"><i></i>{t.origins.badge}</span>
+        <h2 class="sec-h2" id="origins-title">{t.origins.title}</h2>
+        <div class="prose">{t.origins.paragraphs.map((paragraph) => <p>{paragraph}</p>)}</div>
+      </div>
+    </div>
+  </section>
+</SiteLayout>

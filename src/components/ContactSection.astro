@@ -1,0 +1,20 @@
+---
+import ContactActions from './ContactActions.astro';
+import type { CommonContent } from '../i18n/common';
+
+interface Props {
+  contact: CommonContent['contact'];
+}
+
+const { contact } = Astro.props;
+---
+
+<section class="sec s-cta" id="contact" aria-labelledby="contact-title">
+  <div class="container">
+    <div class="box">
+      <h2 id="contact-title">{contact.title}</h2>
+      <p>{contact.description}</p>
+      <ContactActions contact={contact} fallback="pending" />
+    </div>
+  </div>
+</section>

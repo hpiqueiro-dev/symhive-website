@@ -1,0 +1,8 @@
+---
+import NewPrototypePage from '../../../components/NewPrototypePage.astro';
+export function getStaticPaths() {
+  return ['horizonte', 'oficina', 'console', 'camadas'].map((concept) => ({ params: { concept } }));
+}
+const concept = Astro.params.concept as 'horizonte' | 'oficina' | 'console' | 'camadas';
+---
+<NewPrototypePage concept={concept} />

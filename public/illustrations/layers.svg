@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 670" role="img" aria-labelledby="title desc">
+  <title id="title">Camadas de uma decisão</title><desc id="desc">Três planos translúcidos animados representam dados, modelo e cenários, que se sobrepõem para formar uma decisão.</desc>
+  <style>
+    .sheet-a{animation:a 6s ease-in-out infinite}.sheet-b{animation:b 6s ease-in-out infinite}.sheet-c{animation:c 6s ease-in-out infinite}.orbit{stroke-dasharray:9 11;animation:spin 25s linear infinite;transform-origin:425px 332px}
+    @keyframes a{50%{transform:translate(-14px,-13px)}}@keyframes b{50%{transform:translate(14px,8px)}}@keyframes c{50%{transform:translate(-7px,16px)}}@keyframes spin{to{transform:rotate(360deg)}}
+    @media(prefers-reduced-motion:reduce){*{animation:none!important}}
+  </style>
+  <rect width="850" height="670" fill="#f7e9e8"/>
+  <circle class="orbit" cx="425" cy="332" r="270" fill="none" stroke="#ba6d70" stroke-width="2"/>
+  <g class="sheet-a"><path d="M102 209L413 65 692 208 383 356Z" fill="#ee7881" fill-opacity=".68" stroke="#7a3746" stroke-width="4"/><path d="M245 216L414 139 550 211 385 291Z" fill="none" stroke="#7a3746" stroke-width="3"/><circle cx="413" cy="212" r="31" fill="#ffe49d"/></g>
+  <g class="sheet-b"><path d="M135 310L445 165 735 311 421 464Z" fill="#ffd894" fill-opacity=".68" stroke="#7a3746" stroke-width="4"/><path d="M246 310H623M295 277L551 395M535 271L303 396" stroke="#7a3746" stroke-width="3"/><circle cx="445" cy="311" r="36" fill="#f6f2e9" stroke="#7a3746" stroke-width="3"/></g>
+  <g class="sheet-c"><path d="M95 419L409 270 696 418 380 576Z" fill="#8dcfc6" fill-opacity=".7" stroke="#7a3746" stroke-width="4"/><path d="M210 420L408 329 581 420 380 516Z" fill="none" stroke="#7a3746" stroke-width="3"/><path d="M275 420H515M393 353V497" stroke="#7a3746" stroke-width="3"/><circle cx="388" cy="421" r="21" fill="#f9e69b"/></g>
+  <g fill="#602d41" font-family="Arial,sans-serif" font-size="15" font-weight="700"><text x="102" y="175">DADOS</text><text x="672" y="286">MODELO</text><text x="74" y="504">CENÁRIOS</text></g>
+</svg>

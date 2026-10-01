@@ -1,0 +1,29 @@
+---
+interface Props {
+  label: string;
+}
+
+const { label } = Astro.props;
+const wheels = [130, 190, 250, 310, 370, 430, 490];
+---
+
+<svg class="factory" viewBox="0 0 560 460" role="img" aria-label={label}>
+  <g>
+    <path class="draw" pathLength="1" style="--d:.1s" d="M40 340H520M40 366H520M40 340V366M520 340V366" />
+    <path class="draw" pathLength="1" style="--d:.4s" d="M86 300h90v40H86zM131 300V230" />
+    <circle class="draw" pathLength="1" style="--d:.7s" cx="131" cy="222" r="15" />
+    <path class="draw" pathLength="1" style="--d:1s" d="M140 210L226 150" />
+    <circle class="draw" pathLength="1" style="--d:1.2s" cx="236" cy="144" r="13" />
+    <path class="draw" pathLength="1" style="--d:1.4s" d="M246 152L296 196M296 196l-16 4M296 196l-4 -18" />
+    <path class="draw" pathLength="1" style="--d:1.2s" d="M380 140h140v200H380zM380 200h140M380 270h140M450 140v200" />
+    <path class="draw" pathLength="1" style="--d:1.8s" d="M395 160h40v32h-40zM465 160h40v32h-40zM395 220h40v38h-40z" />
+    {wheels.map((cx, i) => <circle class="draw" pathLength="1" style={`--d:${(1.6 + i * 0.05).toFixed(2)}s`} cx={cx} cy="353" r="6" />)}
+  </g>
+  <g class="am">
+    {['3s', '5.4s', '7.8s'].map((delay) => <rect class="belt am" style={`--d:${delay}`} x="60" y="312" width="34" height="26" />)}
+  </g>
+  <g class="agv am">
+    <path class="draw am" pathLength="1" style="--d:2.2s" d="M60 418h76v-26H60zM60 418v6M136 418v6" />
+    <circle class="am" cx="76" cy="424" r="5" /><circle class="am" cx="122" cy="424" r="5" />
+  </g>
+</svg>

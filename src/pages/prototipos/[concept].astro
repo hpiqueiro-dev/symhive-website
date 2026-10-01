@@ -1,0 +1,11 @@
+---
+import PrototypePage from '../../components/PrototypePage.astro';
+
+export function getStaticPaths() {
+  return ['precisao', 'operacao', 'sistema', 'materia'].map((concept) => ({ params: { concept } }));
+}
+
+const concept = Astro.params.concept as 'precisao' | 'operacao' | 'sistema' | 'materia';
+---
+
+<PrototypePage concept={concept} />

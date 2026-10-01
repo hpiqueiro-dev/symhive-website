@@ -1,0 +1,19 @@
+---
+import '../../../styles/final-prototypes.css';
+const base = import.meta.env.BASE_URL;
+---
+<!doctype html>
+<html lang="pt-PT">
+  <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="robots" content="noindex"/><title>Duas propostas finais — SymHive</title><meta name="description" content="Comparação de duas propostas finais para a página da SymHive."/></head>
+  <body class="final-gallery">
+    <main class="final-gallery-shell">
+      <header class="final-gallery-header"><a href={base} class="final-brand"><span>⬡</span> SymHive</a><a href={`${base}prototipos/novos/`}>Ver exploração anterior <span aria-hidden="true">↗</span></a></header>
+      <div class="final-gallery-intro"><p>SymHive · seleção final</p><h1>Duas direções. A mesma forma de decidir melhor.</h1><p>Ambas combinam a leitura de sistema da opção 7 com o painel «Escolhe uma hipótese» da opção 3.</p></div>
+      <div class="final-gallery-grid">
+        <a class="final-gallery-card final-gallery-light" href={`${base}prototipos/finais/leitura-clara/`}><div class="final-card-visual"><span>⬡ SymHive</span><strong>O próximo passo começa com uma hipótese.</strong><i>▦</i></div><div class="final-card-copy"><span>Proposta A</span><h2>Leitura clara</h2><p>O rigor luminoso da opção 1 encontra o instrumento de análise da opção 7.</p><b aria-hidden="true">↗</b></div></a>
+        <a class="final-gallery-card final-gallery-dark" href={`${base}prototipos/finais/centro-comando/`}><div class="final-card-visual"><span>⬡ SymHive</span><strong>Ver a operação antes de a mudar.</strong><i>◎</i></div><div class="final-card-copy"><span>Proposta B</span><h2>Centro de comando</h2><p>A imersão da opção 2 ganha a precisão de leitura da opção 7.</p><b aria-hidden="true">↗</b></div></a>
+      </div>
+      <footer class="final-gallery-footer">Protótipos para escolha de direção visual · SymHive</footer>
+    </main>
+  </body>
+</html>

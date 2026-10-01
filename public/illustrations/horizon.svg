@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc">
+  <title id="title">Horizonte de cenários</title><desc id="desc">Ondas de possibilidades atravessadas por pontos em movimento, sugerindo diferentes trajetórias de uma operação.</desc>
+  <style>
+    .horizon-sun{animation:float 7s ease-in-out infinite}.horizon-line{stroke-dasharray:12 13;animation:flow 22s linear infinite}.horizon-point{filter:drop-shadow(0 0 8px #f9e56c)}
+    @keyframes float{50%{transform:translateY(-13px)}}@keyframes flow{to{stroke-dashoffset:-300}}
+    @media(prefers-reduced-motion:reduce){*{animation:none!important}}
+  </style>
+  <defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#a9e5e9"/><stop offset="1" stop-color="#ddf1e9"/></linearGradient><linearGradient id="water" x2="0" y2="1"><stop stop-color="#16829b"/><stop offset="1" stop-color="#064c65"/></linearGradient></defs>
+  <rect width="1200" height="620" fill="url(#sky)"/>
+  <g opacity=".22" stroke="#226b79"><path d="M0 90H1200M0 180H1200M0 270H1200M0 360H1200M0 450H1200M0 540H1200"/><path d="M100 0V620M250 0V620M400 0V620M550 0V620M700 0V620M850 0V620M1000 0V620M1150 0V620"/></g>
+  <circle class="horizon-sun" cx="875" cy="145" r="87" fill="#f7e772"/>
+  <path d="M0 325C180 268 294 365 461 322S758 240 927 306 1095 352 1200 290V620H0Z" fill="#66c7c4"/>
+  <path d="M0 379C215 328 324 436 522 365S840 328 1047 401 1151 411 1200 390V620H0Z" fill="#2b9eaf"/>
+  <path d="M0 440C198 403 332 492 512 452S794 387 973 451 1097 474 1200 439V620H0Z" fill="url(#water)"/>
+  <path class="horizon-line" d="M0 370C203 326 327 430 518 370S838 326 1045 398 1153 413 1200 391" fill="none" stroke="#fff3bc" stroke-width="4"/>
+  <path id="trajectory" d="M80 438C245 410 328 492 511 452S792 389 972 450 1102 477 1182 440" fill="none" stroke="#def8e5" stroke-width="3" stroke-dasharray="2 14"/>
+  <circle class="horizon-point" r="13" fill="#f8e878"><animateMotion dur="11s" repeatCount="indefinite"><mpath href="#trajectory"/></animateMotion></circle>
+  <g fill="#e1f7ee" font-family="Arial,sans-serif" font-size="13" font-weight="700"><text x="55" y="560">SISTEMA REAL</text><text x="1010" y="560">CENÁRIOS POSSÍVEIS</text></g>
+</svg>

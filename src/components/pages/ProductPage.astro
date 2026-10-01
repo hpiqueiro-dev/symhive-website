@@ -1,0 +1,31 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import PageHero from '../PageHero.astro';
+import PlatformPreview from '../product/PlatformPreview.astro';
+import FeatureCards from '../product/FeatureCards.astro';
+import BeforeAfter from '../product/BeforeAfter.astro';
+import ProcessSection from '../product/ProcessSection.astro';
+import StepsSection from '../home/StepsSection.astro';
+import SimulatorSection from '../home/SimulatorSection.astro';
+import { homeContent } from '../../i18n/home';
+import { productContent } from '../../i18n/product';
+import type { Locale } from '../../i18n/locales';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = productContent[locale];
+const home = homeContent[locale];
+---
+
+<SiteLayout locale={locale} page="product" title={t.meta.title} description={t.meta.description} contact={false}>
+  <PageHero hero={t.hero} />
+  <PlatformPreview preview={t.preview} />
+  <StepsSection steps={home.steps} />
+  <FeatureCards features={t.features} />
+  <BeforeAfter beforeAfter={t.beforeAfter} />
+  <SimulatorSection simulator={home.simulator} />
+  <ProcessSection process={t.process} id="contact" />
+</SiteLayout>

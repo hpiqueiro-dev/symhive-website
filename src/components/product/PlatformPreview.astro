@@ -1,0 +1,60 @@
+---
+import type { ProductContent } from '../../i18n/product';
+
+interface Props {
+  preview: ProductContent['preview'];
+}
+
+const { preview: p } = Astro.props;
+const base = import.meta.env.BASE_URL;
+// Percurso dos AGVs no esquema da linha (o mesmo para a linha tracejada e para a animação).
+const loop = 'M40 150H420Q440 150 440 130V40Q440 20 420 20H40Q20 20 20 40V130Q20 150 40 150Z';
+---
+
+<section class="container preview" aria-label={p.imageAlt}>
+  <figure>
+    {p.image ? (
+      <img class="preview-img" src={`${base}${p.image}`} alt={p.imageAlt} loading="lazy" />
+    ) : (
+      <div class="win app" role="img" aria-label={p.imageAlt}>
+        <div class="wh"><i></i><i></i><i></i><span>{p.windowTitle}</span><em>{p.live}</em></div>
+        <div class="app-body">
+          <ul class="app-nav" aria-hidden="true">
+            {p.nav.map((item, i) => <li class:list={{ on: i === 1 }}><span></span>{item}</li>)}
+          </ul>
+          <div class="app-canvas" aria-hidden="true">
+            <small>{p.canvasTitle}</small>
+            <svg viewBox="0 0 460 170">
+              <path class="loop" d={loop} />
+              {p.nodes.map((node, i) => (
+                <g class:list={['nd', { hl: i === 2 }]}>
+                  <rect x={46 + i * 96} y="62" width="80" height="46" rx="8" />
+                  <text x={86 + i * 96} y="90">{node}</text>
+                </g>
+              ))}
+              {[0, 1, 2].map((i) => <path class="lk" d={`M${126 + i * 96} 85H${142 + i * 96}`} />)}
+              {[0, 1, 2, 3].map((i) => (
+                <circle r="5" fill="#F5A623"><animateMotion dur="10s" repeatCount="indefinite" begin={`-${i * 2.5}s`} path={loop} /></circle>
+              ))}
+            </svg>
+          </div>
+          <div class="app-side" aria-hidden="true">
+            <small>{p.scenariosTitle}</small>
+            <ul class="app-bars">
+              {p.scenarios.map((s) => (
+                <li class:list={{ best: s.best }}>
+                  <span>{s.name}<b>{s.label}</b></span>
+                  <i style={`--w:${s.value}%`}></i>
+                </li>
+              ))}
+            </ul>
+            <div class="app-kpis">
+              {p.kpis.map((kpi) => <div><small>{kpi.label}</small><b>{kpi.value}</b></div>)}
+            </div>
+          </div>
+        </div>
+      </div>
+    )}
+    <figcaption class="ill">{p.caption}</figcaption>
+  </figure>
+</section>

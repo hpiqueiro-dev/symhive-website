@@ -1,13 +1,24 @@
 ---
+import { pagePath, pages, type Locale } from '../i18n/locales';
+import type { CommonContent } from '../i18n/common';
+
+interface Props {
+  locale: Locale;
+  nav: CommonContent['nav'];
+  footer: CommonContent['footer'];
+}
+
+const { locale, nav, footer } = Astro.props;
 const logo = `${import.meta.env.BASE_URL}images/symhive-logo.png`;
 ---
 
-<footer class="site-footer">
-  <div class="container footer-inner">
-    <a class="brand footer-brand" href="#inicio" aria-label="SymHive — voltar ao início">
-      <img src={logo} alt="SymHive" width="193" height="57" loading="lazy" />
-    </a>
-    <p>Simulação para decisões mais claras.</p>
-    <a href="#inicio">Voltar ao topo <span aria-hidden="true">↑</span></a>
+<footer>
+  <div class="container">
+    <img class="logo" src={logo} alt="SymHive" width="191" height="56" loading="lazy" />
+    <nav class="footer-links" aria-label={footer.label}>
+      {pages.map((key) => <a href={pagePath(locale, key)}>{nav.pages[key]}</a>)}
+    </nav>
+    <span>{footer.poweredBy} <b>{footer.organisation}</b></span>
+    <span>{footer.copyright}</span>
   </div>
 </footer>

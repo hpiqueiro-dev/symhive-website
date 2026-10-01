@@ -1,0 +1,25 @@
+---
+import '../../../styles/new-prototypes.css';
+const base = import.meta.env.BASE_URL;
+const concepts = [
+  { slug: 'horizonte', number: '05', name: 'Horizonte', line: 'Ver possibilidades antes de escolher um caminho.', description: 'Azul aberto, movimento fluido e uma visão panorâmica da operação.', theme: 'horizon' },
+  { slug: 'oficina', number: '06', name: 'Oficina', line: 'Pôr as hipóteses a trabalhar.', description: 'Um cartaz industrial, direto e tátil, com peças que avançam numa linha.', theme: 'workshop' },
+  { slug: 'console', number: '07', name: 'Console', line: 'Ler o sistema. Testar a próxima decisão.', description: 'Uma interface de análise inspirada em instrumentos operacionais.', theme: 'console' },
+  { slug: 'camadas', number: '08', name: 'Camadas', line: 'Descobrir o que cada escolha altera.', description: 'Uma composição de planos sobrepostos que revela relações e impacto.', theme: 'layers' },
+];
+---
+<!doctype html>
+<html lang="pt-PT">
+  <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="robots" content="noindex"/><title>Mais quatro direções — SymHive</title><meta name="description" content="Segunda coleção de quatro protótipos visuais para a SymHive."/></head>
+  <body class="np-gallery">
+    <main class="np-gallery-shell">
+      <header class="np-gallery-header"><a href={base} class="np-wordmark"><span>⬡</span> SymHive</a><a href={`${base}prototipos/`}>Ver primeira coleção <span aria-hidden="true">↗</span></a></header>
+      <div class="np-gallery-intro"><p>Exploração visual · segunda coleção</p><h1>Mais quatro formas de pensar a SymHive.</h1><div><span>Abre cada proposta para explorar a página e as animações.</span><span>05 — 08</span></div></div>
+      <a class="np-gallery-final-link" href={`${base}prototipos/finais/`}>Ver as duas propostas finais <span aria-hidden="true">↗</span></a>
+      <div class="np-gallery-grid">
+        {concepts.map((item) => <a class={`np-gallery-card np-card-${item.theme}`} href={`${base}prototipos/novos/${item.slug}/`}><div class="np-gallery-art"><span class="np-card-brand">⬡ SymHive</span><span class="np-card-line">{item.line}</span><span class="np-card-mark" aria-hidden="true">{item.theme === 'horizon' ? '∿' : item.theme === 'workshop' ? '▣' : item.theme === 'console' ? '⌁' : '◫'}</span></div><div class="np-gallery-card-copy"><div><span>{item.number}</span><h2>{item.name}</h2><span aria-hidden="true">↗</span></div><p>{item.description}</p></div></a>)}
+      </div>
+      <footer class="np-gallery-footer">Quatro novos protótipos · Os visuais animados são SVGs editáveis</footer>
+    </main>
+  </body>
+</html>

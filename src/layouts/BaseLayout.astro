@@ -1,38 +1,40 @@
 ---
 import '../styles/global.css';
-import { site } from '../config/site';
+import { localeMeta, locales, pagePath, type Locale, type Page } from '../i18n/locales';
 
 interface Props {
-  title?: string;
-  description?: string;
+  locale: Locale;
+  page: Page;
+  title: string;
+  description: string;
 }
 
-const { title = 'SymHive — Simulação para decidir melhor', description = site.description } = Astro.props;
+const { locale, page, title, description } = Astro.props;
 const base = import.meta.env.BASE_URL;
-const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : undefined;
-const socialImage = Astro.site
-  ? new URL(`${base}images/social-card.png`, Astro.site).toString()
-  : `${base}images/social-card.png`;
+const absolute = (path: string) => (Astro.site ? new URL(path, Astro.site).toString() : path);
+const canonical = Astro.site ? absolute(Astro.url.pathname) : undefined;
+const socialImage = absolute(`${base}images/social-card.png`);
 ---
 
 <!doctype html>
-<html lang="pt-PT">
+<html lang={localeMeta[locale].htmlLang}>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0b1213" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#050b0d" />
     <meta name="description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="pt_PT" />
+    <meta property="og:locale" content={localeMeta[locale].ogLocale} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={socialImage} />
     {canonical && <link rel="canonical" href={canonical} />}
+    {locales.map((code) => <link rel="alternate" hreflang={localeMeta[code].htmlLang} href={absolute(pagePath(code, page))} />)}
     <link rel="icon" type="image/png" href={`${base}images/favicon.png`} />
     <title>{title}</title>
   </head>
   <body>
-    <a class="skip-link" href="#conteudo">Saltar para o conteúdo</a>
     <slot />
   </body>
 </html>

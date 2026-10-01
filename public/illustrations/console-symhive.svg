@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 640" role="img" aria-labelledby="title desc">
+  <title id="title">Leitura de operação</title><desc id="desc">Gráfico de simulação com trajetórias animadas, nós e indicadores esquemáticos.</desc>
+  <style>
+    .trace{stroke-dasharray:1300;stroke-dashoffset:1300;animation:draw 2.8s ease forwards}.trace.alt{animation-delay:.35s}.node{animation:blink 3s ease-in-out infinite}.node.b{animation-delay:1s}.scan{animation:scan 8s linear infinite}
+    @keyframes draw{to{stroke-dashoffset:0}}@keyframes blink{50%{opacity:.35}}@keyframes scan{from{transform:translateY(0)}to{transform:translateY(530px)}}
+    @media(prefers-reduced-motion:reduce){*{animation:none!important}.trace{stroke-dashoffset:0}}
+  </style>
+  <rect width="900" height="640" fill="#0d2022"/>
+  <g stroke="#315455" stroke-width="1"><path d="M65 60V580M175 60V580M285 60V580M395 60V580M505 60V580M615 60V580M725 60V580M835 60V580"/><path d="M65 60H835M65 146H835M65 232H835M65 318H835M65 404H835M65 490H835M65 580H835"/></g>
+  <g class="scan" opacity=".26"><path d="M65 65H835" stroke="#efc459" stroke-width="5"/></g>
+  <path d="M65 473C138 465 153 370 224 387S329 450 394 325 473 284 527 316 604 209 661 223 752 161 835 140" fill="none" stroke="#f2c65d" stroke-opacity=".28" stroke-width="8" stroke-linecap="round"/>
+  <path d="M65 490C151 481 174 488 235 423S355 388 410 399 520 349 569 362 698 281 835 288" fill="none" stroke="#71d7c5" stroke-opacity=".25" stroke-width="5" stroke-linecap="round"/>
+  <path class="trace" d="M65 473C138 465 153 370 224 387S329 450 394 325 473 284 527 316 604 209 661 223 752 161 835 140" fill="none" stroke="#f2c65d" stroke-width="8" stroke-linecap="round"/>
+  <path class="trace alt" d="M65 490C151 481 174 488 235 423S355 388 410 399 520 349 569 362 698 281 835 288" fill="none" stroke="#71d7c5" stroke-width="5" stroke-linecap="round"/>
+  <g fill="#f6cc66"><circle class="node" cx="224" cy="387" r="12"/><circle class="node b" cx="527" cy="316" r="12"/><circle class="node" cx="835" cy="140" r="12"/></g>
+  <g fill="#9cbbb7" font-family="monospace" font-size="15"><text x="65" y="35">CENÁRIO A / PRODUÇÃO</text><text x="65" y="616">T0</text><text x="785" y="616">T+1</text></g>
+</svg>

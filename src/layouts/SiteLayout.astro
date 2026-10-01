@@ -1,0 +1,32 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import HiveBackground from '../components/HiveBackground.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import ContactSection from '../components/ContactSection.astro';
+import { commonContent } from '../i18n/common';
+import type { Locale, Page } from '../i18n/locales';
+
+interface Props {
+  locale: Locale;
+  page: Page;
+  title: string;
+  description: string;
+  /** false quando a página fecha com o seu próprio apelo ao contacto (com id 'contact'). */
+  contact?: boolean;
+}
+
+const { locale, page, title, description, contact = true } = Astro.props;
+const common = commonContent[locale];
+---
+
+<BaseLayout locale={locale} page={page} title={title} description={description}>
+  <a class="skip-link" href="#conteudo">{common.skipLink}</a>
+  <HiveBackground />
+  <SiteHeader locale={locale} page={page} nav={common.nav} demoSubject={common.contact.demo.subject} />
+  <main id="conteudo">
+    <slot />
+    {contact && <ContactSection contact={common.contact} />}
+  </main>
+  <SiteFooter locale={locale} nav={common.nav} footer={common.footer} />
+</BaseLayout>

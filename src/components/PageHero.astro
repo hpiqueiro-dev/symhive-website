@@ -1,0 +1,20 @@
+---
+import type { PageHeroContent } from '../i18n/common';
+
+interface Props {
+  hero: PageHeroContent;
+}
+
+const { hero } = Astro.props;
+---
+
+<section class="container page-hero" aria-labelledby="page-title">
+  <span class="pill"><i></i>{hero.badge}</span>
+  <h1 id="page-title">
+    <span class="a">{hero.titleAmber}</span>
+    {hero.titleCyan && <> <span class="c">{hero.titleCyan}</span></>}
+    {hero.titleRest && <> {hero.titleRest}</>}
+  </h1>
+  <p class="lead">{hero.lead}</p>
+  <slot />
+</section>

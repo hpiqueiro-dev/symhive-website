@@ -1,0 +1,27 @@
+---
+import type { ProductContent } from '../../i18n/product';
+
+interface Props {
+  features: ProductContent['features'];
+}
+
+const { features } = Astro.props;
+---
+
+<section class="sec" id="features" aria-labelledby="features-title">
+  <div class="container">
+    <div class="sectitle"><h2 id="features-title">{features.title}</h2><p>{features.description}</p></div>
+    <ul class="features">
+      {features.items.map((item, i) => (
+        <li class="feature">
+          <div class="feature-top">
+            <span class="feature-hex" aria-hidden="true"><span></span></span>
+            <span class="feature-n">{String(i + 1).padStart(2, '0')}</span>
+          </div>
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

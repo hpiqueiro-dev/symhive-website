@@ -1,0 +1,23 @@
+---
+import ContactActions from '../ContactActions.astro';
+import FactoryIllustration from './FactoryIllustration.astro';
+import type { CommonContent } from '../../i18n/common';
+import type { HomeContent } from '../../i18n/home';
+
+interface Props {
+  hero: HomeContent['hero'];
+  contact: CommonContent['contact'];
+}
+
+const { hero, contact } = Astro.props;
+---
+
+<section class="container hero" aria-labelledby="hero-title">
+  <div>
+    <span class="pill"><i></i>{hero.badge}</span>
+    <h1 id="hero-title"><span class="a">{hero.titleAmber}</span> <span class="c">{hero.titleCyan}</span> {hero.titleRest}</h1>
+    <p class="lead">{hero.lead}</p>
+    <ContactActions contact={contact} fallback="link" />
+  </div>
+  <FactoryIllustration label={hero.illustrationLabel} />
+</section>
