@@ -3,12 +3,14 @@ import type { HomeContent } from '../../i18n/home';
 
 interface Props {
   pain: HomeContent['pain'];
+  /** Fundo sombreado, para alternar com as secções vizinhas. */
+  shade?: boolean;
 }
 
-const { pain } = Astro.props;
+const { pain, shade = false } = Astro.props;
 ---
 
-<section class="sec pain" id="problem" aria-labelledby="pain-title">
+<section class:list={['sec pain', { shade }]} id="problem" aria-labelledby="pain-title">
   <div class="container">
     <p class="pain-label"><i></i>{pain.label}</p>
     <h2 class="pain-statement" id="pain-title"><span>{pain.statement[0]}</span> <em>{pain.statement[1]}</em></h2>

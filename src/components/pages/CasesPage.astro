@@ -16,10 +16,10 @@ const p = t.problems;
 const pad = (n: number) => String(n).padStart(2, '0');
 ---
 
-<SiteLayout locale={locale} page="cases" title={t.meta.title} description={t.meta.description}>
+<SiteLayout locale={locale} page="cases" title={t.meta.title} description={t.meta.description} contactText={t.contact} contactCompact contactShade>
   <PageHero hero={t.hero} />
 
-  <section class="sec s-sim" id="industries" aria-labelledby="industries-title">
+  <section class="sec shade" id="industries" aria-labelledby="industries-title">
     <div class="container">
       <h2 class="sec-h2" id="industries-title">{t.industries.title}</h2>
       <ul class="industries">

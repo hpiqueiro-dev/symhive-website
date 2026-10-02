@@ -30,6 +30,8 @@ export interface CasesContent {
     items: Problem[];
   };
   note: string;
+  /** Substitui o título e o texto da secção de contacto nesta página (versão compacta). */
+  contact: { title: string; description: string };
 }
 
 /** Gera casos genéricos numerados em sequência ao longo de todos os problemas. */
@@ -102,6 +104,10 @@ const pt: CasesContent = {
     ],
   },
   note: 'Os resultados de cada caso dependem dos dados e do contexto de cada operação.',
+  contact: {
+    title: 'Quer juntar-se ao nosso portefólio?',
+    description: 'Junte-se às empresas que já ganharam com a simulação. Entre em contacto e mostramos o que a SymHive pode fazer pela sua operação.',
+  },
 };
 
 const en: CasesContent = {
@@ -135,6 +141,10 @@ const en: CasesContent = {
     ],
   },
   note: 'The results of each case depend on the data and context of each operation.',
+  contact: {
+    title: 'Want to join our portfolio?',
+    description: 'Join the companies already winning with simulation. Get in touch and we will show you what SymHive can do for your operation.',
+  },
 };
 
 export const casesContent: Record<Locale, CasesContent> = { pt, en };

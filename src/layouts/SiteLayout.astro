@@ -14,9 +14,15 @@ interface Props {
   description: string;
   /** false quando a página fecha com o seu próprio apelo ao contacto (com id 'contact'). */
   contact?: boolean;
+  /** Título e texto próprios para a secção de contacto. */
+  contactText?: { title: string; description: string };
+  /** Versão compacta da secção de contacto (texto à esquerda, botão à direita). */
+  contactCompact?: boolean;
+  /** Fundo sombreado no contacto, para manter a alternância das secções da página. */
+  contactShade?: boolean;
 }
 
-const { locale, page, title, description, contact = true } = Astro.props;
+const { locale, page, title, description, contact = true, contactText, contactCompact = false, contactShade = false } = Astro.props;
 const common = commonContent[locale];
 ---
 
@@ -26,7 +32,7 @@ const common = commonContent[locale];
   <SiteHeader locale={locale} page={page} nav={common.nav} demoSubject={common.contact.demo.subject} />
   <main id="conteudo">
     <slot />
-    {contact && <ContactSection contact={common.contact} />}
+    {contact && <ContactSection contact={contactText ? { ...common.contact, ...contactText } : common.contact} compact={contactCompact} shade={contactShade} />}
   </main>
   <SiteFooter locale={locale} nav={common.nav} footer={common.footer} />
 </BaseLayout>

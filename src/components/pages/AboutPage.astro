@@ -14,15 +14,20 @@ const base = import.meta.env.BASE_URL;
 const initials = (name: string) => name.split(' ').map((part) => part[0]).filter((_, i, all) => i === 0 || i === all.length - 1).join('');
 ---
 
-<SiteLayout locale={locale} page="about" title={t.meta.title} description={t.meta.description}>
+<SiteLayout locale={locale} page="about" title={t.meta.title} description={t.meta.description} contactText={t.contact} contactCompact>
   <PageHero hero={t.hero} />
 
-  <section class="sec s-sim" aria-labelledby="story-title">
+  <section class="sec shade" aria-labelledby="story-title">
     <div class="container split">
-      <h2 class="sec-h2" id="story-title">{t.story.title}</h2>
+      <div class="story-head">
+        <h2 class="sec-h2" id="story-title">{t.story.title}</h2>
+        <p class="mission">{t.story.mission}</p>
+      </div>
       <div class="prose">
         {t.story.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
-        <p class="proof"><span class="pill"><i></i>{t.story.proof}</span></p>
+        <ul class="facts">
+          {t.story.facts.map((fact) => <li><span class="fact-hex" aria-hidden="true"></span>{fact}</li>)}
+        </ul>
       </div>
     </div>
   </section>
@@ -49,7 +54,7 @@ const initials = (name: string) => name.split(' ').map((part) => part[0]).filter
     </div>
   </section>
 
-  <section class="sec s-sim" id="origins" aria-labelledby="origins-title">
+  <section class="sec shade" id="origins" aria-labelledby="origins-title">
     <div class="container split origins">
       <div class="origins-logo">
         {inescTecLogo

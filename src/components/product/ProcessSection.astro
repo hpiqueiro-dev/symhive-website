@@ -46,6 +46,7 @@ const spans = phases.reduce<{ group: ProcessGroup; start: number; size: number }
       </ol>
     </div>
     <div class="process-cta">
+      <p>{process.cta.lead}</p>
       {cta ? <a class="btn amber" href={cta}>{process.cta.label}</a> : <span class="pending">{process.cta.pending}</span>}
     </div>
   </div>

@@ -3,9 +3,11 @@ import type { HomeContent } from '../../i18n/home';
 
 interface Props {
   solution: HomeContent['solution'];
+  /** Fundo sombreado, para alternar com as secções vizinhas. */
+  shade?: boolean;
 }
 
-const { solution: s } = Astro.props;
+const { solution: s, shade = false } = Astro.props;
 const logo = `${import.meta.env.BASE_URL}images/symhive-logo.png`;
 
 // Ligações num viewBox 1000×100 esticado sobre o palco: as linhas de cada coluna ficam a meio de cada item.
@@ -20,7 +22,7 @@ const outPaths = s.outputs.map((_, i) => {
 });
 ---
 
-<section class="sec s-sim solution" id="solution" aria-labelledby="solution-title">
+<section class:list={['sec solution', { shade }]} id="solution" aria-labelledby="solution-title">
   <div class="container">
     <div class="sectitle"><h2 id="solution-title">{s.title}</h2><p>{s.description}</p></div>
 

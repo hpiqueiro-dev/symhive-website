@@ -36,7 +36,8 @@ export interface ProductContent {
     description: string;
     groups: Record<ProcessGroup, string>;
     phases: { group: ProcessGroup; title: string; description: string }[];
-    cta: { label: string; subject: string; pending: string };
+    /** lead é a frase curta entre as setas e o botão. */
+    cta: { lead: string; label: string; subject: string; pending: string };
   };
 }
 
@@ -95,7 +96,7 @@ const pt: ProductContent = {
         '30 semanas até decidir',
         '1 ou 2 alternativas avaliadas',
         'Refazer o estudo quando algo muda',
-        'Investir sem prova prévia',
+        'Implementação sem prova prévia',
       ],
     },
     after: {
@@ -106,7 +107,7 @@ const pt: ProductContent = {
         '8 semanas até decidir',
         'Dezenas de cenários comparados',
         'O modelo acompanha a operação',
-        'Testado antes de investir',
+        'ROI claro e prova antes de investir',
       ],
     },
     note: 'Valores aproximados, a partir de estimativas de estudos anteriores e projetos-piloto.',
@@ -121,7 +122,7 @@ const pt: ProductContent = {
       { group: 'project', title: 'Implementação', description: 'Ligamos a plataforma aos dados e sistemas da operação e formamos a equipa.' },
       { group: 'subscription', title: 'Subscrição', description: 'Acesso contínuo à plataforma, com modelos atualizados e acompanhamento.' },
     ],
-    cta: { label: 'Começar projeto', subject: 'Começar projeto — SymHive', pending: 'Canal de contacto em preparação' },
+    cta: { lead: 'Pronto para o primeiro passo? Tudo começa com um diagnóstico.', label: 'Começar projeto', subject: 'Começar projeto — SymHive', pending: 'Canal de contacto em preparação' },
   },
 };
 
@@ -180,7 +181,7 @@ const en: ProductContent = {
         '30 weeks to decide',
         '1 or 2 alternatives assessed',
         'Redo the study when something changes',
-        'Invest without prior proof',
+        'Implementation without prior proof',
       ],
     },
     after: {
@@ -191,7 +192,7 @@ const en: ProductContent = {
         '8 weeks to decide',
         'Dozens of scenarios compared',
         'The model keeps up with operations',
-        'Tested before investing',
+        'Clear ROI and proof before investing',
       ],
     },
     note: 'Approximate values, based on estimates from previous studies and pilot projects.',
@@ -206,7 +207,7 @@ const en: ProductContent = {
       { group: 'project', title: 'Deployment', description: "We connect the platform to the operation's data and systems and train the team." },
       { group: 'subscription', title: 'Subscription', description: 'Ongoing access to the platform, with updated models and support.' },
     ],
-    cta: { label: 'Start a project', subject: 'Start a project — SymHive', pending: 'Contact channel coming soon' },
+    cta: { lead: 'Ready for the first step? It all starts with an assessment.', label: 'Start a project', subject: 'Start a project — SymHive', pending: 'Contact channel coming soon' },
   },
 };
 

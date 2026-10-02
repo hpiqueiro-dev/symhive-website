@@ -14,9 +14,11 @@ export interface TeamMember {
 export interface AboutContent {
   meta: PageMeta;
   hero: PageHeroContent;
-  story: { title: string; paragraphs: string[]; proof: string };
+  story: { title: string; mission: string; paragraphs: string[]; facts: string[] };
   team: { title: string; description: string; members: TeamMember[] };
   origins: { badge: string; title: string; paragraphs: string[]; logoAlt: string };
+  /** Título e texto próprios para a secção de contacto desta página. */
+  contact: { title: string; description: string };
 }
 
 /** Logótipo do INESC TEC em public/ (por exemplo 'images/inesctec-logo.svg'). Enquanto for null, mostra o nome em texto. */
@@ -37,11 +39,16 @@ const pt: AboutContent = {
   },
   story: {
     title: 'Porque existimos.',
+    mission: 'Pôr a simulação ao alcance de cada decisão operacional.',
     paragraphs: [
       'Construir e atualizar modelos de simulação à mão atrasa a análise de alternativas. Quando o modelo fica pronto, a operação já mudou.',
       'Transformamos experiência técnica em componentes reutilizáveis, para que o modelo acompanhe o contexto em vez de ficar preso a um único estudo.',
     ],
-    proof: 'MVP de geração automática validado em casos de uso industriais.',
+    facts: [
+      'Spin-off nascida da investigação no INESC TEC',
+      'MVP de geração automática validado em casos industriais',
+      'Modelos que evoluem com a operação, projeto após projeto',
+    ],
   },
   team: {
     title: 'Quem constrói a SymHive.',
@@ -56,6 +63,10 @@ const pt: AboutContent = {
       'Com base em anos de excelência em digitalização, levamos a simulação e a otimização avançadas do laboratório para operações industriais reais.',
     ],
     logoAlt: 'INESC TEC',
+  },
+  contact: {
+    title: 'Vamos construir o próximo modelo juntos?',
+    description: 'Fale com a equipa por trás da SymHive. Contamos-lhe de onde vem a tecnologia e como a podemos aplicar à sua operação.',
   },
 };
 
@@ -72,11 +83,16 @@ const en: AboutContent = {
   },
   story: {
     title: 'Why we exist.',
+    mission: 'To put simulation within reach of every operational decision.',
     paragraphs: [
       'Building and updating simulation models by hand slows down the analysis of alternatives. By the time the model is ready, the operation has already changed.',
       'We turn technical expertise into reusable components, so the model keeps up with its context instead of being locked into a single study.',
     ],
-    proof: 'Automatic generation MVP validated in industrial use cases.',
+    facts: [
+      'Spin-off born from research at INESC TEC',
+      'Automatic generation MVP validated in industrial cases',
+      'Models that evolve with the operation, project after project',
+    ],
   },
   team: {
     title: 'The people building SymHive.',
@@ -91,6 +107,10 @@ const en: AboutContent = {
       'Built on years of digitalization excellence, we bring advanced simulation and optimization from the lab into real-world industrial operations.',
     ],
     logoAlt: 'INESC TEC',
+  },
+  contact: {
+    title: 'Shall we build the next model together?',
+    description: 'Talk to the team behind SymHive. We will tell you where the technology comes from and how we can apply it to your operation.',
   },
 };
 

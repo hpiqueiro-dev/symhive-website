@@ -5,14 +5,16 @@ import type { HomeContent } from '../../i18n/home';
 interface Props {
   impact: HomeContent['impact'];
   stats: HomeContent['stats'];
+  /** Fundo sombreado, para alternar com as secções vizinhas. */
+  shade?: boolean;
 }
 
-const { impact, stats } = Astro.props;
+const { impact, stats, shade = false } = Astro.props;
 const from = impact.manual.weeks;
 const to = impact.symhive.weeks;
 ---
 
-<section class="sec s-impact impact" id="impact" aria-labelledby="impact-title" data-impact data-weeks={impact.weeks} data-from={from} data-to={to}>
+<section class:list={['sec s-impact impact', { shade }]} id="impact" aria-labelledby="impact-title" data-impact data-weeks={impact.weeks} data-from={from} data-to={to}>
   <div class="container">
     <h2 id="impact-title">{impact.title}</h2>
     <div class="brow"><span class="bl">{impact.manual.label}</span><div class="track"><i class="man"></i></div><b class="bv">{from} {impact.weeks}</b></div>

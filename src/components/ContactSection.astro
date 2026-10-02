@@ -4,16 +4,22 @@ import type { CommonContent } from '../i18n/common';
 
 interface Props {
   contact: CommonContent['contact'];
+  /** Caixa mais pequena, com o texto à esquerda e o botão à direita. */
+  compact?: boolean;
+  /** Fundo sombreado, para alternar com as secções vizinhas. */
+  shade?: boolean;
 }
 
-const { contact } = Astro.props;
+const { contact, compact = false, shade = false } = Astro.props;
 ---
 
-<section class="sec s-cta" id="contact" aria-labelledby="contact-title">
+<section class:list={['sec s-cta', { compact, shade }]} id="contact" aria-labelledby="contact-title">
   <div class="container">
     <div class="box">
-      <h2 id="contact-title">{contact.title}</h2>
-      <p>{contact.description}</p>
+      <div class="box-text">
+        <h2 id="contact-title">{contact.title}</h2>
+        <p>{contact.description}</p>
+      </div>
       <ContactActions contact={contact} fallback="pending" />
     </div>
   </div>

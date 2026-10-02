@@ -3,12 +3,14 @@ import type { HomeContent } from '../../i18n/home';
 
 interface Props {
   steps: HomeContent['steps'];
+  /** Fundo sombreado, para alternar com as secções vizinhas. */
+  shade?: boolean;
 }
 
-const { steps } = Astro.props;
+const { steps, shade = false } = Astro.props;
 ---
 
-<section class="sec s-steps" id="steps" aria-labelledby="steps-title">
+<section class:list={['sec s-steps', { shade }]} id="steps" aria-labelledby="steps-title">
   <div class="container">
     <h2 id="steps-title">{steps.title}</h2>
     <div class="row4" data-flow>

@@ -3,12 +3,14 @@ import type { ProductContent } from '../../i18n/product';
 
 interface Props {
   beforeAfter: ProductContent['beforeAfter'];
+  /** Fundo sombreado, para alternar com as secções vizinhas. */
+  shade?: boolean;
 }
 
-const { beforeAfter: t } = Astro.props;
+const { beforeAfter: t, shade = false } = Astro.props;
 ---
 
-<section class="sec s-sim" id="before-after" aria-labelledby="ba-title">
+<section class:list={['sec', { shade }]} id="before-after" aria-labelledby="ba-title">
   <div class="container">
     <div class="sectitle"><h2 id="ba-title">{t.title}</h2><p>{t.description}</p></div>
     <div class="ba">

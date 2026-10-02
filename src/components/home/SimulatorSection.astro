@@ -3,9 +3,11 @@ import type { HomeContent } from '../../i18n/home';
 
 interface Props {
   simulator: HomeContent['simulator'];
+  /** Fundo sombreado, para alternar com as secções vizinhas. */
+  shade?: boolean;
 }
 
-const { simulator: s } = Astro.props;
+const { simulator: s, shade = false } = Astro.props;
 const labels = JSON.stringify({
   unitsPerHour: s.unitsPerHour,
   vsToday: s.vsToday,
@@ -16,7 +18,7 @@ const labels = JSON.stringify({
 });
 ---
 
-<section class="sec s-sim" id="sim" aria-labelledby="sim-title">
+<section class:list={['sec', { shade }]} id="sim" aria-labelledby="sim-title">
   <div class="container">
     <div class="sectitle"><h2 id="sim-title">{s.title}</h2><p>{s.description}</p></div>
     <div class="win" data-sim data-labels={labels}>

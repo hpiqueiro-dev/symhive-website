@@ -23,9 +23,9 @@ const home = homeContent[locale];
 <SiteLayout locale={locale} page="product" title={t.meta.title} description={t.meta.description} contact={false}>
   <PageHero hero={t.hero} />
   <PlatformPreview preview={t.preview} />
-  <StepsSection steps={home.steps} />
+  <StepsSection steps={home.steps} shade />
   <FeatureCards features={t.features} />
-  <BeforeAfter beforeAfter={t.beforeAfter} />
+  <BeforeAfter beforeAfter={t.beforeAfter} shade />
   <SimulatorSection simulator={home.simulator} />
   <ProcessSection process={t.process} id="contact" />
 </SiteLayout>

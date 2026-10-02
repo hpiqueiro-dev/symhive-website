@@ -139,7 +139,8 @@ details > summary::-webkit-details-marker { display: none; }
 @keyframes agv { from { transform: translateX(0); } to { transform: translateX(250px); } }
 
 /* ---------- simulador ---------- */
-.s-sim { background: var(--tint); }
+/* Secções alternam entre sem fundo e com fundo sombreado (.shade), decidido em cada página. */
+.shade { background: var(--tint); }
 .win { max-width: 1060px; margin: 0 auto; overflow: hidden; border: 1px solid rgba(25, 211, 230, .28); border-radius: 18px; background: rgba(5, 16, 19, .9); box-shadow: 0 20px 60px rgba(0, 0, 0, .45); text-align: left; }
 .wh { display: flex; align-items: center; gap: 8px; padding: 12px 16px; border-bottom: 1px solid rgba(25, 211, 230, .14); color: var(--mut); font-size: 13px; }
 .wh i { width: 10px; height: 10px; border-radius: 50%; background: #22363c; }
@@ -328,6 +329,7 @@ details > summary::-webkit-details-marker { display: none; }
 }
 
 .process-cta { margin-top: clamp(40px, 5vw, 56px); text-align: center; }
+.process-cta p { margin: 0 0 18px; color: var(--ink); font: 500 clamp(17px, 1.6vw, 20px) var(--font-display); }
 
 .row-n { color: var(--amber); font: 500 14px/1.9 var(--font-mono); }
 
@@ -411,7 +413,12 @@ details > summary::-webkit-details-marker { display: none; }
 
 
 .prose p { margin: 0 0 18px; color: var(--mut); font-size: 17px; }
-.prose .proof { margin-top: 28px; }
+/* Sobre: «Porque existimos» com missão em destaque e factos. */
+.story-head .sec-h2 { margin-bottom: 18px; }
+.mission { max-width: 15em; margin: 0; padding-left: 18px; border-left: 2px solid var(--amber); color: var(--amber); font: 600 clamp(21px, 2.3vw, 28px)/1.25 var(--font-display); letter-spacing: -.01em; }
+.facts { display: grid; gap: 10px; margin: 26px 0 0; padding: 0; list-style: none; }
+.facts li { display: flex; align-items: center; gap: 14px; padding: 13px 16px; border: 1px solid rgba(25, 211, 230, .18); border-radius: 12px; background: rgba(3, 8, 10, .7); color: var(--ink); font-size: 15px; }
+.fact-hex { flex: none; width: 14px; height: 16px; background: linear-gradient(160deg, var(--amber), var(--cyan)); clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); }
 
 /* Founders: favo de hexágonos em ziguezague. */
 .team { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 24px; margin: 56px 0 0; padding: 0 0 56px; list-style: none; text-align: center; }
@@ -520,11 +527,21 @@ details > summary::-webkit-details-marker { display: none; }
 @media (prefers-reduced-motion: reduce) { .check path { stroke-dashoffset: 0; } }
 
 /* ---------- contacto ---------- */
-.s-cta { background: var(--tint); text-align: center; }
+.s-cta { text-align: center; }
 .s-cta .box { padding: clamp(32px, 6vw, 64px) 24px; border: 1px solid rgba(245, 166, 35, .45); border-radius: 24px; background: rgba(5, 11, 13, .6); box-shadow: 0 0 60px rgba(245, 166, 35, .1); }
 .s-cta h2 { max-width: 15em; margin: 0 auto 14px; font-size: clamp(28px, 4.2vw, 52px); font-weight: 700; line-height: 1.08; letter-spacing: -.03em; }
 .s-cta p { max-width: 34em; margin: 0 auto 28px; color: var(--mut); }
 .s-cta .ctas { justify-content: center; }
+/* Contacto compacto (casos de estudo): texto à esquerda e botão à direita. */
+.s-cta.compact { padding: clamp(40px, 5vw, 64px) 0; }
+.s-cta.compact .box { display: flex; align-items: center; justify-content: space-between; gap: 32px; max-width: 960px; margin: 0 auto; padding: 28px 36px; text-align: left; }
+.s-cta.compact h2 { max-width: none; margin: 0 0 6px; font-size: clamp(22px, 2.4vw, 30px); }
+.s-cta.compact p { max-width: 36em; margin: 0; font-size: 15px; }
+.s-cta.compact .ctas { flex: none; }
+@media (max-width: 760px) {
+  .s-cta.compact .box { flex-direction: column; align-items: stretch; gap: 20px; padding: 24px 22px; text-align: center; }
+  .s-cta.compact .ctas { justify-content: center; }
+}
 
 footer { padding: 30px 0 40px; border-top: 1px solid var(--line); background: rgba(5, 11, 13, .92); }
 footer .container { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; color: var(--mut); font-size: 14px; }
