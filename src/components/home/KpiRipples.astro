@@ -1,0 +1,48 @@
+---
+import type { HomeContent } from '../../i18n/home';
+
+interface Props {
+  stats: HomeContent['stats'];
+}
+
+const { stats } = Astro.props;
+---
+
+<ul class="ripples" aria-label={stats.label} data-ripples>
+  {stats.items.map((item, i) => (
+    <li class="ripple" style={`--i:${i}`}>
+      <div class="ripple-stage" aria-hidden="true">
+        <span class="wave-ring"></span><span class="wave-ring"></span><span class="wave-ring"></span>
+        <span class="ripple-core">{item.prefix}<span data-count={item.value}>{item.value}</span>%</span>
+      </div>
+      <h3><span class="sr-only">{item.prefix}{item.value}% · </span>{item.title}</h3>
+      <p>{item.label}</p>
+    </li>
+  ))}
+</ul>
+
+<script>
+  // Os números contam desde zero quando os KPIs entram no ecrã; as ondas pulsam em contínuo via CSS.
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll<HTMLElement>('[data-ripples]').forEach((list) => {
+    if (reduce || !('IntersectionObserver' in window)) return;
+    const counters = [...list.querySelectorAll<HTMLElement>('[data-count]')];
+    counters.forEach((el) => (el.textContent = '0'));
+
+    const observer = new IntersectionObserver((entries) => {
+      if (!entries.some((entry) => entry.isIntersecting)) return;
+      observer.disconnect();
+      const duration = 1600;
+      let start: number | null = null;
+      const step = (ts: number) => {
+        start ??= ts;
+        const p = Math.min(1, (ts - start) / duration);
+        const eased = 1 - Math.pow(1 - p, 3);
+        counters.forEach((el) => (el.textContent = String(Math.round(Number(el.dataset.count) * eased))));
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }, { threshold: 0.35 });
+    observer.observe(list);
+  });
+</script>

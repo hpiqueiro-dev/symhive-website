@@ -1,0 +1,64 @@
+---
+import type { HomeContent } from '../../i18n/home';
+
+interface Props {
+  solution: HomeContent['solution'];
+}
+
+const { solution: s } = Astro.props;
+const logo = `${import.meta.env.BASE_URL}images/symhive-logo.png`;
+
+// Ligações num viewBox 1000×100 esticado sobre o palco: as linhas de cada coluna ficam a meio de cada item.
+const rowY = (i: number, n: number) => ((i + 0.5) * 100) / n;
+const inPaths = s.inputs.map((_, i) => {
+  const y = rowY(i, s.inputs.length);
+  return `M318 ${y}C372 ${y} 372 50 418 50`;
+});
+const outPaths = s.outputs.map((_, i) => {
+  const y = rowY(i, s.outputs.length);
+  return `M582 50C628 50 628 ${y} 682 ${y}`;
+});
+---
+
+<section class="sec s-sim solution" id="solution" aria-labelledby="solution-title">
+  <div class="container">
+    <div class="sectitle"><h2 id="solution-title">{s.title}</h2><p>{s.description}</p></div>
+
+    <div class="flow">
+      <div class="flow-head" aria-hidden="true"><span>{s.inputsLabel}</span><span></span><span>{s.outputsLabel}</span></div>
+      <div class="flow-stage">
+        <svg class="flow-lines" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true">
+          {inPaths.map((d, i) => <>
+            <path class="wire in" d={d} />
+            <path class="packet in" d={d} pathLength="100" style={`--d:${(i * 0.35).toFixed(2)}s`} />
+          </>)}
+          {outPaths.map((d, i) => <>
+            <path class="wire out" d={d} />
+            <path class="packet out" d={d} pathLength="100" style={`--d:${(1.4 + i * 0.35).toFixed(2)}s`} />
+          </>)}
+        </svg>
+
+        <ul class="flow-in" aria-label={s.inputsLabel} style={`--rows:${s.inputs.length}`}>
+          {s.inputs.map((input) => <li><span>{input}</span></li>)}
+        </ul>
+
+        <div class="flow-core">
+          <div class="core-hex">
+            <span class="ring" aria-hidden="true"></span><span class="ring r2" aria-hidden="true"></span>
+            <div class="core-face"><img src={logo} alt={s.core.title} width="191" height="56" /></div>
+          </div>
+          <p>{s.core.caption}</p>
+        </div>
+
+        <ul class="flow-out" aria-label={s.outputsLabel} style={`--rows:${s.outputs.length}`}>
+          {s.outputs.map((output, i) => (
+            <li style={`--i:${i}`}>
+              <svg class="check" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="M7 12.5l3.2 3.2L17 9" pathLength="1" /></svg>
+              <span><b>{output.title}</b><small>{output.description}</small></span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

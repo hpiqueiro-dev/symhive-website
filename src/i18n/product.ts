@@ -26,10 +26,9 @@ export interface ProductContent {
   beforeAfter: {
     title: string;
     description: string;
-    before: string;
-    after: string;
-    sliderLabel: string;
-    rows: { label: string; before: string; after: string }[];
+    /** Dois cartões lado a lado: o que se faz hoje (✕) e o que muda com a SymHive (✓). */
+    before: { label: string; items: string[] };
+    after: { label: string; items: string[] };
     note: string;
   };
   process: {
@@ -87,26 +86,38 @@ const pt: ProductContent = {
   },
   beforeAfter: {
     title: 'Antes e depois da SymHive.',
-    description: 'Arraste o divisor para comparar a forma tradicional de decidir com a decisão apoiada por simulação.',
-    before: 'Sem SymHive',
-    after: 'Com SymHive',
-    sliderLabel: 'Comparar antes e depois',
-    rows: [
-      { label: 'Tempo até à decisão', before: '15–40 semanas', after: '4–8 semanas' },
-      { label: 'Construção do modelo', before: 'Manual, por especialistas', after: 'Automática, a partir dos dados' },
-      { label: 'Cenários avaliados', before: '1 ou 2 alternativas', after: 'Dezenas de alternativas' },
-      { label: 'Quando a operação muda', before: 'Refazer o estudo', after: 'O modelo atualiza-se' },
-      { label: 'Base da decisão', before: 'Folhas de cálculo e intuição', after: 'KPIs comparáveis' },
-    ],
-    note: 'Estimativas de estudos anteriores e projetos-piloto.',
+    description: 'A forma tradicional de decidir comparada com a decisão apoiada por simulação.',
+    before: {
+      label: 'Antes',
+      items: [
+        'Folhas de cálculo e intuição',
+        'Modelos construídos à mão',
+        '30 semanas até decidir',
+        '1 ou 2 alternativas avaliadas',
+        'Refazer o estudo quando algo muda',
+        'Investir sem prova prévia',
+      ],
+    },
+    after: {
+      label: 'Com a SymHive',
+      items: [
+        'Modelo gerado a partir dos dados',
+        'Simulação sem programação',
+        '8 semanas até decidir',
+        'Dezenas de cenários comparados',
+        'O modelo acompanha a operação',
+        'Testado antes de investir',
+      ],
+    },
+    note: 'Valores aproximados, a partir de estimativas de estudos anteriores e projetos-piloto.',
   },
   process: {
     title: 'Do projeto à subscrição.',
     description: 'Começamos por um problema concreto. Quando o modelo prova valor, a plataforma fica ao serviço da operação.',
-    groups: { project: 'Projeto', subscription: 'Subscrição' },
+    groups: { project: 'Projeto de simulação', subscription: 'Subscrição' },
     phases: [
       { group: 'project', title: 'Diagnóstico', description: 'Definimos a decisão a apoiar e avaliamos os dados disponíveis.' },
-      { group: 'project', title: 'Projeto-piloto', description: 'Geramos o modelo para um caso concreto e comparamos os primeiros cenários.' },
+      { group: 'project', title: 'Modelação', description: 'Geramos o modelo para um caso concreto e comparamos os primeiros cenários.' },
       { group: 'project', title: 'Implementação', description: 'Ligamos a plataforma aos dados e sistemas da operação e formamos a equipa.' },
       { group: 'subscription', title: 'Subscrição', description: 'Acesso contínuo à plataforma, com modelos atualizados e acompanhamento.' },
     ],
@@ -160,26 +171,38 @@ const en: ProductContent = {
   },
   beforeAfter: {
     title: 'Before and after SymHive.',
-    description: 'Drag the divider to compare the traditional way of deciding with simulation-backed decisions.',
-    before: 'Without SymHive',
-    after: 'With SymHive',
-    sliderLabel: 'Compare before and after',
-    rows: [
-      { label: 'Time to decision', before: '15–40 weeks', after: '4–8 weeks' },
-      { label: 'Model building', before: 'Manual, by specialists', after: 'Automatic, from the data' },
-      { label: 'Scenarios assessed', before: '1 or 2 alternatives', after: 'Dozens of alternatives' },
-      { label: 'When operations change', before: 'Redo the study', after: 'The model updates itself' },
-      { label: 'Decision basis', before: 'Spreadsheets and intuition', after: 'Comparable KPIs' },
-    ],
-    note: 'Estimates from previous studies and pilot projects.',
+    description: 'The traditional way of deciding compared with simulation-backed decisions.',
+    before: {
+      label: 'Before',
+      items: [
+        'Spreadsheets and gut feeling',
+        'Models built by hand',
+        '30 weeks to decide',
+        '1 or 2 alternatives assessed',
+        'Redo the study when something changes',
+        'Invest without prior proof',
+      ],
+    },
+    after: {
+      label: 'With SymHive',
+      items: [
+        'Model generated from the data',
+        'Simulation with no programming',
+        '8 weeks to decide',
+        'Dozens of scenarios compared',
+        'The model keeps up with operations',
+        'Tested before investing',
+      ],
+    },
+    note: 'Approximate values, based on estimates from previous studies and pilot projects.',
   },
   process: {
     title: 'From project to subscription.',
     description: 'We start with a concrete problem. Once the model proves its value, the platform stays at the service of the operation.',
-    groups: { project: 'Project', subscription: 'Subscription' },
+    groups: { project: 'Simulation project', subscription: 'Subscription' },
     phases: [
       { group: 'project', title: 'Assessment', description: 'We define the decision to support and assess the available data.' },
-      { group: 'project', title: 'Pilot project', description: 'We generate the model for a concrete case and compare the first scenarios.' },
+      { group: 'project', title: 'Modelling', description: 'We generate the model for a concrete case and compare the first scenarios.' },
       { group: 'project', title: 'Deployment', description: "We connect the platform to the operation's data and systems and train the team." },
       { group: 'subscription', title: 'Subscription', description: 'Ongoing access to the platform, with updated models and support.' },
     ],

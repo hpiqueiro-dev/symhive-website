@@ -63,6 +63,12 @@ const pageLinks = (['product', 'cases', 'about'] as const).map((key) => ({
       if (menu.open && (!target || !menu.contains(target) || (target instanceof Element && target.closest('a')))) menu.open = false;
     });
   });
+  // Cabeçalho fixo: ganha fundo depois de sair do topo da página.
+  const header = document.querySelector<HTMLElement>('header.top');
+  const updateStuck = () => header?.classList.toggle('stuck', window.scrollY > 8);
+  window.addEventListener('scroll', updateStuck, { passive: true });
+  updateStuck();
+
   document.addEventListener('keydown', (event) => {
     if (event.key !== 'Escape') return;
     menus.forEach((menu) => {

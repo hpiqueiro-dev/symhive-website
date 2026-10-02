@@ -51,9 +51,9 @@ const pt: CommonContent = {
     menu: 'Menu',
     home: 'Início',
     homeSections: [
-      { id: 'sim', label: 'Simulador' },
+      { id: 'problem', label: 'O problema' },
       { id: 'impact', label: 'Resultados' },
-      { id: 'steps', label: 'Como funciona' },
+      { id: 'solution', label: 'Como funciona' },
     ],
     pages: { home: 'Página principal', product: 'Produto', cases: 'Casos de estudo', about: 'Sobre' },
     languageLabel: 'Mudar para inglês',
@@ -77,9 +77,9 @@ const en: CommonContent = {
     menu: 'Menu',
     home: 'Home',
     homeSections: [
-      { id: 'sim', label: 'Simulator' },
+      { id: 'problem', label: 'The problem' },
       { id: 'impact', label: 'Results' },
-      { id: 'steps', label: 'How it works' },
+      { id: 'solution', label: 'How it works' },
     ],
     pages: { home: 'Overview', product: 'Product', cases: 'Case studies', about: 'About' },
     languageLabel: 'Mudar para português',

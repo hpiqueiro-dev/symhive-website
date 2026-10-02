@@ -1,0 +1,36 @@
+---
+import type { HomeContent } from '../../i18n/home';
+
+interface Props {
+  pain: HomeContent['pain'];
+}
+
+const { pain } = Astro.props;
+---
+
+<section class="sec pain" id="problem" aria-labelledby="pain-title">
+  <div class="container">
+    <p class="pain-label"><i></i>{pain.label}</p>
+    <h2 class="pain-statement" id="pain-title"><span>{pain.statement[0]}</span> <em>{pain.statement[1]}</em></h2>
+    <p class="pain-lead">{pain.lead}</p>
+
+    <div class="pain-grid">
+      <div class="win pain-console">
+        <div class="wh"><i></i><i></i><i></i><span>{pain.questionsTitle}</span></div>
+        <ol>
+          {pain.questions.map((question, i) => (
+            <li style={`--i:${i}`}><span class="prompt" aria-hidden="true">&gt;</span><span class="q">{question}</span><span class="status">{pain.unanswered}</span></li>
+          ))}
+        </ol>
+        <p class="cursor" aria-hidden="true"><span class="prompt">&gt;</span><span class="cursor-block"></span></p>
+      </div>
+
+      <div class="pain-problems">
+        <h3>{pain.problemsTitle}</h3>
+        <ul>
+          {pain.problems.map((problem) => <li><span class="alert" aria-hidden="true">!</span>{problem}</li>)}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

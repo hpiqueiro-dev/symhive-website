@@ -1,6 +1,7 @@
 import type { Locale } from './locales';
 
 // Conteúdo provisório, baseado no protótipo v7. Os números e os casos de uso ainda estão por confirmar.
+// `simulator` e `steps` já não aparecem na página principal; são usados pela página Produto.
 
 export interface HomeContent {
   meta: { title: string; description: string };
@@ -11,6 +12,26 @@ export interface HomeContent {
     titleRest: string;
     lead: string;
     illustrationLabel: string;
+  };
+  pain: {
+    label: string;
+    statement: [string, string];
+    lead: string;
+    questionsTitle: string;
+    questions: string[];
+    /** Etiqueta de cada pergunta na consola. */
+    unanswered: string;
+    problemsTitle: string;
+    problems: string[];
+  };
+  solution: {
+    title: string;
+    description: string;
+    inputsLabel: string;
+    inputs: string[];
+    core: { title: string; caption: string };
+    outputsLabel: string;
+    outputs: { title: string; description: string }[];
   };
   simulator: {
     title: string;
@@ -29,12 +50,20 @@ export interface HomeContent {
   };
   impact: {
     title: string;
-    manual: { label: string; value: string };
-    symhive: { label: string; value: string };
+    /** Semanas de cada processo: a barra da SymHive anima do valor manual até ao seu. */
+    manual: { label: string; weeks: number };
+    symhive: { label: string; weeks: number };
     weeks: string;
     source: string;
   };
-  stats: { label: string; items: { value: string; label: string }[] };
+  stats: {
+    label: string;
+    /**
+     * value é o ganho em % face à situação atual, mostrado como prefix + value + '%'.
+     * title é o benefício e label a frase curta por baixo.
+     */
+    items: { prefix: string; value: number; title: string; label: string }[];
+  };
   steps: { title: string; items: { title: string; description: string }[] };
 }
 
@@ -51,6 +80,41 @@ const pt: HomeContent = {
     titleRest: 'Uma só Hive.',
     lead: 'A SymHive constrói o modelo de simulação a partir dos seus dados de produção, testa os cenários e devolve KPIs que pode defender.',
     illustrationLabel: 'Esquema de uma fábrica com braço robótico, tapete transportador, armazém e AGV',
+  },
+  pain: {
+    label: 'O problema',
+    statement: ['Mudar uma linha custa caro.', 'Descobrir que foi a decisão errada custa muito mais.'],
+    lead: 'Layouts, equipamentos e planos são decididos com folhas de cálculo e intuição, porque construir um modelo de simulação à mão demora meses.',
+    questionsTitle: 'Perguntas que ficam sem resposta',
+    questions: [
+      'E se a procura aumentar 20% no próximo trimestre?',
+      'Precisamos de mais um AGV ou de mais um posto de trabalho?',
+      'O novo layout resolve mesmo o gargalo?',
+      'Em quanto tempo se paga este investimento?',
+    ],
+    unanswered: 'sem resposta',
+    problemsTitle: 'Problemas típicos',
+    problems: [
+      'Estudos de simulação que demoram meses',
+      'Investimentos aprovados sem prova prévia',
+      'Gargalos que só se descobrem no terreno',
+      'Modelos que ficam desatualizados após um projeto',
+    ],
+  },
+  solution: {
+    title: 'Os seus dados entram. Decisões verificadas saem.',
+    description: 'A SymHive liga as fontes que já existem na operação e devolve resultados prontos a usar.',
+    inputsLabel: 'Entrada',
+    inputs: ['ERP', 'MES', 'Máquinas e sensores', 'Layouts CAD', 'Folhas de cálculo'],
+    core: { title: 'SymHive', caption: 'Geração automática de modelos' },
+    outputsLabel: 'Saída',
+    outputs: [
+      { title: 'Dados estruturados', description: 'Um modelo de dados comum e limpo.' },
+      { title: 'Simulação gerada', description: 'Construída automaticamente, sem programação.' },
+      { title: 'Cenários comparados', description: 'Alternativas avaliadas com os mesmos critérios.' },
+      { title: 'KPIs e retorno', description: 'Indicadores para defender cada decisão.' },
+      { title: 'Interoperabilidade', description: 'Resultados que voltam aos seus sistemas.' },
+    ],
   },
   simulator: {
     title: 'Mude a linha. Veja os KPIs a mudar.',
@@ -69,19 +133,19 @@ const pt: HomeContent = {
     note: 'Dados ilustrativos. O modelo real é gerado a partir dos seus dados de produção.',
   },
   impact: {
-    title: 'Deixe de esperar 40 semanas por uma decisão.',
-    manual: { label: 'Processo manual', value: '15–40 semanas' },
-    symhive: { label: 'Com a SymHive', value: '4–8 semanas' },
+    title: 'Deixe de esperar 30 semanas por uma decisão.',
+    manual: { label: 'Processo manual', weeks: 30 },
+    symhive: { label: 'Com a SymHive', weeks: 8 },
     weeks: 'semanas',
-    source: 'Estimativas de estudos anteriores e projetos-piloto.',
+    source: 'Valores aproximados, a partir de estimativas de estudos anteriores e projetos-piloto. Os valores podem mudar com base na complexidade do projeto.',
   },
   stats: {
     label: 'Principais resultados',
     items: [
-      { value: '−47% a −80%', label: 'no tempo de decisão e implementação' },
-      { value: '~70%', label: 'menos custo de decisão' },
-      { value: '+15–25%', label: 'de ganho de eficiência' },
-      { value: '4', label: 'casos de uso industriais: Adira, Solzaima, CEI, Solancis' },
+      { prefix: '−', value: 50, title: 'Metade do tempo', label: 'para decidir e implementar' },
+      { prefix: '−', value: 70, title: 'Decisões mais baratas', label: 'sem estudos manuais longos' },
+      { prefix: '+', value: 20, title: 'Operação mais eficiente', label: 'com o mesmo sistema real' },
+      { prefix: '', value: 100, title: 'Zero apostas no terreno', label: 'tudo testado antes de mudar' },
     ],
   },
   steps: {
@@ -109,6 +173,41 @@ const en: HomeContent = {
     lead: 'SymHive builds the simulation model from your production data, tests the scenarios and returns KPIs you can defend.',
     illustrationLabel: 'Wireframe of a factory with a robot arm, conveyor belt, warehouse and AGV',
   },
+  pain: {
+    label: 'The problem',
+    statement: ['Changing a line is expensive.', 'Finding out it was the wrong call costs far more.'],
+    lead: 'Layouts, equipment and plans are decided with spreadsheets and gut feeling, because building a simulation model by hand takes months.',
+    questionsTitle: 'Questions left unanswered',
+    questions: [
+      'What if demand grows 20% next quarter?',
+      'Do we need one more AGV or one more workstation?',
+      'Will the new layout really fix the bottleneck?',
+      'How long until this investment pays off?',
+    ],
+    unanswered: 'unanswered',
+    problemsTitle: 'Typical problems',
+    problems: [
+      'Simulation studies that take months',
+      'Investments approved without prior proof',
+      'Bottlenecks only discovered on the shop floor',
+      'Models that go stale after a single project',
+    ],
+  },
+  solution: {
+    title: 'Your data goes in. Verified decisions come out.',
+    description: 'SymHive connects the sources your operation already has and returns ready-to-use results.',
+    inputsLabel: 'Input',
+    inputs: ['ERP', 'MES', 'Machines and sensors', 'CAD layouts', 'Spreadsheets'],
+    core: { title: 'SymHive', caption: 'Automatic model generation' },
+    outputsLabel: 'Output',
+    outputs: [
+      { title: 'Structured data', description: 'One clean, common data model.' },
+      { title: 'Generated simulation', description: 'Built automatically, no programming.' },
+      { title: 'Compared scenarios', description: 'Alternatives assessed with the same criteria.' },
+      { title: 'KPIs and ROI', description: 'Indicators to defend every decision.' },
+      { title: 'Interoperability', description: 'Results that flow back into your systems.' },
+    ],
+  },
   simulator: {
     title: 'Change the line. Watch the KPIs move.',
     description: 'Add AGVs or processing stations and see throughput, fleet utilization and the bottleneck update instantly.',
@@ -125,19 +224,19 @@ const en: HomeContent = {
     note: 'Illustrative data. The real model is generated from your own production data.',
   },
   impact: {
-    title: 'Stop waiting 40 weeks for a decision.',
-    manual: { label: 'Manual process', value: '15–40 weeks' },
-    symhive: { label: 'With SymHive', value: '4–8 weeks' },
+    title: 'Stop waiting 30 weeks for a decision.',
+    manual: { label: 'Manual process', weeks: 30 },
+    symhive: { label: 'With SymHive', weeks: 8 },
     weeks: 'weeks',
-    source: 'Estimates from previous studies and pilot projects.',
+    source: 'Approximate values, based on estimates from previous studies and pilot projects. Values may change depending on project complexity.',
   },
   stats: {
     label: 'Key results',
     items: [
-      { value: '−47% to −80%', label: 'decision and implementation time' },
-      { value: '~70%', label: 'lower decision cost' },
-      { value: '+15–25%', label: 'efficiency gain' },
-      { value: '4', label: 'industrial use cases: Adira, Solzaima, CEI, Solancis' },
+      { prefix: '−', value: 50, title: 'Half the time', label: 'to decide and implement' },
+      { prefix: '−', value: 70, title: 'Cheaper decisions', label: 'without long manual studies' },
+      { prefix: '+', value: 20, title: 'A more efficient operation', label: 'with the same real system' },
+      { prefix: '', value: 100, title: 'No bets on the shop floor', label: 'everything tested before it changes' },
     ],
   },
   steps: {
