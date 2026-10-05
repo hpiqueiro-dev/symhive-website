@@ -7,7 +7,8 @@ export const localeMeta: Record<Locale, { htmlLang: string; ogLocale: string; la
   en: { htmlLang: 'en', ogLocale: 'en_GB', label: 'EN', name: 'English' },
 };
 
-export const pages = ['home', 'product', 'cases', 'about'] as const;
+// Ordem usada no menu e no rodapé.
+export const pages = ['home', 'cases', 'product', 'about'] as const;
 export type Page = (typeof pages)[number];
 
 // Segmento do URL de cada página, por língua. Tem de coincidir com os ficheiros em src/pages/.

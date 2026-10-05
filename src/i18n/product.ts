@@ -36,8 +36,8 @@ export interface ProductContent {
     description: string;
     groups: Record<ProcessGroup, string>;
     phases: { group: ProcessGroup; title: string; description: string }[];
-    /** lead é a frase curta entre as setas e o botão. */
-    cta: { lead: string; label: string; subject: string; pending: string };
+    /** Caixa compacta de contacto no fim da página (título, frase curta e botão). */
+    cta: { title: string; description: string; label: string; subject: string; pending: string };
   };
 }
 
@@ -122,7 +122,7 @@ const pt: ProductContent = {
       { group: 'project', title: 'Implementação', description: 'Ligamos a plataforma aos dados e sistemas da operação e formamos a equipa.' },
       { group: 'subscription', title: 'Subscrição', description: 'Acesso contínuo à plataforma, com modelos atualizados e acompanhamento.' },
     ],
-    cta: { lead: 'Pronto para o primeiro passo? Tudo começa com um diagnóstico.', label: 'Começar projeto', subject: 'Começar projeto — SymHive', pending: 'Canal de contacto em preparação' },
+    cta: { title: 'Pronto para o primeiro passo?', description: 'Tudo começa com um diagnóstico da decisão e dos dados que já tem.', label: 'Começar projeto', subject: 'Começar projeto — SymHive', pending: 'Canal de contacto em preparação' },
   },
 };
 
@@ -207,7 +207,7 @@ const en: ProductContent = {
       { group: 'project', title: 'Deployment', description: "We connect the platform to the operation's data and systems and train the team." },
       { group: 'subscription', title: 'Subscription', description: 'Ongoing access to the platform, with updated models and support.' },
     ],
-    cta: { lead: 'Ready for the first step? It all starts with an assessment.', label: 'Start a project', subject: 'Start a project — SymHive', pending: 'Contact channel coming soon' },
+    cta: { title: 'Ready for the first step?', description: 'It all starts with an assessment of the decision and the data you already have.', label: 'Start a project', subject: 'Start a project — SymHive', pending: 'Contact channel coming soon' },
   },
 };
 

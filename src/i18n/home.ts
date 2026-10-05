@@ -32,6 +32,8 @@ export interface HomeContent {
     core: { title: string; caption: string };
     outputsLabel: string;
     outputs: { title: string; description: string }[];
+    /** Link discreto no fim da secção, para a página Produto. */
+    more: string;
   };
   simulator: {
     title: string;
@@ -55,6 +57,8 @@ export interface HomeContent {
     symhive: { label: string; weeks: number };
     weeks: string;
     source: string;
+    /** Link discreto no fim da secção, para os casos de estudo. */
+    more: string;
   };
   stats: {
     label: string;
@@ -115,6 +119,7 @@ const pt: HomeContent = {
       { title: 'KPIs e retorno', description: 'Indicadores para defender cada decisão.' },
       { title: 'Interoperabilidade', description: 'Resultados que voltam aos seus sistemas.' },
     ],
+    more: 'Conhecer o produto',
   },
   simulator: {
     title: 'Mude a linha. Veja os KPIs a mudar.',
@@ -137,6 +142,7 @@ const pt: HomeContent = {
     manual: { label: 'Processo manual', weeks: 30 },
     symhive: { label: 'Com a SymHive', weeks: 8 },
     weeks: 'semanas',
+    more: 'Ver casos de estudo',
     source: 'Valores aproximados, a partir de estimativas de estudos anteriores e projetos-piloto. Os valores podem mudar com base na complexidade do projeto.',
   },
   stats: {
@@ -207,6 +213,7 @@ const en: HomeContent = {
       { title: 'KPIs and ROI', description: 'Indicators to defend every decision.' },
       { title: 'Interoperability', description: 'Results that flow back into your systems.' },
     ],
+    more: 'Explore the product',
   },
   simulator: {
     title: 'Change the line. Watch the KPIs move.',
@@ -228,6 +235,7 @@ const en: HomeContent = {
     manual: { label: 'Manual process', weeks: 30 },
     symhive: { label: 'With SymHive', weeks: 8 },
     weeks: 'weeks',
+    more: 'See case studies',
     source: 'Approximate values, based on estimates from previous studies and pilot projects. Values may change depending on project complexity.',
   },
   stats: {

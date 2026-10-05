@@ -94,7 +94,7 @@ const pt: CasesContent = {
   },
   problems: {
     title: 'Problemas que resolvemos',
-    description: 'Escolha um problema para ver os casos de estudo associados.',
+    description: 'Cada operação é diferente, mas os desafios repetem-se, por isso organizámos os casos de estudo pelo problema que resolvem.',
     labels: { challenge: 'Desafio', approach: 'Abordagem', result: 'Resultado', caseOne: 'caso', caseMany: 'casos' },
     items: [
       { title: 'Configuração de layout', description: 'Testar novas disposições de linhas, postos e armazéns antes de mudar o terreno.', cases: ptCases[0] },
@@ -131,7 +131,7 @@ const en: CasesContent = {
   },
   problems: {
     title: 'Problems we solve',
-    description: 'Choose a problem to see the related case studies.',
+    description: 'Every operation is different, but the challenges repeat, so we grouped our case studies by the problem they solve.',
     labels: { challenge: 'Challenge', approach: 'Approach', result: 'Result', caseOne: 'case', caseMany: 'cases' },
     items: [
       { title: 'Layout configuration', description: 'Test new arrangements of lines, stations and warehouses before changing the shop floor.', cases: enCases[0] },

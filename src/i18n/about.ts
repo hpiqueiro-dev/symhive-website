@@ -17,9 +17,19 @@ export interface AboutContent {
   story: { title: string; mission: string; paragraphs: string[]; facts: string[] };
   team: { title: string; description: string; members: TeamMember[] };
   origins: { badge: string; title: string; paragraphs: string[]; logoAlt: string };
-  /** Título e texto próprios para a secção de contacto desta página. */
-  contact: { title: string; description: string };
+  /**
+   * Última secção: informação de contactos. value null mostra «pending».
+   * O email vem de site.contactEmail (src/config/site.ts); os restantes valores ficam aqui.
+   */
+  contacts: {
+    title: string;
+    description: string;
+    pending: string;
+    items: { type: ContactType; label: string; value: string | null; href?: string }[];
+  };
 }
+
+export type ContactType = 'email' | 'phone' | 'address' | 'linkedin';
 
 /** Logótipo do INESC TEC em public/ (por exemplo 'images/inesctec-logo.svg'). Enquanto for null, mostra o nome em texto. */
 export const inescTecLogo: string | null = 'images/inesctec-logo.svg';
@@ -64,9 +74,16 @@ const pt: AboutContent = {
     ],
     logoAlt: 'INESC TEC',
   },
-  contact: {
-    title: 'Vamos construir o próximo modelo juntos?',
-    description: 'Fale com a equipa por trás da SymHive. Contamos-lhe de onde vem a tecnologia e como a podemos aplicar à sua operação.',
+  contacts: {
+    title: 'Contactos',
+    description: 'Fale diretamente com a equipa da SymHive.',
+    pending: 'Por definir',
+    items: [
+      { type: 'email', label: 'Email', value: null },
+      { type: 'phone', label: 'Telefone', value: null },
+      { type: 'address', label: 'Morada', value: null },
+      { type: 'linkedin', label: 'LinkedIn', value: null },
+    ],
   },
 };
 
@@ -108,9 +125,16 @@ const en: AboutContent = {
     ],
     logoAlt: 'INESC TEC',
   },
-  contact: {
-    title: 'Shall we build the next model together?',
-    description: 'Talk to the team behind SymHive. We will tell you where the technology comes from and how we can apply it to your operation.',
+  contacts: {
+    title: 'Contacts',
+    description: 'Talk directly to the SymHive team.',
+    pending: 'To be confirmed',
+    items: [
+      { type: 'email', label: 'Email', value: null },
+      { type: 'phone', label: 'Phone', value: null },
+      { type: 'address', label: 'Address', value: null },
+      { type: 'linkedin', label: 'LinkedIn', value: null },
+    ],
   },
 };
 

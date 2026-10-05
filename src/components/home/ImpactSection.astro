@@ -7,9 +7,11 @@ interface Props {
   stats: HomeContent['stats'];
   /** Fundo sombreado, para alternar com as secções vizinhas. */
   shade?: boolean;
+  /** Destino do link discreto no fim da secção (casos de estudo). */
+  moreHref: string;
 }
 
-const { impact, stats, shade = false } = Astro.props;
+const { impact, stats, shade = false, moreHref } = Astro.props;
 const from = impact.manual.weeks;
 const to = impact.symhive.weeks;
 ---
@@ -22,6 +24,7 @@ const to = impact.symhive.weeks;
 
     <KpiRipples stats={stats} />
     <p class="src">{impact.source}</p>
+    <p class="more"><a class="more-link" href={moreHref}>{impact.more}<span aria-hidden="true">→</span></a></p>
   </div>
 </section>
 

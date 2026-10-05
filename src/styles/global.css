@@ -69,7 +69,7 @@ header.top.stuck .nav { padding: 12px 0; }
 .nav-links a, .sub summary, .lang { color: var(--mut); font-size: 15px; text-decoration: none; }
 .nav-links a:hover, .sub summary:hover, .lang:hover, .sub[open] summary { color: var(--ink); }
 .nav-links a[aria-current='page'], .sub summary.active { color: var(--ink); }
-.nav-links > li > a[aria-current='page'] { box-shadow: 0 1px 0 var(--amber); }
+.nav-links > li > a[aria-current='page'], .sub summary.active { box-shadow: 0 1px 0 var(--amber); }
 .nav-actions { display: flex; align-items: center; gap: 18px; }
 .lang { font-family: var(--font-display); font-weight: 600; letter-spacing: .04em; }
 details > summary { list-style: none; cursor: pointer; }
@@ -81,6 +81,8 @@ details > summary::-webkit-details-marker { display: none; }
 .sub[open] .caret { margin-top: 3px; transform: rotate(225deg); }
 .sub ul, .menu-panel { position: absolute; z-index: 20; min-width: 220px; margin: 0; padding: 8px; border: 1px solid rgba(25, 211, 230, .28); border-radius: 12px; background: rgba(5, 16, 19, .97); box-shadow: 0 20px 60px rgba(0, 0, 0, .5); list-style: none; }
 .sub ul { top: calc(100% + 14px); left: -12px; }
+/* Ponte invisível entre «Início» e o submenu, para o cursor não o fechar ao atravessar o espaço. */
+.sub ul::before { content: ''; position: absolute; right: 0; bottom: 100%; left: 0; height: 16px; }
 .sub ul a, .menu-panel a { display: block; padding: 9px 12px; border-radius: 8px; color: var(--mut); font-size: 15px; text-decoration: none; }
 .sub ul a:hover, .menu-panel a:hover { background: rgba(25, 211, 230, .08); color: var(--ink); }
 .sub ul a[aria-current='page'], .menu-panel a[aria-current='page'] { color: var(--amber); }
@@ -96,7 +98,6 @@ details > summary::-webkit-details-marker { display: none; }
 .menu-panel ul { margin: 0; padding: 0; list-style: none; }
 .menu-panel ul + ul { margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--line); }
 .menu-panel ul:first-of-type a { padding-left: 24px; }
-.menu-panel ul:first-of-type li:first-child a { padding-left: 12px; }
 @media (max-width: 860px) {
   .nav-links { display: none; }
   .menu { display: block; }
@@ -214,6 +215,12 @@ details > summary::-webkit-details-marker { display: none; }
   .wave-ring { opacity: .45; transform: scale(1.25); }
   .wave-ring:nth-child(3) { opacity: .2; transform: scale(1.5); }
 }
+/* Link discreto para outra página, no fim de uma secção. */
+.more { margin: clamp(24px, 3vw, 32px) 0 0; text-align: center; }
+.more-link { display: inline-flex; align-items: center; gap: 8px; padding: 9px 18px; border: 1px solid rgba(25, 211, 230, .5); border-radius: 999px; background: rgba(3, 8, 10, .92); color: var(--ink); font-size: 14px; font-weight: 500; text-decoration: none; transition: border-color .2s, box-shadow .2s; }
+.more-link span { color: var(--cyan); transition: transform .2s; }
+.more-link:hover { border-color: var(--cyan); box-shadow: 0 0 18px rgba(25, 211, 230, .25); }
+.more-link:hover span { transform: translateX(3px); }
 .impact .src { max-width: 46em; margin: clamp(28px, 4vw, 40px) auto 0; text-align: center; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
@@ -328,8 +335,10 @@ details > summary::-webkit-details-marker { display: none; }
   .ba-card { padding: 24px 22px; }
 }
 
-.process-cta { margin-top: clamp(40px, 5vw, 56px); text-align: center; }
-.process-cta p { margin: 0 0 18px; color: var(--ink); font: 500 clamp(17px, 1.6vw, 20px) var(--font-display); }
+/* O fecho do Produto usa a mesma caixa compacta do contacto, dentro da faixa do processo. */
+.process-cta { margin-top: clamp(40px, 5vw, 56px); }
+.s-cta.compact.process-cta { padding: 0; }
+.s-cta.compact h3 { margin: 0 0 6px; font-size: clamp(22px, 2.4vw, 30px); font-weight: 700; line-height: 1.08; letter-spacing: -.03em; }
 
 .row-n { color: var(--amber); font: 500 14px/1.9 var(--font-mono); }
 
@@ -377,7 +386,7 @@ details > summary::-webkit-details-marker { display: none; }
 .industries p { margin: 0; color: var(--mut); font-size: 15px; }
 @media (max-width: 860px) { .industries { grid-template-columns: minmax(0, 1fr); } }
 
-.problems-lead { margin: -24px 0 32px; }
+.problems-lead { max-width: 44em; margin: -24px 0 32px; color: var(--mut); font-size: 17px; line-height: 1.55; }
 /* Cada problema é uma caixa; os casos abrem dentro dela. */
 .problems { display: grid; gap: 14px; }
 .problem { overflow: hidden; border: 1px solid rgba(25, 211, 230, .22); border-radius: 16px; background: rgba(3, 8, 10, .94); transition: border-color .25s, box-shadow .25s; }
@@ -416,9 +425,10 @@ details > summary::-webkit-details-marker { display: none; }
 /* Sobre: «Porque existimos» com missão em destaque e factos. */
 .story-head .sec-h2 { margin-bottom: 18px; }
 .mission { max-width: 15em; margin: 0; padding-left: 18px; border-left: 2px solid var(--amber); color: var(--amber); font: 600 clamp(21px, 2.3vw, 28px)/1.25 var(--font-display); letter-spacing: -.01em; }
-.facts { display: grid; gap: 10px; margin: 26px 0 0; padding: 0; list-style: none; }
+.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: clamp(32px, 4vw, 44px) 0 0; padding: 0; list-style: none; }
 .facts li { display: flex; align-items: center; gap: 14px; padding: 13px 16px; border: 1px solid rgba(25, 211, 230, .18); border-radius: 12px; background: rgba(3, 8, 10, .7); color: var(--ink); font-size: 15px; }
 .fact-hex { flex: none; width: 14px; height: 16px; background: linear-gradient(160deg, var(--amber), var(--cyan)); clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); }
+@media (max-width: 860px) { .facts { grid-template-columns: minmax(0, 1fr); } }
 
 /* Founders: favo de hexágonos em ziguezague. */
 .team { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 24px; margin: 56px 0 0; padding: 0 0 56px; list-style: none; text-align: center; }
@@ -526,6 +536,19 @@ details > summary::-webkit-details-marker { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { .check path { stroke-dashoffset: 0; } }
 
+/* Sobre: informação de contactos (última secção). */
+.contacts .split { align-items: center; }
+.contact-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 0; padding: 0; list-style: none; }
+.contact-list li { display: flex; align-items: center; gap: 14px; padding: 18px; border: 1px solid rgba(25, 211, 230, .2); border-radius: 14px; background: rgba(3, 8, 10, .9); }
+.contact-icon { display: grid; flex: none; place-items: center; width: 42px; height: 42px; border: 1px solid rgba(245, 166, 35, .45); border-radius: 50%; background: rgba(245, 166, 35, .08); }
+.contact-icon svg { width: 20px; height: 20px; fill: none; stroke: var(--amber); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.contact-text { display: grid; gap: 2px; min-width: 0; }
+.contact-text small { color: var(--mut); font: 500 11.5px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
+.contact-text a, .contact-text span { overflow-wrap: anywhere; color: var(--ink); font-size: 15.5px; text-decoration: none; }
+.contact-text a:hover { color: var(--cyan); }
+.contact-text .pending-value { color: var(--faint); }
+@media (max-width: 600px) { .contact-list { grid-template-columns: minmax(0, 1fr); } }
+
 /* ---------- contacto ---------- */
 .s-cta { text-align: center; }
 .s-cta .box { padding: clamp(32px, 6vw, 64px) 24px; border: 1px solid rgba(245, 166, 35, .45); border-radius: 24px; background: rgba(5, 11, 13, .6); box-shadow: 0 0 60px rgba(245, 166, 35, .1); }
@@ -549,6 +572,7 @@ footer b { color: var(--ink); }
 .footer-links { display: flex; flex-wrap: wrap; gap: 8px 24px; }
 .footer-links a { text-decoration: none; }
 .footer-links a:hover { color: var(--ink); }
+.footer-contact svg { width: 16px; height: 16px; fill: none; stroke: var(--cyan); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }

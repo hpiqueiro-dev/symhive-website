@@ -5,9 +5,11 @@ interface Props {
   solution: HomeContent['solution'];
   /** Fundo sombreado, para alternar com as secções vizinhas. */
   shade?: boolean;
+  /** Destino do link discreto no fim da secção (página Produto). */
+  moreHref: string;
 }
 
-const { solution: s, shade = false } = Astro.props;
+const { solution: s, shade = false, moreHref } = Astro.props;
 const logo = `${import.meta.env.BASE_URL}images/symhive-logo.png`;
 
 // Ligações num viewBox 1000×100 esticado sobre o palco: as linhas de cada coluna ficam a meio de cada item.
@@ -62,5 +64,6 @@ const outPaths = s.outputs.map((_, i) => {
         </ul>
       </div>
     </div>
+    <p class="more"><a class="more-link" href={moreHref}>{s.more}<span aria-hidden="true">→</span></a></p>
   </div>
 </section>

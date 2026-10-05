@@ -41,7 +41,8 @@ export interface CommonContent {
     pilot: { label: string; subject: string };
     pending: string;
   };
-  footer: { label: string; poweredBy: string; organisation: string; copyright: string };
+  /** contacts é o botão do rodapé que leva à secção de contactos da página Sobre. */
+  footer: { label: string; contacts: string; poweredBy: string; organisation: string; copyright: string };
 }
 
 const pt: CommonContent = {
@@ -55,7 +56,7 @@ const pt: CommonContent = {
       { id: 'impact', label: 'Resultados' },
       { id: 'solution', label: 'Como funciona' },
     ],
-    pages: { home: 'Página principal', product: 'Produto', cases: 'Casos de estudo', about: 'Sobre' },
+    pages: { home: 'Página principal', product: 'Produto', cases: 'Casos de Estudo', about: 'Sobre' },
     languageLabel: 'Mudar para inglês',
     cta: 'Pedir demonstração',
   },
@@ -67,7 +68,7 @@ const pt: CommonContent = {
     pilot: { label: 'Iniciar um piloto', subject: 'Projeto-piloto — SymHive' },
     pending: 'Canal de contacto em preparação',
   },
-  footer: { label: 'Rodapé', poweredBy: 'Com tecnologia', organisation: 'INESC TEC', copyright: '© SymHive' },
+  footer: { label: 'Rodapé', contacts: 'Contactos', poweredBy: 'Com tecnologia', organisation: 'INESC TEC', copyright: '© SymHive' },
 };
 
 const en: CommonContent = {
@@ -81,7 +82,7 @@ const en: CommonContent = {
       { id: 'impact', label: 'Results' },
       { id: 'solution', label: 'How it works' },
     ],
-    pages: { home: 'Overview', product: 'Product', cases: 'Case studies', about: 'About' },
+    pages: { home: 'Overview', product: 'Product', cases: 'Case Studies', about: 'About' },
     languageLabel: 'Mudar para português',
     cta: 'Request a demo',
   },
@@ -92,7 +93,7 @@ const en: CommonContent = {
     pilot: { label: 'Start a pilot', subject: 'Pilot project — SymHive' },
     pending: 'Contact channel coming soon',
   },
-  footer: { label: 'Footer', poweredBy: 'Powered by', organisation: 'INESC TEC', copyright: '© SymHive' },
+  footer: { label: 'Footer', contacts: 'Contacts', poweredBy: 'Powered by', organisation: 'INESC TEC', copyright: '© SymHive' },
 };
 
 export const commonContent: Record<Locale, CommonContent> = { pt, en };

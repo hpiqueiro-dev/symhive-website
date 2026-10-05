@@ -17,7 +17,7 @@ const { hero, contact } = Astro.props;
     <span class="pill"><i></i>{hero.badge}</span>
     <h1 id="hero-title"><span class="a">{hero.titleAmber}</span> <span class="c">{hero.titleCyan}</span> {hero.titleRest}</h1>
     <p class="lead">{hero.lead}</p>
-    <ContactActions contact={contact} fallback="link" />
+    <ContactActions contact={contact} fallback="link" pilotOnly />
   </div>
   <FactoryIllustration label={hero.illustrationLabel} />
 </section>

@@ -8,17 +8,17 @@ interface Props {
   page: Page;
   nav: CommonContent['nav'];
   demoSubject: string;
+  /** Destino do botão de demonstração enquanto não houver email configurado. */
+  fallbackHref?: string;
 }
 
-const { locale, page, nav, demoSubject } = Astro.props;
+const { locale, page, nav, demoSubject, fallbackHref = '#contact' } = Astro.props;
 const logo = `${import.meta.env.BASE_URL}images/symhive-logo.png`;
 const other = locales.find((code) => code !== locale) ?? locale;
 const home = pagePath(locale, 'home');
-const homeLinks = [
-  { href: home, label: nav.pages.home, current: page === 'home' },
-  ...nav.homeSections.map((section) => ({ href: `${home}#${section.id}`, label: section.label, current: false })),
-];
-const pageLinks = (['product', 'cases', 'about'] as const).map((key) => ({
+// Submenu «Início»: só as secções da página principal (o logótipo já leva ao topo da página).
+const homeLinks = nav.homeSections.map((section) => ({ href: `${home}#${section.id}`, label: section.label, current: false }));
+const pageLinks = (['cases', 'product', 'about'] as const).map((key) => ({
   href: pagePath(locale, key),
   label: nav.pages[key],
   current: page === key,
@@ -32,7 +32,7 @@ const pageLinks = (['product', 'cases', 'about'] as const).map((key) => ({
       <ul class="nav-links">
         <li>
           <details class="sub" data-close-outside>
-            <summary class:list={{ active: page === 'home' }}>{nav.home}<span class="caret" aria-hidden="true"></span></summary>
+            <summary class:list={{ active: page === 'home' }} data-home={home}>{nav.home}<span class="caret" aria-hidden="true"></span></summary>
             <ul>{homeLinks.map((link) => <li><a href={link.href} aria-current={link.current ? 'page' : undefined}>{link.label}</a></li>)}</ul>
           </details>
         </li>
@@ -40,7 +40,7 @@ const pageLinks = (['product', 'cases', 'about'] as const).map((key) => ({
       </ul>
       <div class="nav-actions">
         <a class="lang" href={pagePath(other, page)} hreflang={localeMeta[other].htmlLang} lang={localeMeta[other].htmlLang} aria-label={nav.languageLabel}>{localeMeta[other].label}</a>
-        <a class="btn amber sm" href={contactHref(demoSubject) ?? '#contact'}>{nav.cta}</a>
+        <a class="btn amber sm" href={contactHref(demoSubject) ?? fallbackHref}>{nav.cta}</a>
         <details class="menu" data-close-outside>
           <summary aria-label={nav.menu}><span></span><span></span><span></span></summary>
           <div class="menu-panel">
@@ -63,6 +63,31 @@ const pageLinks = (['product', 'cases', 'about'] as const).map((key) => ({
       if (menu.open && (!target || !menu.contains(target) || (target instanceof Element && target.closest('a')))) menu.open = false;
     });
   });
+  // Submenu «Início»: em dispositivos com cursor abre ao passar por cima e fecha ao sair.
+  // O clique continua a funcionar no teclado (Enter) e em ecrãs táteis.
+  const hoverable = window.matchMedia('(hover: hover) and (pointer: fine)');
+  document.querySelectorAll<HTMLDetailsElement>('details.sub').forEach((sub) => {
+    let closeTimer = 0;
+    sub.addEventListener('mouseenter', () => {
+      if (!hoverable.matches) return;
+      window.clearTimeout(closeTimer);
+      sub.open = true;
+    });
+    sub.addEventListener('mouseleave', () => {
+      if (!hoverable.matches) return;
+      closeTimer = window.setTimeout(() => (sub.open = false), 150);
+    });
+    // Com cursor, o clique do rato em «Início» leva ao topo da página principal (o hover já mostra as opções).
+    const summary = sub.querySelector<HTMLElement>('summary');
+    summary?.addEventListener('click', (event) => {
+      if (!hoverable.matches || event.detail === 0) return;
+      event.preventDefault();
+      const home = summary.dataset.home ?? '/';
+      if (summary.classList.contains('active')) window.scrollTo({ top: 0, behavior: 'smooth' });
+      else window.location.href = home;
+    });
+  });
+
   // Cabeçalho fixo: ganha fundo depois de sair do topo da página.
   const header = document.querySelector<HTMLElement>('header.top');
   const updateStuck = () => header?.classList.toggle('stuck', window.scrollY > 8);

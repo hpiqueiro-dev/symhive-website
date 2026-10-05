@@ -20,16 +20,18 @@ interface Props {
   contactCompact?: boolean;
   /** Fundo sombreado no contacto, para manter a alternância das secções da página. */
   contactShade?: boolean;
+  /** Destino do botão «Pedir demonstração» do cabeçalho quando ainda não há email (por omissão, #contact). */
+  ctaHref?: string;
 }
 
-const { locale, page, title, description, contact = true, contactText, contactCompact = false, contactShade = false } = Astro.props;
+const { locale, page, title, description, contact = true, contactText, contactCompact = false, contactShade = false, ctaHref = '#contact' } = Astro.props;
 const common = commonContent[locale];
 ---
 
 <BaseLayout locale={locale} page={page} title={title} description={description}>
   <a class="skip-link" href="#conteudo">{common.skipLink}</a>
   <HiveBackground />
-  <SiteHeader locale={locale} page={page} nav={common.nav} demoSubject={common.contact.demo.subject} />
+  <SiteHeader locale={locale} page={page} nav={common.nav} demoSubject={common.contact.demo.subject} fallbackHref={ctaHref} />
   <main id="conteudo">
     <slot />
     {contact && <ContactSection contact={contactText ? { ...common.contact, ...contactText } : common.contact} compact={contactCompact} shade={contactShade} />}
