@@ -22,7 +22,8 @@ export interface ProductContent {
     kpis: { label: string; value: string }[];
     caption: string;
   };
-  features: { title: string; description: string; items: HexItem[] };
+  /** tag é uma etiqueta opcional no canto do cartão (por exemplo, a patente). */
+  features: { title: string; description: string; items: (HexItem & { tag?: string })[] };
   beforeAfter: {
     title: string;
     description: string;
@@ -77,7 +78,7 @@ const pt: ProductContent = {
     title: 'O que a plataforma faz.',
     description: 'Seis capacidades que trabalham juntas, do primeiro dado ao último indicador.',
     items: [
-      { title: 'Geração automática', description: 'O modelo de simulação é construído a partir dos dados, sem programação manual.' },
+      { title: 'Geração automática', description: 'O modelo de simulação é construído a partir dos dados, sem programação manual.', tag: 'Patente pendente' },
       { title: 'Biblioteca de componentes', description: 'Postos, filas, AGVs e armazéns configuráveis e reutilizáveis entre projetos.' },
       { title: 'Cenários comparáveis', description: 'Várias alternativas avaliadas com os mesmos critérios e os mesmos dados.' },
       { title: 'Otimização', description: 'Procura as configurações que melhor equilibram capacidade, custo e prazo.' },
@@ -162,7 +163,7 @@ const en: ProductContent = {
     title: 'What the platform does.',
     description: 'Six capabilities working together, from the first data point to the last indicator.',
     items: [
-      { title: 'Automatic generation', description: 'The simulation model is built from the data, with no manual programming.' },
+      { title: 'Automatic generation', description: 'The simulation model is built from the data, with no manual programming.', tag: 'Patent pending' },
       { title: 'Component library', description: 'Configurable stations, queues, AGVs and warehouses, reused across projects.' },
       { title: 'Comparable scenarios', description: 'Several alternatives assessed with the same criteria and the same data.' },
       { title: 'Optimization', description: 'Searches for the configurations that best balance capacity, cost and lead time.' },

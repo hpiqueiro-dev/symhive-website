@@ -18,7 +18,10 @@ const { features, shade = false } = Astro.props;
         <li class="feature">
           <div class="feature-top">
             <span class="feature-hex" aria-hidden="true"><span></span></span>
-            <span class="feature-n">{String(i + 1).padStart(2, '0')}</span>
+            <span class="feature-meta">
+              {item.tag && <span class="feature-tag">{item.tag}</span>}
+              <span class="feature-n">{String(i + 1).padStart(2, '0')}</span>
+            </span>
           </div>
           <h3>{item.title}</h3>
           <p>{item.description}</p>

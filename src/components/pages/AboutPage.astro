@@ -12,6 +12,9 @@ interface Props {
 const { locale } = Astro.props;
 const t = aboutContent[locale];
 const base = import.meta.env.BASE_URL;
+// Sigla da equipa: primeira letra de cada founder (HARPA), usada no subtítulo da secção.
+const acronym = t.team.members.map((member) => member.name[0]).join('');
+const [teamBefore, teamAfter = ''] = t.team.description.split('{acronym}');
 const initials = (name: string) => name.split(' ').map((part) => part[0]).filter((_, i, all) => i === 0 || i === all.length - 1).join('');
 ---
 
@@ -43,7 +46,10 @@ const initials = (name: string) => name.split(' ').map((part) => part[0]).filter
           : <span class="wordmark">{t.origins.logoAlt}</span>}
       </div>
       <div>
-        <span class="pill"><i></i>{t.origins.badge}</span>
+        <div class="pills">
+          <span class="pill"><i></i>{t.origins.badge}</span>
+          <span class="pill amber"><i></i>{t.origins.patent}</span>
+        </div>
         <h2 class="sec-h2" id="origins-title">{t.origins.title}</h2>
         <div class="prose">{t.origins.paragraphs.map((paragraph) => <p>{paragraph}</p>)}</div>
       </div>
@@ -52,7 +58,7 @@ const initials = (name: string) => name.split(' ').map((part) => part[0]).filter
 
   <section class="sec shade" id="team" aria-labelledby="team-title">
     <div class="container">
-      <div class="sectitle"><h2 id="team-title">{t.team.title}</h2><p>{t.team.description}</p></div>
+      <div class="sectitle"><h2 id="team-title">{t.team.title}</h2><p class="team-name">{teamBefore}<b>{acronym}</b>{teamAfter}</p></div>
       <ul class="team">
         {t.team.members.map((member) => (
           <li class="member">
@@ -63,7 +69,7 @@ const initials = (name: string) => name.split(' ').map((part) => part[0]).filter
                   : <b aria-hidden="true">{initials(member.name)}</b>}
               </span>
             </div>
-            <h3>{member.name}</h3>
+            <h3><span class="initial">{member.name[0]}</span>{member.name.slice(1)}</h3>
             <small>{member.role}</small>
             <p>{member.bio}</p>
           </li>

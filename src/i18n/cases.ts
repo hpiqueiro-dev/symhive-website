@@ -83,6 +83,7 @@ const pt: CasesContent = {
     titleAmber: 'Modelos reais.',
     titleCyan: 'Decisões reais.',
     lead: 'Atuamos onde a operação é complexa e cada mudança afeta o sistema inteiro: da produção ao armazém e à distribuição.',
+    proof: { text: 'Mais de 100 conversas com a indústria no programa TechLaunch' },
   },
   industries: {
     title: 'Indústrias onde atuamos',
@@ -120,6 +121,7 @@ const en: CasesContent = {
     titleAmber: 'Real models.',
     titleCyan: 'Real decisions.',
     lead: 'We work where operations are complex and every change affects the whole system: from production to the warehouse and distribution.',
+    proof: { text: 'More than 100 conversations with industry in the TechLaunch programme' },
   },
   industries: {
     title: 'Industries we work in',

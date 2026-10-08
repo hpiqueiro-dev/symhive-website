@@ -16,5 +16,6 @@ const { hero } = Astro.props;
     {hero.titleRest && <> {hero.titleRest}</>}
   </h1>
   <p class="lead">{hero.lead}</p>
+  {hero.proof && <p class="pill amber hero-proof"><i></i>{hero.proof.badge && <b>{hero.proof.badge}</b>}{hero.proof.text}</p>}
   <slot />
 </section>

@@ -14,6 +14,8 @@ export interface PageHeroContent {
   titleCyan?: string;
   titleRest?: string;
   lead: string;
+  /** Prova social por baixo do texto (opcional): frase curta, com número em destaque opcional. */
+  proof?: { badge?: string; text: string };
 }
 
 /** Item com hexágono, título e texto (passos, módulos, princípios). */
@@ -56,7 +58,7 @@ const pt: CommonContent = {
       { id: 'impact', label: 'Resultados' },
       { id: 'solution', label: 'Como funciona' },
     ],
-    pages: { home: 'Página principal', product: 'Produto', cases: 'Casos de Estudo', about: 'Sobre' },
+    pages: { home: 'Início', product: 'Produto', cases: 'Casos de Estudo', about: 'Sobre' },
     languageLabel: 'Mudar para inglês',
     cta: 'Pedir demonstração',
   },
@@ -68,7 +70,7 @@ const pt: CommonContent = {
     pilot: { label: 'Iniciar um piloto', subject: 'Projeto-piloto — SymHive' },
     pending: 'Canal de contacto em preparação',
   },
-  footer: { label: 'Rodapé', contacts: 'Contactos', poweredBy: 'Com tecnologia', organisation: 'INESC TEC', copyright: '© SymHive' },
+  footer: { label: 'Rodapé', contacts: 'Contactos', poweredBy: 'Com o apoio do', organisation: 'INESC TEC', copyright: '© SymHive' },
 };
 
 const en: CommonContent = {
@@ -82,7 +84,7 @@ const en: CommonContent = {
       { id: 'impact', label: 'Results' },
       { id: 'solution', label: 'How it works' },
     ],
-    pages: { home: 'Overview', product: 'Product', cases: 'Case Studies', about: 'About' },
+    pages: { home: 'Home', product: 'Product', cases: 'Case Studies', about: 'About' },
     languageLabel: 'Mudar para português',
     cta: 'Request a demo',
   },
@@ -93,7 +95,7 @@ const en: CommonContent = {
     pilot: { label: 'Start a pilot', subject: 'Pilot project — SymHive' },
     pending: 'Contact channel coming soon',
   },
-  footer: { label: 'Footer', contacts: 'Contacts', poweredBy: 'Powered by', organisation: 'INESC TEC', copyright: '© SymHive' },
+  footer: { label: 'Footer', contacts: 'Contacts', poweredBy: 'Backed by', organisation: 'INESC TEC', copyright: '© SymHive' },
 };
 
 export const commonContent: Record<Locale, CommonContent> = { pt, en };
