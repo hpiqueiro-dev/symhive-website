@@ -19,6 +19,13 @@ const { industry } = Astro.props;
     <path class="am" d="M18 35h8v4h-8zM36 43h8v4h-8z" />
   </>}
   {industry === 'logistics' && <>
+    <!-- AGV com carga: intralogística dentro da fábrica -->
+    <path d="M6 46V36h52v10Z" />
+    <circle cx="16" cy="50" r="4" /><circle cx="48" cy="50" r="4" />
+    <path class="am" d="M18 36V20h28v16M18 28h28M32 20v16" />
+    <path d="M58 40h2" />
+  </>}
+  {industry === 'supplyChain' && <>
     <path d="M4 44V18h34v26M38 26h12l10 10v8H38" />
     <circle cx="16" cy="48" r="5" /><circle cx="48" cy="48" r="5" />
     <path class="am" d="M10 26h14M10 33h20" />
