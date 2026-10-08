@@ -64,7 +64,7 @@ const pt: CasesContent = {
   },
   problems: {
     title: 'Problemas que resolvemos',
-    description: 'Cada operação é diferente, mas os desafios repetem-se e há dois tipos de decisões a tomar: estratégicas e operacionais.',
+    description: 'Das decisões estratégicas ao planeamento diário, exploramos alternativas antes de as levar para o terreno. Cada operação é diferente, mas os desafios repetem-se.',
     decisions: {
       strategic: { title: 'Estratégicas', description: 'Mudam a estrutura da operação a médio e longo prazo: novos layouts, investimento em equipamentos e expansões.' },
       operational: { title: 'Operacionais', description: 'Afinam a operação no dia a dia: planos de produção, equipas, turnos e alocação de recursos.' },
@@ -159,7 +159,7 @@ const en: CasesContent = {
   },
   problems: {
     title: 'Problems we solve',
-    description: 'Every operation is different, but the challenges repeat, and there are two types of decisions to make: strategic and operational.',
+    description: 'From strategic decisions to daily planning, we explore alternatives before taking them to the shop floor. Every operation is different, but the challenges repeat.',
     decisions: {
       strategic: { title: 'Strategic', description: 'Change the structure of the operation in the medium and long term: new layouts, equipment investment and expansions.' },
       operational: { title: 'Operational', description: 'Fine-tune the operation day to day: production plans, teams, shifts and resource allocation.' },

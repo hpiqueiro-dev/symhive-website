@@ -12,37 +12,58 @@ interface Props {
 const { solution: s, shade = false, moreHref } = Astro.props;
 const logo = `${import.meta.env.BASE_URL}images/symhive-logo.png`;
 
+// A pergunta de entrada e a decisão final são opcionais (ver `question` e `decision` em home.ts):
+// sem elas, o esquema volta a ter só três colunas (entrada → SymHive → saída).
+const hasDecision = Boolean(s.decision);
+const inputs = [...(s.question ? [null] : []), ...s.inputs];
+
 // Ligações num viewBox 1000×100 esticado sobre o palco: as linhas de cada coluna ficam a meio de cada item.
+// As posições em x acompanham as larguras das colunas definidas no CSS (.flow e .flow.with-decision).
+const L = hasDecision
+  ? { inEnd: 248, coreIn: 292, coreOut: 438, outStart: 480, outEnd: 780, decIn: 803 }
+  : { inEnd: 318, coreIn: 418, coreOut: 582, outStart: 682, outEnd: 0, decIn: 0 };
 const rowY = (i: number, n: number) => ((i + 0.5) * 100) / n;
-const inPaths = s.inputs.map((_, i) => {
-  const y = rowY(i, s.inputs.length);
-  return `M318 ${y}C372 ${y} 372 50 418 50`;
-});
-const outPaths = s.outputs.map((_, i) => {
-  const y = rowY(i, s.outputs.length);
-  return `M582 50C628 50 628 ${y} 682 ${y}`;
-});
+const curve = (x1: number, y1: number, x2: number, y2: number) => {
+  const mx = (x1 + x2) / 2;
+  return `M${x1} ${y1}C${mx} ${y1} ${mx} ${y2} ${x2} ${y2}`;
+};
+const inPaths = inputs.map((_, i) => curve(L.inEnd, rowY(i, inputs.length), L.coreIn, 50));
+const outPaths = s.outputs.map((_, i) => curve(L.coreOut, 50, L.outStart, rowY(i, s.outputs.length)));
+const decPaths = hasDecision ? s.outputs.map((_, i) => curve(L.outEnd, rowY(i, s.outputs.length), L.decIn, 50)) : [];
+const outDelay = 1.4;
+const decDelay = outDelay + s.outputs.length * 0.35;
 ---
 
 <section class:list={['sec solution', { shade }]} id="solution" aria-labelledby="solution-title">
   <div class="container">
     <div class="sectitle"><h2 id="solution-title">{s.title}</h2><p>{s.description}</p></div>
 
-    <div class="flow">
-      <div class="flow-head" aria-hidden="true"><span>{s.inputsLabel}</span><span></span><span>{s.outputsLabel}</span></div>
+    <div class:list={['flow', { 'with-decision': hasDecision }]}>
+      <div class="flow-head" aria-hidden="true">
+        <span>{s.inputsLabel}</span><span></span><span>{s.outputsLabel}</span>
+        {s.decision && <span class="dec-label">{s.decision.label}</span>}
+      </div>
       <div class="flow-stage">
         <svg class="flow-lines" viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true">
-          {inPaths.map((d, i) => <>
-            <path class="wire in" d={d} />
-            <path class="packet in" d={d} pathLength="100" style={`--d:${(i * 0.35).toFixed(2)}s`} />
-          </>)}
+          {inPaths.map((d, i) => {
+            const isQuestion = s.question && i === 0;
+            return <>
+              <path class:list={['wire in', { question: isQuestion }]} d={d} />
+              <path class:list={['packet in', { question: isQuestion }]} d={d} pathLength="100" style={`--d:${(i * 0.35).toFixed(2)}s`} />
+            </>;
+          })}
           {outPaths.map((d, i) => <>
             <path class="wire out" d={d} />
-            <path class="packet out" d={d} pathLength="100" style={`--d:${(1.4 + i * 0.35).toFixed(2)}s`} />
+            <path class="packet out" d={d} pathLength="100" style={`--d:${(outDelay + i * 0.35).toFixed(2)}s`} />
+          </>)}
+          {decPaths.map((d, i) => <>
+            <path class="wire dec" d={d} />
+            <path class="packet dec" d={d} pathLength="100" style={`--d:${(decDelay + i * 0.12).toFixed(2)}s`} />
           </>)}
         </svg>
 
-        <ul class="flow-in" aria-label={s.inputsLabel} style={`--rows:${s.inputs.length}`}>
+        <ul class="flow-in" aria-label={s.inputsLabel} style={`--rows:${inputs.length}`}>
+          {s.question && <li class="question"><span><b>{s.question.title}</b><small>{s.question.subtitle}</small></span></li>}
           {s.inputs.map((input) => <li><span>{input}</span></li>)}
         </ul>
 
@@ -62,6 +83,15 @@ const outPaths = s.outputs.map((_, i) => {
             </li>
           ))}
         </ul>
+
+        {s.decision && (
+          <div class="flow-decision" style={`--dd:${decDelay.toFixed(2)}s`}>
+            <div class="decision-node">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="M7 12.5l3.2 3.2L17 9" /></svg>
+              <b>{s.decision.title}</b>
+            </div>
+          </div>
+        )}
       </div>
     </div>
     <p class="more"><a class="more-link" href={moreHref}>{s.more}<span aria-hidden="true">→</span></a></p>

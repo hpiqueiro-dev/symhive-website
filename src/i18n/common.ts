@@ -65,8 +65,7 @@ const pt: CommonContent = {
   },
   contact: {
     title: 'Veja a sua linha a funcionar em semanas, não em meses.',
-    description:
-      'Fale-nos de uma decisão de layout, frota ou planeamento. Mostramos como o modelo seria construído a partir dos seus dados.',
+    description: 'Fale-nos da sua operação. Mostramos-lhe o que a SymHive pode fazer com ela.',
     demo: { label: 'Pedir demonstração', subject: 'Pedido de demonstração — SymHive' },
     pilot: { label: 'Iniciar um piloto', subject: 'Projeto-piloto — SymHive' },
     pending: 'Canal de contacto em preparação',
@@ -91,7 +90,7 @@ const en: CommonContent = {
   },
   contact: {
     title: 'See your own line running in weeks, not months.',
-    description: 'Tell us about a layout, fleet or planning decision. We will show you how the model would be built from your data.',
+    description: "Tell us about your operation. We'll show you what SymHive can do with it.",
     demo: { label: 'Request a demo', subject: 'Demo request — SymHive' },
     pilot: { label: 'Start a pilot', subject: 'Pilot project — SymHive' },
     pending: 'Contact channel coming soon',
