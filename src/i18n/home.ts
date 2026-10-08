@@ -36,6 +36,8 @@ export interface HomeContent {
     more: string;
   };
   simulator: {
+    /** Etiqueta por cima do título: indica que é um exemplo do que a simulação faz. */
+    badge: string;
     title: string;
     description: string;
     windowTitle: string;
@@ -122,19 +124,20 @@ const pt: HomeContent = {
     more: 'Conhecer o produto',
   },
   simulator: {
+    badge: 'Exemplo do que a simulação faz',
     title: 'Mude a linha. Veja os KPIs a mudar.',
     description:
-      'Acrescente AGVs ou postos de processamento e veja o débito, a utilização da frota e o gargalo atualizarem-se no momento.',
+      'Acrescente AGVs ou postos de trabalho e veja a produtividade, a utilização da frota e o gargalo atualizarem-se no momento.',
     windowTitle: 'Linha 3 · Cenário B',
     live: 'Simulação ao vivo',
     canvasLabel: 'Linha de produção simulada com AGVs',
     nodes: { source: ['Origem', 'cnc_03'], queue: ['Fila', 'cap. 12'], processor: 'Processador', packing: ['Embalagem', 'fim de linha'] },
     agvs: { label: 'AGVs', aria: 'Número de AGVs' },
-    stations: { label: 'Postos de processamento', aria: 'Número de postos de processamento', one: 'posto', many: 'postos' },
-    kpis: { throughput: 'Débito', utilization: 'Utilização da frota', bottleneck: 'Gargalo' },
+    stations: { label: 'Postos de trabalho', aria: 'Número de postos de trabalho', one: 'posto', many: 'postos' },
+    kpis: { throughput: 'Produtividade', utilization: 'Utilização da frota', bottleneck: 'Gargalo' },
     unitsPerHour: 'unid./h',
     vsToday: 'face a hoje',
-    bottlenecks: { stations: 'Postos de processamento', fleet: 'Frota de AGVs' },
+    bottlenecks: { stations: 'Postos de trabalho', fleet: 'Frota de AGVs' },
     note: 'Dados ilustrativos. O modelo real é gerado a partir dos seus dados de produção.',
   },
   impact: {
@@ -157,10 +160,10 @@ const pt: HomeContent = {
   steps: {
     title: 'Dos seus dados a uma decisão, em quatro passos.',
     items: [
-      { title: 'Ligue os seus dados', description: 'ERP, MES, layouts CAD e folhas de cálculo alimentam um modelo de dados comum.' },
-      { title: 'O modelo constrói-se sozinho', description: 'A simulação é gerada automaticamente a partir de uma biblioteca de componentes em crescimento.' },
-      { title: 'Simule e otimize', description: 'Teste cenários em layouts, frotas, buffers e planos de produção.' },
-      { title: 'Decida com KPIs', description: 'Resultados estruturados mostram o retorno de cada opção.' },
+      { title: 'Ligar', description: 'Descreva o seu sistema, ligue os seus dados e defina a decisão que precisa de tomar.' },
+      { title: 'Gerar', description: 'A simulação é gerada automaticamente a partir de uma biblioteca de componentes em crescimento.' },
+      { title: 'Testar', description: 'Corra experiências e explore cenários alternativos com os mesmos critérios.' },
+      { title: 'Decidir', description: 'Compare resultados e transforme a simulação em conclusões acionáveis.' },
     ],
   },
 };
@@ -216,6 +219,7 @@ const en: HomeContent = {
     more: 'Explore the product',
   },
   simulator: {
+    badge: 'An example of what simulation does',
     title: 'Change the line. Watch the KPIs move.',
     description: 'Add AGVs or processing stations and see throughput, fleet utilization and the bottleneck update instantly.',
     windowTitle: 'Line 3 · Scenario B',
@@ -250,10 +254,10 @@ const en: HomeContent = {
   steps: {
     title: 'From your data to a decision, in four steps.',
     items: [
-      { title: 'Connect your data', description: 'ERP, MES, CAD layouts and spreadsheets feed one common data model.' },
-      { title: 'The model builds itself', description: 'The simulation is generated automatically from a growing component library.' },
-      { title: 'Simulate and optimize', description: 'Run what-if scenarios on layouts, fleets, buffers and production plans.' },
-      { title: 'Decide with KPIs', description: 'Structured outputs show the ROI behind each option.' },
+      { title: 'Connect', description: 'Describe your system, connect your data and the decision you need to make.' },
+      { title: 'Generate', description: 'The simulation is generated automatically from a growing component library.' },
+      { title: 'Test', description: 'Run experiments and explore alternative scenarios with the same criteria.' },
+      { title: 'Decide', description: 'Compare outcomes and turn simulation results into actionable insights.' },
     ],
   },
 };

@@ -4,6 +4,7 @@ import type { Locale } from './locales';
 // Conteúdo provisório: estrutura no estilo v7, textos a rever. As fases do processo e o antes vs depois são propostas.
 
 export type ProcessGroup = 'project' | 'subscription';
+export type FeatureStatus = 'available' | 'development' | 'planned';
 
 export interface ProductContent {
   meta: PageMeta;
@@ -22,8 +23,16 @@ export interface ProductContent {
     kpis: { label: string; value: string }[];
     caption: string;
   };
-  /** tag é uma etiqueta opcional no canto do cartão (por exemplo, a patente). */
-  features: { title: string; description: string; items: (HexItem & { tag?: string })[] };
+  /**
+   * tag é uma etiqueta opcional no canto do cartão (por exemplo, a patente).
+   * status é a fase da capacidade: available (verde), development (âmbar) ou planned (cinzento).
+   */
+  features: {
+    title: string;
+    description: string;
+    statusLabels: Record<FeatureStatus, string>;
+    items: (HexItem & { tag?: string; status: FeatureStatus })[];
+  };
   beforeAfter: {
     title: string;
     description: string;
@@ -50,8 +59,8 @@ const pt: ProductContent = {
   hero: {
     badge: 'Produto',
     titleAmber: 'Uma plataforma.',
-    titleCyan: 'Do dado à decisão.',
-    lead: 'A SymHive liga os seus dados a um modelo de dados comum, gera a simulação automaticamente e devolve indicadores para comparar cada opção.',
+    titleCyan: 'Dos dados à decisão.',
+    lead: 'A SymHive liga os seus dados e sistemas, gera a simulação 3D automaticamente e devolve indicadores para comparar cada opção.',
   },
   preview: {
     image: null,
@@ -68,22 +77,23 @@ const pt: ProductContent = {
       { name: '+2 AGVs', value: 66, label: '372 unid./h' },
     ],
     kpis: [
-      { label: 'Débito', value: '+27%' },
+      { label: 'Produtividade', value: '+27%' },
       { label: 'Utilização', value: '86%' },
       { label: 'Retorno', value: '14 meses' },
     ],
-    caption: 'Imagem ilustrativa da plataforma.',
+    caption: 'Versão 1.0 · Patente pendente · Validada em quatro ambientes industriais',
   },
   features: {
-    title: 'O que a plataforma faz.',
-    description: 'Seis capacidades que trabalham juntas, do primeiro dado ao último indicador.',
+    title: 'Plataforma de apoio à decisão industrial.',
+    description: 'Múltiplas capacidades que trabalham juntas, do primeiro dado ao último indicador. Algumas já estão em uso, outras estão a ser desenvolvidas com os primeiros projetos.',
+    statusLabels: { available: 'Disponível', development: 'Em desenvolvimento', planned: 'Planeado' },
     items: [
-      { title: 'Geração automática', description: 'O modelo de simulação é construído a partir dos dados, sem programação manual.', tag: 'Patente pendente' },
-      { title: 'Biblioteca de componentes', description: 'Postos, filas, AGVs e armazéns configuráveis e reutilizáveis entre projetos.' },
-      { title: 'Cenários comparáveis', description: 'Várias alternativas avaliadas com os mesmos critérios e os mesmos dados.' },
-      { title: 'Otimização', description: 'Procura as configurações que melhor equilibram capacidade, custo e prazo.' },
-      { title: 'Integração de dados', description: 'ERP, MES, CAD e folhas de cálculo convergem num modelo de dados comum.' },
-      { title: 'Resultados estruturados', description: 'KPIs organizados para mostrar o impacto e o retorno de cada opção.' },
+      { title: 'Geração automática', description: 'O modelo de simulação é construído a partir dos dados, sem programação manual.', tag: 'Patente pendente', status: 'development' },
+      { title: 'Biblioteca de componentes', description: 'Postos, filas, AGVs e armazéns configuráveis e reutilizáveis entre projetos.', status: 'available' },
+      { title: 'Cenários comparáveis', description: 'Várias alternativas avaliadas com os mesmos critérios e os mesmos dados.', status: 'available' },
+      { title: 'Otimização', description: 'Procura as configurações que melhor equilibram capacidade, custo e prazo.', status: 'development' },
+      { title: 'Integração de dados', description: 'ERP, MES, CAD e folhas de cálculo convergem num modelo de dados comum.', status: 'development' },
+      { title: 'Resultados estruturados', description: 'KPIs organizados para mostrar o impacto e o retorno de cada opção.', status: 'available' },
     ],
   },
   beforeAfter: {
@@ -93,8 +103,8 @@ const pt: ProductContent = {
       label: 'Antes',
       items: [
         'Folhas de cálculo e intuição',
-        'Modelos construídos à mão',
-        '30 semanas até decidir',
+        'Modelos construídos à mão por especialistas',
+        '15 a 40 semanas até decidir',
         '1 ou 2 alternativas avaliadas',
         'Refazer o estudo quando algo muda',
         'Implementação sem prova prévia',
@@ -104,10 +114,10 @@ const pt: ProductContent = {
       label: 'Com a SymHive',
       items: [
         'Modelo gerado a partir dos dados',
-        'Simulação sem programação',
-        '8 semanas até decidir',
-        'Dezenas de cenários comparados',
-        'O modelo acompanha a operação',
+        'Simulação sem programação, low code',
+        '6 a 12 semanas até decidir',
+        'Várias alternativas de cenários comparadas',
+        'O modelo é recalibrado quando a operação muda',
         'ROI claro e prova antes de investir',
       ],
     },
@@ -120,8 +130,8 @@ const pt: ProductContent = {
     phases: [
       { group: 'project', title: 'Diagnóstico', description: 'Definimos a decisão a apoiar e avaliamos os dados disponíveis.' },
       { group: 'project', title: 'Modelação', description: 'Geramos o modelo para um caso concreto e comparamos os primeiros cenários.' },
-      { group: 'project', title: 'Implementação', description: 'Ligamos a plataforma aos dados e sistemas da operação e formamos a equipa.' },
-      { group: 'subscription', title: 'Subscrição', description: 'Acesso contínuo à plataforma, com modelos atualizados e acompanhamento.' },
+      { group: 'project', title: 'Implementação', description: 'Ligamos a plataforma aos dados e sistemas da operação.' },
+      { group: 'subscription', title: 'Subscrição', description: 'Acesso contínuo à plataforma, com modelos atualizados e acompanhamento dedicado.' },
     ],
     cta: { title: 'Pronto para o primeiro passo?', description: 'Tudo começa com um diagnóstico da decisão e dos dados que já tem.', label: 'Começar projeto', subject: 'Começar projeto — SymHive', pending: 'Canal de contacto em preparação' },
   },
@@ -136,7 +146,7 @@ const en: ProductContent = {
     badge: 'Product',
     titleAmber: 'One platform.',
     titleCyan: 'From data to decision.',
-    lead: 'SymHive connects your data to a common data model, generates the simulation automatically and returns the indicators to compare every option.',
+    lead: 'SymHive connects your data and systems, generates the 3D simulation automatically and returns the indicators to compare every option.',
   },
   preview: {
     image: null,
@@ -157,18 +167,19 @@ const en: ProductContent = {
       { label: 'Utilization', value: '86%' },
       { label: 'Payback', value: '14 months' },
     ],
-    caption: 'Illustrative view of the platform.',
+    caption: 'Version 1.0 · Patent pending · Validated in four industrial environments',
   },
   features: {
-    title: 'What the platform does.',
-    description: 'Six capabilities working together, from the first data point to the last indicator.',
+    title: 'Industrial decision support platform.',
+    description: 'Multiple capabilities working together, from the first data point to the last indicator. Some are already in use, others are being developed with our first projects.',
+    statusLabels: { available: 'Available', development: 'In development', planned: 'Planned' },
     items: [
-      { title: 'Automatic generation', description: 'The simulation model is built from the data, with no manual programming.', tag: 'Patent pending' },
-      { title: 'Component library', description: 'Configurable stations, queues, AGVs and warehouses, reused across projects.' },
-      { title: 'Comparable scenarios', description: 'Several alternatives assessed with the same criteria and the same data.' },
-      { title: 'Optimization', description: 'Searches for the configurations that best balance capacity, cost and lead time.' },
-      { title: 'Data integration', description: 'ERP, MES, CAD and spreadsheets converge into one common data model.' },
-      { title: 'Structured outputs', description: 'KPIs organized to show the impact and return of each option.' },
+      { title: 'Automatic generation', description: 'The simulation model is built from the data, with no manual programming.', tag: 'Patent pending', status: 'development' },
+      { title: 'Component library', description: 'Configurable stations, queues, AGVs and warehouses, reused across projects.', status: 'available' },
+      { title: 'Comparable scenarios', description: 'Several alternatives assessed with the same criteria and the same data.', status: 'available' },
+      { title: 'Optimization', description: 'Searches for the configurations that best balance capacity, cost and lead time.', status: 'development' },
+      { title: 'Data integration', description: 'ERP, MES, CAD and spreadsheets converge into one common data model.', status: 'development' },
+      { title: 'Structured outputs', description: 'KPIs organized to show the impact and return of each option.', status: 'available' },
     ],
   },
   beforeAfter: {
@@ -178,8 +189,8 @@ const en: ProductContent = {
       label: 'Before',
       items: [
         'Spreadsheets and gut feeling',
-        'Models built by hand',
-        '30 weeks to decide',
+        'Models built by hand by specialists',
+        '15 to 40 weeks to decide',
         '1 or 2 alternatives assessed',
         'Redo the study when something changes',
         'Implementation without prior proof',
@@ -189,10 +200,10 @@ const en: ProductContent = {
       label: 'With SymHive',
       items: [
         'Model generated from the data',
-        'Simulation with no programming',
-        '8 weeks to decide',
-        'Dozens of scenarios compared',
-        'The model keeps up with operations',
+        'Simulation with no programming, low code',
+        '6 to 12 weeks to decide',
+        'Several alternative scenarios compared',
+        'The model is recalibrated when operations change',
         'Clear ROI and proof before investing',
       ],
     },
@@ -205,8 +216,8 @@ const en: ProductContent = {
     phases: [
       { group: 'project', title: 'Assessment', description: 'We define the decision to support and assess the available data.' },
       { group: 'project', title: 'Modelling', description: 'We generate the model for a concrete case and compare the first scenarios.' },
-      { group: 'project', title: 'Deployment', description: "We connect the platform to the operation's data and systems and train the team." },
-      { group: 'subscription', title: 'Subscription', description: 'Ongoing access to the platform, with updated models and support.' },
+      { group: 'project', title: 'Deployment', description: "We connect the platform to the operation's data and systems." },
+      { group: 'subscription', title: 'Subscription', description: 'Ongoing access to the platform, with updated models and dedicated support.' },
     ],
     cta: { title: 'Ready for the first step?', description: 'It all starts with an assessment of the decision and the data you already have.', label: 'Start a project', subject: 'Start a project — SymHive', pending: 'Contact channel coming soon' },
   },

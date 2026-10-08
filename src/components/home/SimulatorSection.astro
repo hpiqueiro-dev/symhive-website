@@ -20,7 +20,7 @@ const labels = JSON.stringify({
 
 <section class:list={['sec', { shade }]} id="sim" aria-labelledby="sim-title">
   <div class="container">
-    <div class="sectitle"><h2 id="sim-title">{s.title}</h2><p>{s.description}</p></div>
+    <div class="sectitle"><span class="pill"><i></i>{s.badge}</span><h2 id="sim-title">{s.title}</h2><p>{s.description}</p></div>
     <div class="win" data-sim data-labels={labels}>
       <div class="wh"><i></i><i></i><i></i><span>{s.windowTitle}</span><em>{s.live}</em></div>
       <div class="wb">

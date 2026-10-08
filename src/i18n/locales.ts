@@ -7,9 +7,10 @@ export const localeMeta: Record<Locale, { htmlLang: string; ogLocale: string; la
   en: { htmlLang: 'en', ogLocale: 'en_GB', label: 'EN', name: 'English' },
 };
 
-// Ordem usada no menu e no rodapé.
+// Páginas do menu e do rodapé, por esta ordem.
 export const pages = ['home', 'cases', 'product', 'about'] as const;
-export type Page = (typeof pages)[number];
+// Todas as páginas, incluindo as que só têm link no rodapé (privacidade).
+export type Page = (typeof pages)[number] | 'privacy';
 
 // Segmento do URL de cada página, por língua. Tem de coincidir com os ficheiros em src/pages/.
 const slugs: Record<Page, Record<Locale, string>> = {
@@ -17,6 +18,7 @@ const slugs: Record<Page, Record<Locale, string>> = {
   product: { pt: 'produto', en: 'product' },
   cases: { pt: 'casos-de-estudo', en: 'case-studies' },
   about: { pt: 'sobre', en: 'about' },
+  privacy: { pt: 'privacidade', en: 'privacy' },
 };
 
 /** Caminho de uma página numa língua, já com o caminho base do site. */

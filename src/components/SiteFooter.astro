@@ -10,6 +10,8 @@ interface Props {
 
 const { locale, nav, footer } = Astro.props;
 const logo = `${import.meta.env.BASE_URL}images/symhive-logo.png`;
+// Ano do build: atualiza-se sozinho em cada publicação.
+const year = new Date().getFullYear();
 ---
 
 <footer>
@@ -24,6 +26,6 @@ const logo = `${import.meta.env.BASE_URL}images/symhive-logo.png`;
     <a class="more-link footer-contact" href={`${pagePath(locale, 'about')}#contacts`}>
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4zM4 7l8 6 8-6" /></svg>{footer.contacts}
     </a>
-    <span>{footer.copyright}</span>
+    <span class="legal">© {year} {footer.copyright} · <a href={pagePath(locale, 'privacy')}>{nav.pages.privacy}</a></span>
   </div>
 </footer>

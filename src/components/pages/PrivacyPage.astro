@@ -1,0 +1,43 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import PageHero from '../PageHero.astro';
+import { site } from '../../config/site';
+import { privacyContent } from '../../i18n/privacy';
+import { pagePath, type Locale } from '../../i18n/locales';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = privacyContent[locale];
+// O email da empresa vem da configuração do site, como na página Sobre.
+const company = t.company.items.map((item, i) => (i === t.company.items.length - 1 ? { ...item, value: item.value ?? site.contactEmail } : item));
+---
+
+<SiteLayout locale={locale} page="privacy" title={t.meta.title} description={t.meta.description} contact={false} ctaHref={`${pagePath(locale, 'about')}#contacts`}>
+  <PageHero hero={t.hero} />
+
+  <section class="sec shade legal-page" aria-label={t.hero.titleAmber + ' ' + t.hero.titleCyan}>
+    <div class="container legal-body">
+      <p class="legal-updated">{t.updated.label}: <span class:list={{ 'pending-value': !t.updated.value }}>{t.updated.value ?? t.pending}</span></p>
+
+      <div class="legal-company">
+        <h2>{t.company.title}</h2>
+        <dl>
+          {company.map((item) => (
+            <div><dt>{item.label}</dt><dd class:list={{ 'pending-value': !item.value }}>{item.value ?? t.pending}</dd></div>
+          ))}
+        </dl>
+      </div>
+
+      {t.sections.map((section) => (
+        <div class="legal-section">
+          <h2>{section.title}</h2>
+          {section.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+          {section.list && <ul>{section.list.map((item) => <li>{item}</li>)}</ul>}
+        </div>
+      ))}
+    </div>
+  </section>
+</SiteLayout>
