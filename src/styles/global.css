@@ -513,7 +513,7 @@ details > summary::-webkit-details-marker { display: none; }
 .pain-label { display: inline-flex; align-items: center; gap: 10px; margin: 0; color: #ff7a6b; font: 500 12px var(--font-mono); letter-spacing: .12em; text-transform: uppercase; }
 .pain-label i { width: 8px; height: 8px; border-radius: 50%; background: #ff7a6b; box-shadow: 0 0 10px #ff7a6b; animation: blink 1.6s ease-in-out infinite; }
 .pain-statement { max-width: 17em; margin: 18px 0 22px; font-size: clamp(34px, 5.4vw, 70px); font-weight: 700; line-height: 1.05; letter-spacing: -.035em; }
-.pain-statement em { font-style: normal; color: #ff7a6b; }
+.pain-statement em { font-style: normal; background: linear-gradient(90deg, var(--amber), #ff7a6b); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .pain-lead { max-width: 40em; margin: 0; color: var(--mut); font-size: clamp(17px, 1.5vw, 19px); line-height: 1.55; }
 .pain-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); gap: 24px; margin-top: clamp(36px, 5vw, 56px); }
 .pain-console { max-width: none; margin: 0; }
