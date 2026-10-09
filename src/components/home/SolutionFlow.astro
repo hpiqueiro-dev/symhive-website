@@ -63,7 +63,7 @@ const decDelay = outDelay + s.outputs.length * 0.35;
         </svg>
 
         <ul class="flow-in" aria-label={s.inputsLabel} style={`--rows:${inputs.length}`}>
-          {s.question && <li class="question"><span><b>{s.question.title}</b><small>{s.question.subtitle}</small></span></li>}
+          {s.question && <li class:list={['question', { sub: s.question.subtitle }]}><span><b>{s.question.title}</b>{s.question.subtitle && <small>{s.question.subtitle}</small>}</span></li>}
           {s.inputs.map((input) => <li><span>{input}</span></li>)}
         </ul>
 

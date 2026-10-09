@@ -33,7 +33,7 @@ export interface HomeContent {
     outputsLabel: string;
     outputs: { title: string; description: string }[];
     /** Opcional: primeira entrada, a âmbar (a decisão a tomar). Sem ela, o esquema começa só nos sistemas. */
-    question?: { title: string; subtitle: string };
+    question?: { title: string; subtitle?: string };
     /** Opcional: quarta coluna com a decisão validada. Sem ela, o esquema termina nas saídas. */
     decision?: { label: string; title: string };
     /** Link discreto no fim da secção, para a página Produto. */
@@ -93,22 +93,18 @@ const pt: HomeContent = {
   },
   pain: {
     label: 'O problema',
-    statement: ['Mudar uma linha custa caro.', 'Descobrir que foi a decisão errada custa muito mais.'],
-    lead: 'A simulação mostra como a operação vai reagir antes de mudar o que quer que seja na fábrica. Mas construir o modelo à mão exige meses e especialistas. Por isso, layouts e planos continuam a ser decididos com folhas de cálculo e intuição.',
+    statement: ['Mudar a operação custa caro.', 'Descobrir que foi a decisão errada custa muito mais.'],
+    lead: 'A simulação mostra como a operação vai reagir. Mas construir o modelo à mão exige meses e especialistas. Por isso, decisões continuam a ser tomadas com folhas de cálculo e intuição.',
     questionsTitle: 'Perguntas que ficam sem resposta',
     questions: [
       'E se a procura aumentar 20% no próximo trimestre?',
       'Precisamos de mais um AGV ou de mais um posto de trabalho?',
       'O novo layout resolve mesmo o gargalo?',
       'Em quanto tempo se paga este investimento?',
-      'Os nossos dados estão prontos para um modelo?',
-      'O modelo do ano passado ainda reflete a nossa operação?',
     ],
     unanswered: 'sem resposta',
     problemsTitle: 'Problemas típicos',
     problems: [
-      'Estudos de simulação que demoram meses a ser construídos',
-      'A simulação depende de conhecimento especializado',
       'Ferramentas e sistemas que não comunicam entre si',
       'Investimentos aprovados sem prova prévia',
       'Gargalos que só se descobrem no terreno',
@@ -119,11 +115,10 @@ const pt: HomeContent = {
     title: 'Os seus dados entram. Decisões validadas saem.',
     description: 'A SymHive liga as ferramentas que já existem nas empresas e devolve resultados prontos a usar.',
     inputsLabel: 'Entrada',
-    question: { title: 'Decisão a tomar', subtitle: 'ou alteração a fazer' },
-    inputs: ['ERP', 'MES', 'Máquinas e sensores', 'Layouts CAD', 'Folhas de cálculo'],
+    question: { title: 'Decisão a tomar' },
+    inputs: ['ERP / MES', 'Máquinas e sensores', 'Layouts CAD', 'Folhas de cálculo'],
     core: { title: 'SymHive', caption: 'Geração automática de modelos' },
     outputsLabel: 'Saída',
-    decision: { label: 'Decisão', title: 'Decisão validada' },
     outputs: [
       { title: 'Dados estruturados', description: 'Um modelo de dados comum.' },
       { title: 'Simulação gerada', description: 'Construída automaticamente, sem programação.' },
@@ -194,22 +189,18 @@ const en: HomeContent = {
   },
   pain: {
     label: 'The problem',
-    statement: ['Changing a line is expensive.', 'Finding out it was the wrong call costs far more.'],
-    lead: 'Simulation shows how the operation will react before you change anything on the shop floor. But building the model by hand takes months and specialists. So layouts and plans are still decided with spreadsheets and gut feeling.',
+    statement: ['Changing the operation is expensive.', 'Finding out it was the wrong call costs far more.'],
+    lead: 'Simulation shows how the operation will react. But building the model by hand takes months and specialists. So decisions are still made with spreadsheets and gut feeling.',
     questionsTitle: 'Questions left unanswered',
     questions: [
       'What if demand grows 20% next quarter?',
       'Do we need one more AGV or one more workstation?',
       'Will the new layout really fix the bottleneck?',
       'How long until this investment pays off?',
-      'Is our data ready for a model?',
-      "Does last year's model still reflect our operation?",
     ],
     unanswered: 'unanswered',
     problemsTitle: 'Typical problems',
     problems: [
-      'Simulation studies that take months to build',
-      'Simulation depends on specialised knowledge',
       'Tools and systems that do not talk to each other',
       'Investments approved without prior proof',
       'Bottlenecks only discovered on the shop floor',
@@ -220,11 +211,10 @@ const en: HomeContent = {
     title: 'Your data goes in. Validated decisions come out.',
     description: 'SymHive connects the tools companies already have and returns ready-to-use results.',
     inputsLabel: 'Input',
-    question: { title: 'Decision to make', subtitle: 'or change to make' },
-    inputs: ['ERP', 'MES', 'Machines and sensors', 'CAD layouts', 'Spreadsheets'],
+    question: { title: 'Decision to make' },
+    inputs: ['ERP / MES', 'Machines and sensors', 'CAD layouts', 'Spreadsheets'],
     core: { title: 'SymHive', caption: 'Automatic model generation' },
     outputsLabel: 'Output',
-    decision: { label: 'Decision', title: 'Validated decision' },
     outputs: [
       { title: 'Structured data', description: 'One common data model.' },
       { title: 'Generated simulation', description: 'Built automatically, no programming.' },

@@ -8,13 +8,16 @@ interface Props {
 }
 
 const { features, shade = false } = Astro.props;
+// Ordem fixa por estado: disponíveis, depois em desenvolvimento, depois planeadas (a ordem em product.ts mantém-se dentro de cada estado).
+const order = ['available', 'development', 'planned'];
+const items = [...features.items].sort((a, b) => order.indexOf(a.status) - order.indexOf(b.status));
 ---
 
 <section class:list={['sec', { shade }]} id="features" aria-labelledby="features-title">
   <div class="container">
     <div class="sectitle"><h2 id="features-title">{features.title}</h2><p>{features.description}</p></div>
     <ul class="features">
-      {features.items.map((item, i) => (
+      {items.map((item, i) => (
         <li class="feature">
           <div class="feature-top">
             <span class="feature-hex" aria-hidden="true"><span></span></span>
