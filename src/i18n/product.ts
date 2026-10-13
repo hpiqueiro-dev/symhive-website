@@ -106,7 +106,7 @@ const pt: ProductContent = {
       items: [
         'Folhas de cálculo e intuição',
         'Modelos construídos à mão por especialistas',
-        '15 a 40 semanas até decidir',
+        'Cerca de 30 semanas até decidir',
         '1 ou 2 alternativas avaliadas',
         'Refazer o estudo quando algo muda',
         'Implementação sem prova prévia',
@@ -117,7 +117,7 @@ const pt: ProductContent = {
       items: [
         'Modelo gerado a partir dos dados',
         'Simulação sem programação, low code',
-        '6 a 12 semanas até decidir',
+        'Cerca de 8 semanas até decidir',
         'Várias alternativas de cenários comparadas',
         'O modelo é recalibrado quando a operação muda',
         'ROI claro e prova antes de investir',
@@ -127,7 +127,7 @@ const pt: ProductContent = {
   },
   process: {
     title: 'Do projeto à subscrição.',
-    description: 'Começamos por um problema concreto. Quando o modelo prova valor, a plataforma fica ao serviço da operação.',
+    description: 'Estamos a construir a SymHive com os primeiros parceiros industriais. Começamos por um problema concreto e, quando o modelo prova valor, a plataforma fica ao serviço da operação.',
     groups: { project: 'Projeto de simulação', subscription: 'Subscrição' },
     phases: [
       { group: 'project', title: 'Diagnóstico', description: 'Definimos a decisão a apoiar e avaliamos os dados disponíveis.' },
@@ -194,7 +194,7 @@ const en: ProductContent = {
       items: [
         'Spreadsheets and gut feeling',
         'Models built by hand by specialists',
-        '15 to 40 weeks to decide',
+        'Around 30 weeks to decide',
         '1 or 2 alternatives assessed',
         'Redo the study when something changes',
         'Implementation without prior proof',
@@ -205,7 +205,7 @@ const en: ProductContent = {
       items: [
         'Model generated from the data',
         'Simulation with no programming, low code',
-        '6 to 12 weeks to decide',
+        'Around 8 weeks to decide',
         'Several alternative scenarios compared',
         'The model is recalibrated when operations change',
         'Clear ROI and proof before investing',
@@ -215,7 +215,7 @@ const en: ProductContent = {
   },
   process: {
     title: 'From project to subscription.',
-    description: 'We start with a concrete problem. Once the model proves its value, the platform stays at the service of the operation.',
+    description: 'We are building SymHive with our first industrial partners. We start with a concrete problem and, once the model proves its value, the platform stays at the service of the operation.',
     groups: { project: 'Simulation project', subscription: 'Subscription' },
     phases: [
       { group: 'project', title: 'Assessment', description: 'We define the decision to support and assess the available data.' },

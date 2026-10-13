@@ -63,7 +63,7 @@ export interface HomeContent {
     symhive: { label: string; weeks: number };
     weeks: string;
     source: string;
-    /** Link discreto no fim da secção, para os casos de estudo. */
+    /** Link discreto no fim da secção, para os casos de uso. */
     more: string;
   };
   stats: {
@@ -84,7 +84,7 @@ const pt: HomeContent = {
       'A SymHive cria modelos de simulação automaticamente a partir dos dados de produção para testar cenários e apoiar decisões em produção e logística.',
   },
   hero: {
-    badge: 'Com tecnologia INESC TEC',
+    badge: 'Com o apoio do INESC TEC',
     titleAmber: 'Da sua fábrica real',
     titleCyan: 'à fábrica digital.',
     titleRest: 'Uma só Hive.',
@@ -113,7 +113,7 @@ const pt: HomeContent = {
   },
   solution: {
     title: 'Os seus dados entram. Decisões validadas saem.',
-    description: 'A SymHive liga as ferramentas que já existem nas empresas e devolve resultados prontos a usar.',
+    description: 'Estamos a construir a SymHive para ligar as ferramentas que já existem nas empresas e devolver resultados prontos a usar.',
     inputsLabel: 'Entrada',
     question: { title: 'Decisão a tomar' },
     inputs: ['ERP / MES', 'Máquinas e sensores', 'Layouts CAD', 'Folhas de cálculo'],
@@ -150,13 +150,13 @@ const pt: HomeContent = {
     manual: { label: 'Processo manual', weeks: 30 },
     symhive: { label: 'Com a SymHive', weeks: 8 },
     weeks: 'semanas',
-    more: 'Ver casos de estudo',
-    source: 'Estimativas com base em estudos de simulação anteriores e projetos-piloto da equipa no INESC TEC. Os valores podem mudar com base na complexidade do projeto.',
+    more: 'Ver casos de uso',
+    source: 'Estimativas com base em estudos de simulação anteriores e projetos-piloto da equipa no INESC TEC. O estudo de simulação passa de cerca de 30 para 8 semanas; somando a implementação no terreno, o ciclo completo fica perto de metade (−50%). Os valores podem mudar com base na complexidade do projeto.',
   },
   stats: {
     label: 'Principais resultados',
     items: [
-      { prefix: '−', value: 50, title: 'Metade do tempo', label: 'para decidir e implementar' },
+      { prefix: '−', value: 50, title: 'Metade do tempo', label: 'do estudo à mudança implementada' },
       { prefix: '−', value: 70, title: 'Decisões mais baratas', label: 'sem estudos manuais longos' },
       { prefix: '+', value: 20, title: 'Operação mais eficiente', label: 'com o mesmo sistema real' },
       { prefix: '', value: 100, title: 'Do problema à decisão', label: 'tudo testado antes de mudar' },
@@ -180,7 +180,7 @@ const en: HomeContent = {
       'SymHive builds simulation models automatically from production data to test scenarios and support decisions in manufacturing and logistics.',
   },
   hero: {
-    badge: 'Powered by INESC TEC',
+    badge: 'Backed by INESC TEC',
     titleAmber: 'Your real factory',
     titleCyan: 'to a digital factory.',
     titleRest: 'One Hive.',
@@ -209,7 +209,7 @@ const en: HomeContent = {
   },
   solution: {
     title: 'Your data goes in. Validated decisions come out.',
-    description: 'SymHive connects the tools companies already have and returns ready-to-use results.',
+    description: 'We are building SymHive to connect the tools companies already have and return ready-to-use results.',
     inputsLabel: 'Input',
     question: { title: 'Decision to make' },
     inputs: ['ERP / MES', 'Machines and sensors', 'CAD layouts', 'Spreadsheets'],
@@ -245,13 +245,13 @@ const en: HomeContent = {
     manual: { label: 'Manual process', weeks: 30 },
     symhive: { label: 'With SymHive', weeks: 8 },
     weeks: 'weeks',
-    more: 'See case studies',
-    source: 'Estimates based on previous simulation studies and pilot projects by the team at INESC TEC. Values may change depending on project complexity.',
+    more: 'See use cases',
+    source: 'Estimates based on previous simulation studies and pilot projects by the team at INESC TEC. The simulation study goes from around 30 to 8 weeks; adding on-site implementation, the full cycle takes around half the time (−50%). Values may change depending on project complexity.',
   },
   stats: {
     label: 'Key results',
     items: [
-      { prefix: '−', value: 50, title: 'Half the time', label: 'to decide and implement' },
+      { prefix: '−', value: 50, title: 'Half the time', label: 'from study to change in place' },
       { prefix: '−', value: 70, title: 'Cheaper decisions', label: 'without long manual studies' },
       { prefix: '+', value: 20, title: 'A more efficient operation', label: 'with the same real system' },
       { prefix: '', value: 100, title: 'From problem to decision', label: 'everything tested before it changes' },

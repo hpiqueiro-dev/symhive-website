@@ -43,11 +43,11 @@ export interface CasesContent {
 
 const pt: CasesContent = {
   meta: {
-    title: 'Casos de estudo — SymHive',
-    description: 'Indústrias, problemas e casos de estudo em que a SymHive gerou modelos de simulação para apoiar decisões.',
+    title: 'Casos de uso — SymHive',
+    description: 'Indústrias, problemas e casos de uso em que a SymHive gerou modelos de simulação para apoiar decisões.',
   },
   hero: {
-    badge: 'Casos de estudo',
+    badge: 'Casos de uso',
     titleAmber: 'Construída para',
     titleCyan: 'desafios industriais reais.',
     lead: 'Atuamos onde a operação é complexa, onde cada mudança afeta o sistema inteiro e cada decisão tem impacto em toda a fábrica.',
@@ -131,18 +131,18 @@ const pt: CasesContent = {
   },
   note: 'Casos típicos dos projetos que desenvolvemos. Os resultados dependem dos dados e do contexto de cada operação.',
   contact: {
-    title: 'Quer juntar-se ao nosso portefólio?',
+    title: 'Junte-se ao nosso portefólio',
     description: 'Junte-se às empresas que já ganharam com a simulação. Entre em contacto e mostramos o que a SymHive pode fazer pela sua operação.',
   },
 };
 
 const en: CasesContent = {
   meta: {
-    title: 'Case studies — SymHive',
-    description: 'Industries, problems and case studies where SymHive generated simulation models to support decisions.',
+    title: 'Use cases — SymHive',
+    description: 'Industries, problems and use cases where SymHive generated simulation models to support decisions.',
   },
   hero: {
-    badge: 'Case studies',
+    badge: 'Use cases',
     titleAmber: 'Built for real',
     titleCyan: 'industrial challenges.',
     lead: 'We work where operations are complex, where every change affects the whole system and every decision impacts the factory.',
@@ -226,7 +226,7 @@ const en: CasesContent = {
   },
   note: 'Typical cases from the projects we develop. Results depend on the data and context of each operation.',
   contact: {
-    title: 'Want to join our portfolio?',
+    title: 'Join our portfolio',
     description: 'Join the companies already winning with simulation. Get in touch and we will show you what SymHive can do for your operation.',
   },
 };

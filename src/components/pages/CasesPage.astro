@@ -17,6 +17,8 @@ const pad = (n: number) => String(n).padStart(2, '0');
 // Problemas agrupados por tipo de decisão, mantendo a numeração global (01–04).
 const numbered = p.items.map((problem, i) => ({ ...problem, n: i + 1 }));
 const columns: DecisionType[] = ['strategic', 'operational'];
+// As duas colunas partilham as linhas (subgrid): cabeçalho + um problema por linha, para as caixas ficarem ao mesmo nível.
+const rows = 1 + Math.max(...columns.map((type) => numbered.filter((problem) => problem.type === type).length));
 ---
 
 <SiteLayout locale={locale} page="cases" title={t.meta.title} description={t.meta.description} contactText={t.contact} contactCompact contactShade>
@@ -37,7 +39,7 @@ const columns: DecisionType[] = ['strategic', 'operational'];
     <div class="container">
       <h2 class="sec-h2" id="problems-title">{p.title}</h2>
       <p class="sec-lead problems-lead">{p.description}</p>
-      <div class="problem-columns">
+      <div class="problem-columns" style={`--rows: ${rows}`}>
         {columns.map((type) => (
           <div class:list={['problem-col', type]}>
             <div class="decision-head"><h3>{p.decisions[type].title}</h3><p>{p.decisions[type].description}</p></div>

@@ -9,15 +9,17 @@ export interface TeamMember {
   bio: string;
   /** Caminho em public/, por exemplo 'images/team/henrique-piqueiro.jpg'. Sem foto, mostra as iniciais. */
   photo?: string;
+  /** URL do perfil de LinkedIn. Sem URL, o ícone não aparece. */
+  linkedin?: string;
 }
 
 export interface AboutContent {
   meta: PageMeta;
   hero: PageHeroContent;
   story: { title: string; mission: string; paragraphs: string[]; facts: string[] };
-  /** Em description, {acronym} é substituído pelas iniciais dos founders (HARPA), destacadas a âmbar. */
-  team: { title: string; description: string; members: TeamMember[] };
-  /** patent é a etiqueta mostrada ao lado da etiqueta do INESC TEC. */
+  /** linkedinLabel antecede o nome do founder no texto acessível do ícone de LinkedIn. */
+  team: { title: string; linkedinLabel: string; members: TeamMember[] };
+  /** patent é a etiqueta mostrada ao lado da etiqueta «Com o apoio do INESC TEC». */
   origins: { badge: string; patent: string; title: string; paragraphs: string[]; logoAlt: string };
   /**
    * Última secção: informação de contactos. value null mostra «pending».
@@ -37,28 +39,29 @@ export type ContactType = 'email' | 'phone' | 'address' | 'linkedin';
 export const inescTecLogo: string | null = 'images/inesctec-logo.svg';
 
 // Founders pela ordem em que aparecem; as fotos estão em public/images/team/.
-const founders: { name: string; photo?: string }[] = [
-  { name: 'Henrique Piqueiro', photo: 'images/team/henrique-piqueiro.jpg' },
-  { name: 'Ana Silva', photo: 'images/team/ana-silva.jpg' },
-  { name: 'Romão Santos', photo: 'images/team/romao-santos.jpg' },
-  { name: 'Pedro Senna', photo: 'images/team/pedro-senna.jpg' },
-  { name: 'António Almeida', photo: 'images/team/antonio-almeida.jpg' },
+// Em linkedin, o URL completo do perfil (por exemplo 'https://www.linkedin.com/in/nome/').
+const founders: { name: string; photo?: string; linkedin?: string }[] = [
+  { name: 'Henrique Piqueiro', photo: 'images/team/henrique-piqueiro.jpg', linkedin: 'https://www.linkedin.com/in/henrique-piqueiro-4a10b7136/' },
+  { name: 'Ana Silva', photo: 'images/team/ana-silva.jpg', linkedin: undefined },
+  { name: 'Romão Santos', photo: 'images/team/romao-santos.jpg', linkedin: undefined },
+  { name: 'Pedro Senna', photo: 'images/team/pedro-senna.jpg', linkedin: undefined },
+  { name: 'António Almeida', photo: 'images/team/antonio-almeida.jpg', linkedin: undefined },
 ];
 
-/** Junta nome e foto de cada founder ao cargo e descrição de uma língua (mesma ordem). */
+/** Junta nome, foto e LinkedIn de cada founder ao cargo e descrição de uma língua (mesma ordem). */
 const withFounders = (texts: { role: string; bio: string }[]): TeamMember[] =>
   founders.map((founder, i) => ({ ...founder, ...texts[i] }));
 
 const pt: AboutContent = {
   meta: {
     title: 'Sobre — SymHive',
-    description: 'A SymHive é uma spin-off do INESC TEC dedicada à geração automática de modelos de simulação para a indústria.',
+    description: 'Com o apoio do INESC TEC, a SymHive dedica-se à geração automática de modelos de simulação para a indústria.',
   },
   hero: {
     badge: 'Sobre a SymHive',
     titleAmber: 'Construída por pessoas que conhecem',
     titleCyan: 'a simulação e a operação.',
-    lead: 'Somos uma spin-off dedicada à geração automática de modelos de simulação para sistemas industriais complexos.',
+    lead: 'Com o apoio do INESC TEC, dedicamo-nos à geração automática de modelos de simulação para sistemas industriais complexos.',
   },
   story: {
     title: 'Porque existimos.',
@@ -75,7 +78,7 @@ const pt: AboutContent = {
   },
   team: {
     title: 'Quem constrói a SymHive.',
-    description: 'A equipa {acronym}.',
+    linkedinLabel: 'LinkedIn de',
     members: withFounders([
       { role: 'Estratégia e Engenharia', bio: 'Lidera a visão e a estratégia da empresa, ligando a simulação aos sistemas de negócio que movem as empresas industriais.' },
       { role: 'Engenharia de Soluções', bio: 'Lidera a modelação e a execução técnica das nossas soluções de simulação.' },
@@ -85,11 +88,11 @@ const pt: AboutContent = {
     ]),
   },
   origins: {
-    badge: 'INESC TEC',
+    badge: 'Com o apoio do INESC TEC',
     patent: 'Patente pendente',
     title: 'Origem na investigação.',
     paragraphs: [
-      'A SymHive é uma spin-off que nasce da investigação em simulação, otimização e gémeos digitais desenvolvida no INESC TEC e de anos de projetos com a indústria.',
+      'Com o apoio do INESC TEC, a SymHive nasce da investigação em simulação, otimização e gémeos digitais e de anos de projetos com a indústria.',
       'Hoje levamos esse conhecimento do laboratório para o chão de fábrica, numa plataforma que fica mais inteligente a cada projeto e que permite a qualquer empresa industrial tomar decisões informadas dentro da fábrica.',
       'A tecnologia de geração automática de modelos tem um pedido de patente pendente.',
     ],
@@ -111,13 +114,13 @@ const pt: AboutContent = {
 const en: AboutContent = {
   meta: {
     title: 'About — SymHive',
-    description: 'SymHive is an INESC TEC spin-off dedicated to the automatic generation of simulation models for industry.',
+    description: 'Backed by INESC TEC, SymHive is dedicated to the automatic generation of simulation models for industry.',
   },
   hero: {
     badge: 'About SymHive',
     titleAmber: 'Built by people who know',
     titleCyan: 'simulation and operations.',
-    lead: 'We are a spin-off dedicated to the automatic generation of simulation models for complex industrial systems.',
+    lead: 'Backed by INESC TEC, we are dedicated to the automatic generation of simulation models for complex industrial systems.',
   },
   story: {
     title: 'Why we exist.',
@@ -134,7 +137,7 @@ const en: AboutContent = {
   },
   team: {
     title: 'The people building SymHive.',
-    description: 'The {acronym} team.',
+    linkedinLabel: 'LinkedIn profile of',
     members: withFounders([
       { role: 'Strategy & Engineering', bio: "Leads the company's vision and strategy, connecting simulation with the business systems that drive industrial companies." },
       { role: 'Solutions Engineering', bio: 'Leads the modelling and technical delivery of our simulation solutions.' },
@@ -144,11 +147,11 @@ const en: AboutContent = {
     ]),
   },
   origins: {
-    badge: 'INESC TEC',
+    badge: 'Backed by INESC TEC',
     patent: 'Patent pending',
     title: 'Research origins.',
     paragraphs: [
-      'SymHive is a spin-off born from research in simulation, optimization and digital twins at INESC TEC, and from years of projects with industry.',
+      'Backed by INESC TEC, SymHive was born from research in simulation, optimization and digital twins, and from years of projects with industry.',
       'Today we take that knowledge from the lab to the shop floor, in a platform that gets smarter with every project and lets any industrial company make informed decisions inside the factory.',
       'Our automatic model generation technology is patent pending.',
     ],

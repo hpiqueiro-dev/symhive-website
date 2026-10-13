@@ -1,6 +1,6 @@
 # SymHive Website
 
-Landing page institucional da SymHive, criada com Astro, TypeScript e CSS. O HTML é gerado estaticamente em português (`/`) e inglês (`/en/`), com quatro páginas por língua: página principal, Produto (`/produto/`, `/en/product/`), Casos de estudo (`/casos-de-estudo/`, `/en/case-studies/`) e Sobre (`/sobre/`, `/en/about/`). O JavaScript serve apenas para animações, simulador e fecho dos menus; o conteúdo e a navegação funcionam sem ele.
+Landing page institucional da SymHive, criada com Astro, TypeScript e CSS. O HTML é gerado estaticamente em português (`/`) e inglês (`/en/`), com quatro páginas por língua: página principal, Produto (`/produto/`, `/en/product/`), Casos de uso (`/casos-de-uso/`, `/en/use-cases/`) e Sobre (`/sobre/`, `/en/about/`). O JavaScript serve apenas para animações, simulador e fecho dos menus; o conteúdo e a navegação funcionam sem ele.
 
 ## Desenvolvimento
 
