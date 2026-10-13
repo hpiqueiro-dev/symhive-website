@@ -49,7 +49,7 @@ const pt: CasesContent = {
   hero: {
     badge: 'Casos de uso',
     titleAmber: 'Construída para',
-    titleCyan: 'desafios industriais reais.',
+    titleCyan: 'desafios industriais reais',
     lead: 'Atuamos onde a operação é complexa, onde cada mudança afeta o sistema inteiro e cada decisão tem impacto em toda a fábrica.',
     proof: { text: 'Mais de 100 conversas com a indústria no programa TechLaunch' },
   },
@@ -77,7 +77,7 @@ const pt: CasesContent = {
         description: 'Testar novas disposições de linhas, postos e armazéns antes de mudar no terreno.',
         cases: [
           {
-            title: 'Caso típico',
+            title: 'Novo layout numa expansão',
             industry: 'logistics',
             challenge: 'O novo layout resolve o gargalo ou apenas o muda de sítio? Numa expansão, como dispor as novas máquinas?',
             approach: 'Modelamos o layout atual e as alternativas a partir do CAD, com postos, filas e fluxos de material, e projetamos o crescimento previsto da empresa.',
@@ -91,7 +91,7 @@ const pt: CasesContent = {
         description: 'Avaliar o impacto de novos equipamentos, robôs ou AGVs antes de investir.',
         cases: [
           {
-            title: 'Caso típico',
+            title: 'Substituir empilhadores por AGVs',
             industry: 'manufacturing',
             challenge: 'Quantos AGVs são precisos para substituir os empilhadores, quanto custam e em quanto tempo se pagam?',
             approach: 'Modelamos a frota atual e a nova tecnologia, com rotas, cargas e tempos de carregamento, e identificamos as alterações ao layout necessárias para a integrar.',
@@ -105,7 +105,7 @@ const pt: CasesContent = {
         description: 'Dimensionar equipas, frotas e turnos perante procura variável.',
         cases: [
           {
-            title: 'Caso típico',
+            title: 'Alocação de operadores por tarefa',
             industry: 'warehouse',
             challenge: 'Quantos operadores alocar a cada tarefa para produzir mais, e como distribuí-los tendo em conta o tempo de ciclo de cada operação?',
             approach: 'Modelamos a procura histórica e prevista, as equipas, os turnos e a frota.',
@@ -119,7 +119,7 @@ const pt: CasesContent = {
         description: 'Comparar planos e sequências de produção com os mesmos critérios.',
         cases: [
           {
-            title: 'Caso típico',
+            title: 'Sequência de produção com menos trocas',
             industry: 'manufacturing',
             challenge: 'Que sequência de produção cumpre os prazos com menos trocas?',
             approach: 'Modelamos os tempos de setup e de produção com distribuições estatísticas, e os buffers. Testamos alterações à produção para medir a vantagem de cada uma.',
@@ -144,7 +144,7 @@ const en: CasesContent = {
   hero: {
     badge: 'Use cases',
     titleAmber: 'Built for real',
-    titleCyan: 'industrial challenges.',
+    titleCyan: 'industrial challenges',
     lead: 'We work where operations are complex, where every change affects the whole system and every decision impacts the factory.',
     proof: { text: 'More than 100 interviews with industry in the TechLaunch programme' },
   },
@@ -172,7 +172,7 @@ const en: CasesContent = {
         description: 'Test new arrangements of lines, stations and warehouses before changing the shop floor.',
         cases: [
           {
-            title: 'Typical case',
+            title: 'New layout for an expansion',
             industry: 'logistics',
             challenge: 'Does the new layout fix the bottleneck, or just move it? In an expansion, how should the new machines be arranged?',
             approach: 'We model the current layout and the alternatives from CAD, with stations, queues and material flows, and project the company’s expected growth.',
@@ -186,7 +186,7 @@ const en: CasesContent = {
         description: 'Assess the impact of new equipment, robots or AGVs before investing.',
         cases: [
           {
-            title: 'Typical case',
+            title: 'Replacing forklifts with AGVs',
             industry: 'manufacturing',
             challenge: 'How many AGVs are needed to replace the forklifts, what do they cost and how long until they pay off?',
             approach: 'We model the current fleet and the new technology, with routes, loads and charging times, and identify the layout changes needed to integrate it.',
@@ -200,7 +200,7 @@ const en: CasesContent = {
         description: 'Size teams, fleets and shifts against variable demand.',
         cases: [
           {
-            title: 'Typical case',
+            title: 'Assigning operators to tasks',
             industry: 'warehouse',
             challenge: 'How many operators should be assigned to each task to produce more, and how should they be distributed given each operation’s cycle time?',
             approach: 'We model historical and forecast demand, teams, shifts and the fleet.',
@@ -214,7 +214,7 @@ const en: CasesContent = {
         description: 'Compare production plans and sequences with the same criteria.',
         cases: [
           {
-            title: 'Typical case',
+            title: 'Production sequence with fewer changeovers',
             industry: 'manufacturing',
             challenge: 'Which production sequence meets deadlines with the fewest changeovers?',
             approach: 'We model setup and production times with statistical distributions, and the buffers. We test changes to production to measure the benefit of each one.',

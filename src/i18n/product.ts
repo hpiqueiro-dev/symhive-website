@@ -84,7 +84,7 @@ const pt: ProductContent = {
     caption: 'Versão 1.0 · Patente pendente · Validada em quatro ambientes industriais',
   },
   features: {
-    title: 'Plataforma de apoio à decisão industrial.',
+    title: 'Plataforma de apoio à decisão industrial',
     description: 'Múltiplas capacidades que trabalham juntas, do primeiro dado ao último indicador. Algumas já estão em uso, outras estão a ser desenvolvidas com os primeiros projetos.',
     statusLabels: { available: 'Disponível', development: 'Em desenvolvimento', planned: 'Planeado' },
     items: [
@@ -99,7 +99,7 @@ const pt: ProductContent = {
     ],
   },
   beforeAfter: {
-    title: 'Antes e depois da SymHive.',
+    title: 'Antes e depois da SymHive',
     description: 'A forma tradicional de decidir comparada com a decisão apoiada por simulação.',
     before: {
       label: 'Antes',
@@ -126,7 +126,7 @@ const pt: ProductContent = {
     note: 'Valores aproximados, a partir de estimativas de estudos anteriores e projetos-piloto.',
   },
   process: {
-    title: 'Do projeto à subscrição.',
+    title: 'Do projeto à subscrição',
     description: 'Estamos a construir a SymHive com os primeiros parceiros industriais. Começamos por um problema concreto e, quando o modelo prova valor, a plataforma fica ao serviço da operação.',
     groups: { project: 'Projeto de simulação', subscription: 'Subscrição' },
     phases: [
@@ -172,7 +172,7 @@ const en: ProductContent = {
     caption: 'Version 1.0 · Patent pending · Validated in four industrial environments',
   },
   features: {
-    title: 'Industrial decision support platform.',
+    title: 'Industrial decision support platform',
     description: 'Multiple capabilities working together, from the first data point to the last indicator. Some are already in use, others are being developed with our first projects.',
     statusLabels: { available: 'Available', development: 'In development', planned: 'Planned' },
     items: [
@@ -187,7 +187,7 @@ const en: ProductContent = {
     ],
   },
   beforeAfter: {
-    title: 'Before and after SymHive.',
+    title: 'Before and after SymHive',
     description: 'The traditional way of deciding compared with simulation-backed decisions.',
     before: {
       label: 'Before',
@@ -214,7 +214,7 @@ const en: ProductContent = {
     note: 'Approximate values, based on estimates from previous studies and pilot projects.',
   },
   process: {
-    title: 'From project to subscription.',
+    title: 'From project to subscription',
     description: 'We are building SymHive with our first industrial partners. We start with a concrete problem and, once the model proves its value, the platform stays at the service of the operation.',
     groups: { project: 'Simulation project', subscription: 'Subscription' },
     phases: [

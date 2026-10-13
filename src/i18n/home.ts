@@ -6,7 +6,6 @@ import type { Locale } from './locales';
 export interface HomeContent {
   meta: { title: string; description: string };
   hero: {
-    badge: string;
     titleAmber: string;
     titleCyan: string;
     titleRest: string;
@@ -84,7 +83,6 @@ const pt: HomeContent = {
       'A SymHive cria modelos de simulação automaticamente a partir dos dados de produção para testar cenários e apoiar decisões em produção e logística.',
   },
   hero: {
-    badge: 'Com o apoio do INESC TEC',
     titleAmber: 'Da sua fábrica real',
     titleCyan: 'à fábrica digital.',
     titleRest: 'Uma só Hive.',
@@ -113,7 +111,7 @@ const pt: HomeContent = {
   },
   solution: {
     title: 'Os seus dados entram. Decisões validadas saem.',
-    description: 'Estamos a construir a SymHive para ligar as ferramentas que já existem nas empresas e devolver resultados prontos a usar.',
+    description: 'Estamos a construir a SymHive, onde ligamos os dados que já existem nas empresas e devolvemos cenários comparáveis.',
     inputsLabel: 'Entrada',
     question: { title: 'Decisão a tomar' },
     inputs: ['ERP / MES', 'Máquinas e sensores', 'Layouts CAD', 'Folhas de cálculo'],
@@ -130,7 +128,7 @@ const pt: HomeContent = {
   },
   simulator: {
     badge: 'Exemplo do que a simulação faz',
-    title: 'Mude a linha. Veja os KPIs a mudar.',
+    title: 'Experimente: acrescente um AGV e veja o que acontece à linha',
     description:
       'Acrescente AGVs ou postos de trabalho e veja a produtividade, a utilização da frota e o gargalo atualizarem-se no momento.',
     windowTitle: 'Linha 3 · Cenário B',
@@ -146,24 +144,23 @@ const pt: HomeContent = {
     note: 'Dados ilustrativos. O modelo real é gerado a partir dos seus dados de produção.',
   },
   impact: {
-    title: 'Deixe de esperar 30 semanas por uma decisão.',
+    title: 'Deixe de esperar 30 semanas por uma decisão',
     manual: { label: 'Processo manual', weeks: 30 },
     symhive: { label: 'Com a SymHive', weeks: 8 },
     weeks: 'semanas',
     more: 'Ver casos de uso',
-    source: 'Estimativas com base em estudos de simulação anteriores e projetos-piloto da equipa no INESC TEC. O estudo de simulação passa de cerca de 30 para 8 semanas; somando a implementação no terreno, o ciclo completo fica perto de metade (−50%). Os valores podem mudar com base na complexidade do projeto.',
+    source: 'Estimativas com base em estudos de simulação anteriores e projetos-piloto da equipa no INESC TEC. Os valores podem mudar com base na complexidade do projeto.',
   },
   stats: {
     label: 'Principais resultados',
     items: [
-      { prefix: '−', value: 50, title: 'Metade do tempo', label: 'do estudo à mudança implementada' },
+      { prefix: '−', value: 50, title: 'Metade do tempo', label: 'do estudo à implementação' },
       { prefix: '−', value: 70, title: 'Decisões mais baratas', label: 'sem estudos manuais longos' },
       { prefix: '+', value: 20, title: 'Operação mais eficiente', label: 'com o mesmo sistema real' },
-      { prefix: '', value: 100, title: 'Do problema à decisão', label: 'tudo testado antes de mudar' },
     ],
   },
   steps: {
-    title: 'Dos seus dados a uma decisão, em quatro passos.',
+    title: 'Dos seus dados a uma decisão, em quatro passos',
     items: [
       { title: 'Ligar', description: 'Descreva o seu sistema, ligue os seus dados e defina a decisão que precisa de tomar.' },
       { title: 'Gerar', description: 'A simulação é gerada automaticamente a partir de uma biblioteca de componentes em crescimento.' },
@@ -180,7 +177,6 @@ const en: HomeContent = {
       'SymHive builds simulation models automatically from production data to test scenarios and support decisions in manufacturing and logistics.',
   },
   hero: {
-    badge: 'Backed by INESC TEC',
     titleAmber: 'Your real factory',
     titleCyan: 'to a digital factory.',
     titleRest: 'One Hive.',
@@ -209,7 +205,7 @@ const en: HomeContent = {
   },
   solution: {
     title: 'Your data goes in. Validated decisions come out.',
-    description: 'We are building SymHive to connect the tools companies already have and return ready-to-use results.',
+    description: 'We are building SymHive, connecting the data companies already have and returning comparable scenarios.',
     inputsLabel: 'Input',
     question: { title: 'Decision to make' },
     inputs: ['ERP / MES', 'Machines and sensors', 'CAD layouts', 'Spreadsheets'],
@@ -226,7 +222,7 @@ const en: HomeContent = {
   },
   simulator: {
     badge: 'An example of what simulation does',
-    title: 'Change the line. Watch the KPIs move.',
+    title: 'Try it: add an AGV and see what happens to the line',
     description: 'Add AGVs or processing stations and see throughput, fleet utilization and the bottleneck update instantly.',
     windowTitle: 'Line 3 · Scenario B',
     live: 'Live simulation',
@@ -241,24 +237,23 @@ const en: HomeContent = {
     note: 'Illustrative data. The real model is generated from your own production data.',
   },
   impact: {
-    title: 'Stop waiting 30 weeks for a decision.',
+    title: 'Stop waiting 30 weeks for a decision',
     manual: { label: 'Manual process', weeks: 30 },
     symhive: { label: 'With SymHive', weeks: 8 },
     weeks: 'weeks',
     more: 'See use cases',
-    source: 'Estimates based on previous simulation studies and pilot projects by the team at INESC TEC. The simulation study goes from around 30 to 8 weeks; adding on-site implementation, the full cycle takes around half the time (−50%). Values may change depending on project complexity.',
+    source: 'Estimates based on previous simulation studies and pilot projects by the team at INESC TEC. Values may change depending on project complexity.',
   },
   stats: {
     label: 'Key results',
     items: [
-      { prefix: '−', value: 50, title: 'Half the time', label: 'from study to change in place' },
+      { prefix: '−', value: 50, title: 'Half the time', label: 'from study to implementation' },
       { prefix: '−', value: 70, title: 'Cheaper decisions', label: 'without long manual studies' },
       { prefix: '+', value: 20, title: 'A more efficient operation', label: 'with the same real system' },
-      { prefix: '', value: 100, title: 'From problem to decision', label: 'everything tested before it changes' },
     ],
   },
   steps: {
-    title: 'From your data to a decision, in four steps.',
+    title: 'From your data to a decision, in four steps',
     items: [
       { title: 'Connect', description: 'Describe your system, connect your data and the decision you need to make.' },
       { title: 'Generate', description: 'The simulation is generated automatically from a growing component library.' },

@@ -124,7 +124,7 @@ details > summary::-webkit-details-marker { display: none; }
 
 /* ---------- hero ---------- */
 .hero { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 32px; align-items: center; padding-top: clamp(20px, 4vw, 44px); padding-bottom: clamp(56px, 7vw, 96px); }
-.hero h1 { margin: 24px 0 20px; font-size: clamp(36px, 5.2vw, 68px); font-weight: 700; line-height: 1.04; letter-spacing: -.035em; }
+.hero h1 { margin: 0 0 20px; font-size: clamp(36px, 5.2vw, 68px); font-weight: 700; line-height: 1.04; letter-spacing: -.035em; }
 .hero h1 .a { color: var(--amber); }
 .hero h1 .c { color: var(--cyan); }
 .hero .lead { max-width: 30em; margin: 0 0 30px; color: var(--mut); font-size: clamp(17px, 1.5vw, 19px); line-height: 1.55; }
@@ -197,7 +197,7 @@ details > summary::-webkit-details-marker { display: none; }
 }
 
 /* KPIs de impacto: círculos com o gradiente da marca (âmbar → ciano) e ondas a propagar. */
-.ripples { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px 24px; margin: clamp(48px, 6vw, 72px) 0 0; padding: 0; list-style: none; text-align: center; }
+.ripples { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px 24px; margin: clamp(48px, 6vw, 72px) 0 0; padding: 0; list-style: none; text-align: center; }
 .ripple-stage { position: relative; display: grid; place-items: center; width: 214px; height: 214px; margin: 0 auto; }
 .ripple-core { position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; white-space: nowrap; width: 132px; height: 132px; border-radius: 50%; background: linear-gradient(135deg, var(--amber), var(--cyan)); color: var(--bg); font: 500 32px var(--font-mono); box-shadow: -10px -6px 30px rgba(245, 166, 35, .3), 10px 6px 30px rgba(25, 211, 230, .3); }
 .wave-ring { position: absolute; width: 132px; height: 132px; border: 1.5px solid rgba(245, 166, 35, .55); border-radius: 50%; animation: ripple 3.6s ease-out infinite; animation-delay: calc(var(--i) * .3s); }
@@ -208,6 +208,7 @@ details > summary::-webkit-details-marker { display: none; }
 .ripple p { max-width: 15em; margin: 0 auto; color: var(--mut); font-size: 14.5px; line-height: 1.45; }
 @media (max-width: 860px) {
   .ripples { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 12px; }
+  .ripple:last-child:nth-child(odd) { grid-column: 1 / -1; }
   .ripple-stage { width: 160px; height: 160px; }
   .ripple-core, .wave-ring { width: 104px; height: 104px; }
   .ripple-core { font-size: 25px; }

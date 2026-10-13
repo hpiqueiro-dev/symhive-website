@@ -28,14 +28,8 @@ npm run build
 - `src/components/`: cabeçalho com submenu e menu móvel, rodapé, fundo, topo das páginas interiores (`PageHero`), grelha de hexágonos (`HexGrid`) e contacto.
 - `src/styles/global.css`: estilos e tokens da identidade visual.
 - `src/config/site.ts`: endereço de contacto. Definir `contactEmail` para ativar os botões «Pedir demonstração» e «Iniciar um piloto».
-- `src/assets/fonts/`: Inter, JetBrains Mono e Space Grotesk alojadas localmente (licença OFL). A DM Sans é usada apenas pelos protótipos.
+- `src/assets/fonts/`: Inter, JetBrains Mono e Space Grotesk alojadas localmente (licença OFL).
 - `public/images/`: logótipo extraído da apresentação SymHive e imagem para partilha.
-
-## Protótipos de design
-
-Abrir `/prototipos/` no servidor de desenvolvimento para comparar a primeira coleção de quatro propostas visuais, ou `/prototipos/novos/` para ver outras quatro direções com SVGs animados editáveis em `public/illustrations/`. Cada proposta tem uma página própria e um seletor fixo para alternar entre elas. A página principal atual permanece em `/`.
-
-As duas propostas finais que combinam as direções escolhidas estão em `/prototipos/finais/`. O painel «Escolhe uma hipótese» é interativo nas duas páginas.
 
 ## GitHub Pages
 

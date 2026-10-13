@@ -23,7 +23,7 @@ const pt: PrivacyContent = {
   hero: {
     badge: 'Legal',
     titleAmber: 'Política de',
-    titleCyan: 'privacidade.',
+    titleCyan: 'privacidade',
     lead: 'Como tratamos os dados pessoais de quem visita este site ou entra em contacto connosco.',
   },
   updated: { label: 'Última atualização', value: null },
@@ -92,7 +92,7 @@ const en: PrivacyContent = {
   hero: {
     badge: 'Legal',
     titleAmber: 'Privacy',
-    titleCyan: 'policy.',
+    titleCyan: 'policy',
     lead: 'How we process the personal data of people who visit this site or get in touch with us.',
   },
   updated: { label: 'Last updated', value: null },

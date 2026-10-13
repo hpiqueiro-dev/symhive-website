@@ -64,7 +64,7 @@ const pt: CommonContent = {
     cta: 'Pedir demonstração',
   },
   contact: {
-    title: 'Veja a sua linha a funcionar em semanas, não em meses.',
+    title: 'Veja a sua linha a funcionar em semanas, não em meses',
     description: 'Fale-nos da sua operação. Mostramos-lhe o que a SymHive pode fazer com ela.',
     demo: { label: 'Pedir demonstração', subject: 'Pedido de demonstração — SymHive' },
     pilot: { label: 'Iniciar um piloto', subject: 'Projeto-piloto — SymHive' },
@@ -89,7 +89,7 @@ const en: CommonContent = {
     cta: 'Request a demo',
   },
   contact: {
-    title: 'See your own line running in weeks, not months.',
+    title: 'See your own line running in weeks, not months',
     description: "Tell us about your operation. We'll show you what SymHive can do with it.",
     demo: { label: 'Request a demo', subject: 'Demo request — SymHive' },
     pilot: { label: 'Start a pilot', subject: 'Pilot project — SymHive' },

@@ -42,10 +42,10 @@ export const inescTecLogo: string | null = 'images/inesctec-logo.svg';
 // Em linkedin, o URL completo do perfil (por exemplo 'https://www.linkedin.com/in/nome/').
 const founders: { name: string; photo?: string; linkedin?: string }[] = [
   { name: 'Henrique Piqueiro', photo: 'images/team/henrique-piqueiro.jpg', linkedin: 'https://www.linkedin.com/in/henrique-piqueiro-4a10b7136/' },
-  { name: 'Ana Silva', photo: 'images/team/ana-silva.jpg', linkedin: undefined },
-  { name: 'Romão Santos', photo: 'images/team/romao-santos.jpg', linkedin: undefined },
-  { name: 'Pedro Senna', photo: 'images/team/pedro-senna.jpg', linkedin: undefined },
-  { name: 'António Almeida', photo: 'images/team/antonio-almeida.jpg', linkedin: undefined },
+  { name: 'Ana Silva', photo: 'images/team/ana-silva.jpg', linkedin: 'https://www.linkedin.com/in/ana-carolina-silva-4ab200276/' },
+  { name: 'Romão Santos', photo: 'images/team/romao-santos.jpg', linkedin: 'https://www.linkedin.com/in/romaosantos/' },
+  { name: 'Pedro Senna', photo: 'images/team/pedro-senna.jpg', linkedin: 'https://www.linkedin.com/in/pedro-p-senna33/' },
+  { name: 'António Almeida', photo: 'images/team/antonio-almeida.jpg', linkedin: 'https://www.linkedin.com/in/almeidan7/' },
 ];
 
 /** Junta nome, foto e LinkedIn de cada founder ao cargo e descrição de uma língua (mesma ordem). */
@@ -60,11 +60,11 @@ const pt: AboutContent = {
   hero: {
     badge: 'Sobre a SymHive',
     titleAmber: 'Construída por pessoas que conhecem',
-    titleCyan: 'a simulação e a operação.',
+    titleCyan: 'a simulação e a operação',
     lead: 'Com o apoio do INESC TEC, dedicamo-nos à geração automática de modelos de simulação para sistemas industriais complexos.',
   },
   story: {
-    title: 'Porque existimos.',
+    title: 'Porque existimos',
     mission: 'Testar uma ideia deve ser tão rápido como tê-la.',
     paragraphs: [
       'Passámos anos ao lado de equipas de produção e logística que tinham de decidir sem tempo para testar. Vimos estudos de simulação demorarem meses e chegarem quando a operação já tinha mudado. Durante o programa TechLaunch, falámos com mais de 100 parceiros industriais para chegar a esta solução.',
@@ -77,7 +77,7 @@ const pt: AboutContent = {
     ],
   },
   team: {
-    title: 'Quem constrói a SymHive.',
+    title: 'Quem constrói a SymHive',
     linkedinLabel: 'LinkedIn de',
     members: withFounders([
       { role: 'Estratégia e Engenharia', bio: 'Lidera a visão e a estratégia da empresa, ligando a simulação aos sistemas de negócio que movem as empresas industriais.' },
@@ -90,7 +90,7 @@ const pt: AboutContent = {
   origins: {
     badge: 'Com o apoio do INESC TEC',
     patent: 'Patente pendente',
-    title: 'Origem na investigação.',
+    title: 'Origem na investigação',
     paragraphs: [
       'Com o apoio do INESC TEC, a SymHive nasce da investigação em simulação, otimização e gémeos digitais e de anos de projetos com a indústria.',
       'Hoje levamos esse conhecimento do laboratório para o chão de fábrica, numa plataforma que fica mais inteligente a cada projeto e que permite a qualquer empresa industrial tomar decisões informadas dentro da fábrica.',
@@ -119,11 +119,11 @@ const en: AboutContent = {
   hero: {
     badge: 'About SymHive',
     titleAmber: 'Built by people who know',
-    titleCyan: 'simulation and operations.',
+    titleCyan: 'simulation and operations',
     lead: 'Backed by INESC TEC, we are dedicated to the automatic generation of simulation models for complex industrial systems.',
   },
   story: {
-    title: 'Why we exist.',
+    title: 'Why we exist',
     mission: 'Testing an idea should be as fast as having it.',
     paragraphs: [
       'We spent years alongside production and logistics teams who had to decide with no time to test. We saw simulation studies take months and arrive when the operation had already changed. During the TechLaunch programme, we spoke with more than 100 industrial partners to arrive at this solution.',
@@ -136,7 +136,7 @@ const en: AboutContent = {
     ],
   },
   team: {
-    title: 'The people building SymHive.',
+    title: 'The people building SymHive',
     linkedinLabel: 'LinkedIn profile of',
     members: withFounders([
       { role: 'Strategy & Engineering', bio: "Leads the company's vision and strategy, connecting simulation with the business systems that drive industrial companies." },
@@ -149,7 +149,7 @@ const en: AboutContent = {
   origins: {
     badge: 'Backed by INESC TEC',
     patent: 'Patent pending',
-    title: 'Research origins.',
+    title: 'Research origins',
     paragraphs: [
       'Backed by INESC TEC, SymHive was born from research in simulation, optimization and digital twins, and from years of projects with industry.',
       'Today we take that knowledge from the lab to the shop floor, in a platform that gets smarter with every project and lets any industrial company make informed decisions inside the factory.',
