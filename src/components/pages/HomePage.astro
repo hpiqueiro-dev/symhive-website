@@ -4,7 +4,6 @@ import HeroSection from '../home/HeroSection.astro';
 import PainSection from '../home/PainSection.astro';
 import ImpactSection from '../home/ImpactSection.astro';
 import SolutionFlow from '../home/SolutionFlow.astro';
-import { commonContent } from '../../i18n/common';
 import { homeContent } from '../../i18n/home';
 import { pagePath, type Locale } from '../../i18n/locales';
 
@@ -17,7 +16,7 @@ const t = homeContent[locale];
 ---
 
 <SiteLayout locale={locale} page="home" title={t.meta.title} description={t.meta.description} contactCompact>
-  <HeroSection hero={t.hero} contact={commonContent[locale].contact} />
+  <HeroSection hero={t.hero} />
   <PainSection pain={t.pain} shade />
   <ImpactSection impact={t.impact} stats={t.stats} moreHref={pagePath(locale, 'cases')} />
   <SolutionFlow solution={t.solution} shade moreHref={pagePath(locale, 'product')} />

@@ -23,7 +23,7 @@ export interface AboutContent {
   origins: { badge: string; patent: string; title: string; paragraphs: string[]; logoAlt: string };
   /**
    * Última secção: informação de contactos. value null mostra «pending».
-   * O email vem de site.contactEmail (src/config/site.ts); os restantes valores ficam aqui.
+   * O email e o telefone vêm de src/config/site.ts; os restantes valores ficam aqui.
    */
   contacts: {
     title: string;

@@ -10,9 +10,9 @@ interface Props {
 
 const { contacts, shade = false } = Astro.props;
 
-// O email vem da configuração do site; os outros valores vêm do conteúdo.
+// O email e o telefone vêm da configuração do site; os outros valores vêm do conteúdo.
 const items = contacts.items.map((item) => {
-  const value = item.type === 'email' ? item.value ?? site.contactEmail : item.value;
+  const value = item.value ?? (item.type === 'email' ? site.contactEmail : item.type === 'phone' ? site.contactPhone : null);
   const href = !value
     ? undefined
     : item.href ??
