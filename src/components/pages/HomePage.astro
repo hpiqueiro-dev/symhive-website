@@ -1,6 +1,7 @@
 ---
 import SiteLayout from '../../layouts/SiteLayout.astro';
 import HeroSection from '../home/HeroSection.astro';
+import CredentialsStrip from '../home/CredentialsStrip.astro';
 import PainSection from '../home/PainSection.astro';
 import ImpactSection from '../home/ImpactSection.astro';
 import SolutionFlow from '../home/SolutionFlow.astro';
@@ -17,6 +18,7 @@ const t = homeContent[locale];
 
 <SiteLayout locale={locale} page="home" title={t.meta.title} description={t.meta.description} contactCompact>
   <HeroSection hero={t.hero} />
+  <CredentialsStrip credentials={t.credentials} />
   <PainSection pain={t.pain} shade />
   <ImpactSection impact={t.impact} stats={t.stats} moreHref={pagePath(locale, 'cases')} />
   <SolutionFlow solution={t.solution} shade moreHref={pagePath(locale, 'product')} />

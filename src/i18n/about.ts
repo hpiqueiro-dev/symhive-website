@@ -71,9 +71,9 @@ const pt: AboutContent = {
       'Criámos a SymHive para que cada decisão seja testada antes de chegar ao terreno, quando há pessoas, prazos e investimentos em jogo.',
     ],
     facts: [
-      'Decidir com confiança, não por intuição',
-      'Tecnologia ao serviço de quem opera',
-      'Cada projeto torna o seguinte mais rápido',
+      '+100 conversas com a indústria no programa TechLaunch',
+      'Múltiplos projetos industriais no INESC TEC',
+      'Experiência em simulação, otimização e engenharia industrial',
     ],
   },
   team: {
@@ -130,9 +130,9 @@ const en: AboutContent = {
       'We created SymHive so that every decision is tested before it reaches the shop floor, when people, deadlines and investments are at stake.',
     ],
     facts: [
-      'Deciding with confidence, not gut feeling',
-      'Technology that serves the people who operate',
-      'Every project makes the next one faster',
+      '100+ conversations with industry in the TechLaunch programme',
+      'Multiple industrial projects at INESC TEC',
+      'Experience in simulation, optimization and industrial engineering',
     ],
   },
   team: {

@@ -51,7 +51,7 @@ const pt: CasesContent = {
     titleAmber: 'Construída para',
     titleCyan: 'desafios industriais reais',
     lead: 'Atuamos onde a operação é complexa, onde cada mudança afeta o sistema inteiro e cada decisão tem impacto em toda a fábrica.',
-    proof: { text: 'Mais de 100 conversas com a indústria no programa TechLaunch' },
+    proof: { text: '+10 projetos de simulação desenvolvidos pela equipa no INESC TEC' },
   },
   industries: {
     title: 'Indústrias onde atuamos',
@@ -146,7 +146,7 @@ const en: CasesContent = {
     titleAmber: 'Built for real',
     titleCyan: 'industrial challenges',
     lead: 'We work where operations are complex, where every change affects the whole system and every decision impacts the factory.',
-    proof: { text: 'More than 100 interviews with industry in the TechLaunch programme' },
+    proof: { text: '10+ simulation projects developed by the team at INESC TEC' },
   },
   industries: {
     title: 'Industries we work in',

@@ -12,6 +12,8 @@ export interface HomeContent {
     lead: string;
     illustrationLabel: string;
   };
+  /** Faixa discreta logo abaixo do hero, com factos verificáveis. */
+  credentials: { label: string; items: string[] };
   pain: {
     label: string;
     statement: [string, string];
@@ -88,6 +90,14 @@ const pt: HomeContent = {
     titleRest: 'Uma só Hive.',
     lead: 'A SymHive torna a simulação mais rápida e fácil de escalar, gerando automaticamente modelos de sistemas industriais complexos a partir dos seus dados de produção e devolvendo KPIs que pode defender.',
     illustrationLabel: 'Esquema de uma fábrica com braço robótico, tapete transportador, armazém e AGV',
+  },
+  credentials: {
+    label: 'Credenciais',
+    items: [
+      'Validada em 4 ambientes industriais de produção de máquinas',
+      'Patente pendente na geração automática de modelos',
+      'Com o apoio do INESC TEC',
+    ],
   },
   pain: {
     label: 'O problema',
@@ -182,6 +192,14 @@ const en: HomeContent = {
     titleRest: 'One Hive.',
     lead: 'SymHive makes simulation faster and easier to scale, automatically generating models of complex industrial systems from your production data and returning KPIs you can defend.',
     illustrationLabel: 'Wireframe of a factory with a robot arm, conveyor belt, warehouse and AGV',
+  },
+  credentials: {
+    label: 'Credentials',
+    items: [
+      'Validated in 4 industrial environments in machine manufacturing',
+      'Patent pending on automatic model generation',
+      'Backed by INESC TEC',
+    ],
   },
   pain: {
     label: 'The problem',
