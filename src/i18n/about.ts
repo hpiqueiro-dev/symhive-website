@@ -67,7 +67,7 @@ const pt: AboutContent = {
     title: 'Porque existimos',
     mission: 'Testar uma ideia deve ser tão rápido como tê-la.',
     paragraphs: [
-      'Passámos anos ao lado de equipas de produção e logística que tinham de decidir sem tempo para testar. Vimos estudos de simulação demorarem meses e chegarem quando a operação já tinha mudado. Durante o programa TechLaunch, falámos com mais de 100 parceiros industriais para chegar a esta solução.',
+      'Passámos anos ao lado de equipas de produção e logística que tinham de decidir sem tempo para testar. Vimos estudos de simulação demorarem meses e chegarem quando a operação já tinha mudado. A participação no programa TechLaunch foi decisiva para desenvolvermos a solução e conhecermos o mercado, lado a lado com quem toma decisões no terreno.',
       'Criámos a SymHive para que cada decisão seja testada antes de chegar ao terreno, quando há pessoas, prazos e investimentos em jogo.',
     ],
     facts: [
@@ -126,7 +126,7 @@ const en: AboutContent = {
     title: 'Why we exist',
     mission: 'Testing an idea should be as fast as having it.',
     paragraphs: [
-      'We spent years alongside production and logistics teams who had to decide with no time to test. We saw simulation studies take months and arrive when the operation had already changed. During the TechLaunch programme, we spoke with more than 100 industrial partners to arrive at this solution.',
+      'We spent years alongside production and logistics teams who had to decide with no time to test. We saw simulation studies take months and arrive when the operation had already changed. Taking part in the TechLaunch programme was decisive in developing the solution and getting to know the market, alongside the people who make decisions on the ground.',
       'We created SymHive so that every decision is tested before it reaches the shop floor, when people, deadlines and investments are at stake.',
     ],
     facts: [
