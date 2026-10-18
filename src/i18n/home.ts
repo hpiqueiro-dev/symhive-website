@@ -119,7 +119,7 @@ const pt: HomeContent = {
     outputsLabel: 'Saída',
     outputs: [
       { title: 'Dados estruturados', description: 'Um modelo de dados comum.' },
-      { title: 'Simulação gerada', description: 'Construída automaticamente, sem programação.' },
+      { title: 'Simulação gerada', description: 'Construída automaticamente, em low code.' },
       { title: 'Cenários comparados', description: 'Alternativas avaliadas com os mesmos critérios.' },
       { title: 'KPIs estruturados', description: 'Indicadores para defender cada decisão.' },
       { title: 'Interoperabilidade', description: 'Resultados implementados no seu sistema.' },
@@ -154,7 +154,7 @@ const pt: HomeContent = {
   stats: {
     label: 'Principais resultados',
     items: [
-      { prefix: '−', value: 50, title: 'Metade do tempo', label: 'do estudo à implementação' },
+      { prefix: '−', value: 50, title: 'Pelo menos metade do tempo', label: 'do estudo à implementação' },
       { prefix: '−', value: 70, title: 'Decisões mais baratas', label: 'sem estudos manuais longos' },
       { prefix: '+', value: 20, title: 'Operação mais eficiente', label: 'com o mesmo sistema real' },
     ],
@@ -213,7 +213,7 @@ const en: HomeContent = {
     outputsLabel: 'Output',
     outputs: [
       { title: 'Structured data', description: 'One common data model.' },
-      { title: 'Generated simulation', description: 'Built automatically, no programming.' },
+      { title: 'Generated simulation', description: 'Built automatically, with low code.' },
       { title: 'Compared scenarios', description: 'Alternatives assessed with the same criteria.' },
       { title: 'Structured KPIs', description: 'Indicators to defend every decision.' },
       { title: 'Interoperability', description: 'Results implemented in your system.' },
@@ -247,7 +247,7 @@ const en: HomeContent = {
   stats: {
     label: 'Key results',
     items: [
-      { prefix: '−', value: 50, title: 'Half the time', label: 'from study to implementation' },
+      { prefix: '−', value: 50, title: 'At least half the time', label: 'from study to implementation' },
       { prefix: '−', value: 70, title: 'Cheaper decisions', label: 'without long manual studies' },
       { prefix: '+', value: 20, title: 'A more efficient operation', label: 'with the same real system' },
     ],

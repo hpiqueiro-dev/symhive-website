@@ -88,7 +88,7 @@ const pt: ProductContent = {
     description: 'Múltiplas capacidades que trabalham juntas, do primeiro dado ao último indicador. Algumas já estão em uso, outras estão a ser desenvolvidas com os primeiros projetos.',
     statusLabels: { available: 'Disponível', development: 'Em desenvolvimento', planned: 'Planeado' },
     items: [
-      { title: 'Geração automática', description: 'O modelo de simulação é construído a partir dos dados, sem programação manual.', tag: 'Patente pendente', status: 'development' },
+      { title: 'Geração automática', description: 'O modelo de simulação é construído a partir dos dados, em low code.', tag: 'Patente pendente', status: 'development' },
       { title: 'Biblioteca de componentes', description: 'Postos, filas, AGVs e armazéns configuráveis e reutilizáveis entre projetos.', status: 'available' },
       { title: 'Cenários comparáveis', description: 'Várias alternativas avaliadas com os mesmos critérios e os mesmos dados.', status: 'available' },
       { title: 'Otimização inteligente', description: 'Procura as configurações que melhor equilibram capacidade, custo e prazo.', status: 'development' },
@@ -116,7 +116,7 @@ const pt: ProductContent = {
       label: 'Com a SymHive',
       items: [
         'Modelo gerado a partir dos dados',
-        'Simulação sem programação, low code',
+        'Simulação em low code',
         'Cerca de 8 semanas até decidir',
         'Várias alternativas de cenários comparadas',
         'O modelo é recalibrado quando a operação muda',
@@ -176,7 +176,7 @@ const en: ProductContent = {
     description: 'Multiple capabilities working together, from the first data point to the last indicator. Some are already in use, others are being developed with our first projects.',
     statusLabels: { available: 'Available', development: 'In development', planned: 'Planned' },
     items: [
-      { title: 'Automatic generation', description: 'The simulation model is built from the data, with no manual programming.', tag: 'Patent pending', status: 'development' },
+      { title: 'Automatic generation', description: 'The simulation model is built from the data, with low code.', tag: 'Patent pending', status: 'development' },
       { title: 'Component library', description: 'Configurable stations, queues, AGVs and warehouses, reused across projects.', status: 'available' },
       { title: 'Comparable scenarios', description: 'Several alternatives assessed with the same criteria and the same data.', status: 'available' },
       { title: 'Smart optimization', description: 'Searches for the configurations that best balance capacity, cost and lead time.', status: 'development' },
@@ -204,7 +204,7 @@ const en: ProductContent = {
       label: 'With SymHive',
       items: [
         'Model generated from the data',
-        'Simulation with no programming, low code',
+        'Low-code simulation',
         'Around 8 weeks to decide',
         'Several alternative scenarios compared',
         'The model is recalibrated when operations change',
