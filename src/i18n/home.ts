@@ -80,14 +80,14 @@ export interface HomeContent {
 
 const pt: HomeContent = {
   meta: {
-    title: 'SymHive — Da fábrica real à fábrica digital',
+    title: 'SymHive — Simule o futuro da sua fábrica',
     description:
       'A SymHive cria modelos de simulação automaticamente a partir dos dados de produção para testar cenários e apoiar decisões em produção e logística.',
   },
   hero: {
-    titleAmber: 'Da sua fábrica real',
-    titleCyan: 'à fábrica digital.',
-    titleRest: 'Uma só Hive.',
+    titleAmber: 'Simule o futuro da sua',
+    titleCyan: 'fábrica no digital.',
+    titleRest: 'Implemente a decisão no terreno.',
     lead: 'A SymHive torna a simulação mais rápida e fácil de escalar, gerando automaticamente modelos de sistemas industriais complexos a partir dos seus dados de produção e devolvendo KPIs que pode defender.',
     illustrationLabel: 'Esquema de uma fábrica com braço robótico, tapete transportador, armazém e AGV',
   },
@@ -182,14 +182,14 @@ const pt: HomeContent = {
 
 const en: HomeContent = {
   meta: {
-    title: 'SymHive — From your real factory to a digital factory',
+    title: 'SymHive — Simulate your factory’s future',
     description:
       'SymHive builds simulation models automatically from production data to test scenarios and support decisions in manufacturing and logistics.',
   },
   hero: {
-    titleAmber: 'Your real factory',
-    titleCyan: 'to a digital factory.',
-    titleRest: 'One Hive.',
+    titleAmber: 'Simulate your',
+    titleCyan: 'factory’s future digitally.',
+    titleRest: 'Implement the decision on the shop floor.',
     lead: 'SymHive makes simulation faster and easier to scale, automatically generating models of complex industrial systems from your production data and returning KPIs you can defend.',
     illustrationLabel: 'Wireframe of a factory with a robot arm, conveyor belt, warehouse and AGV',
   },
