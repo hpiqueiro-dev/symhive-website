@@ -19,9 +19,12 @@ export interface HomeContent {
     statement: [string, string];
     lead: string;
     questionsTitle: string;
-    questions: string[];
+    /** Cada pergunta traz a resposta que a SymHive dá. */
+    questions: { question: string; answer: string }[];
     /** Etiqueta de cada pergunta na consola. */
     unanswered: string;
+    /** Início, em destaque, de cada linha de resposta. */
+    answerLabel: string;
     problemsTitle: string;
     problems: string[];
   };
@@ -102,18 +105,19 @@ const pt: HomeContent = {
   pain: {
     label: 'O problema',
     statement: ['Mudar a operação custa caro.', 'Descobrir que foi a decisão errada custa muito mais.'],
-    lead: 'A simulação mostra como a operação vai reagir. Mas construir o modelo à mão exige meses e especialistas. Por isso, decisões continuam a ser tomadas com folhas de cálculo e intuição.',
-    questionsTitle: 'Perguntas que ficam sem resposta',
+    lead: 'Cada mudança na operação começa com uma pergunta, e a simulação tem a resposta. O problema é o tempo e as tecnologias: um modelo feito à mão demora meses, e as decisões continuam a ser tomadas com folhas de cálculo e intuição. A SymHive muda isso.',
+    questionsTitle: 'Perguntas que hoje ficam sem resposta',
     questions: [
-      'E se a procura aumentar 20% no próximo trimestre?',
-      'Precisamos de mais um AGV ou de mais um posto de trabalho?',
-      'O novo layout resolve mesmo o gargalo?',
-      'Em quanto tempo se paga este investimento?',
+      { question: 'E se a procura aumentar 20% no próximo trimestre?', answer: 'capacidade, gargalos e recursos necessários para cada cenário de procura.' },
+      { question: 'Precisamos de mais um AGV ou de mais um posto de trabalho?', answer: 'débito e utilização de cada opção, comparados lado a lado.' },
+      { question: 'O novo layout resolve mesmo o gargalo?', answer: 'gargalo, filas e stock intermédio, antes e depois da mudança.' },
+      { question: 'Em quanto tempo se paga este investimento?', answer: 'estimativa de retorno de cada alternativa, antes de investir.' },
     ],
-    unanswered: 'sem resposta',
+    unanswered: 'Hoje: sem resposta',
+    answerLabel: 'Com a SymHive:',
     problemsTitle: 'Problemas típicos',
     problems: [
-      'Ferramentas e sistemas que não comunicam entre si',
+      'Estudos de simulação que demoram meses',
       'Investimentos aprovados sem prova prévia',
       'Gargalos que só se descobrem no terreno',
       'Modelos que ficam desatualizados após um projeto',
@@ -204,18 +208,19 @@ const en: HomeContent = {
   pain: {
     label: 'The problem',
     statement: ['Changing the operation is expensive.', 'Finding out it was the wrong call costs far more.'],
-    lead: 'Simulation shows how the operation will react. But building the model by hand takes months and specialists. So decisions are still made with spreadsheets and gut feeling.',
-    questionsTitle: 'Questions left unanswered',
+    lead: 'Every change to the operation starts with a question, and simulation has the answer. The problem is time and technology: a model built by hand takes months, and decisions are still made with spreadsheets and gut feeling. SymHive changes that.',
+    questionsTitle: 'Questions left unanswered today',
     questions: [
-      'What if demand grows 20% next quarter?',
-      'Do we need one more AGV or one more workstation?',
-      'Will the new layout really fix the bottleneck?',
-      'How long until this investment pays off?',
+      { question: 'What if demand grows 20% next quarter?', answer: 'capacity, bottlenecks and resources needed for each demand scenario.' },
+      { question: 'Do we need one more AGV or one more workstation?', answer: 'throughput and utilisation of each option, side by side.' },
+      { question: 'Will the new layout really fix the bottleneck?', answer: 'bottleneck, queues and work-in-progress, before and after the change.' },
+      { question: 'How long until this investment pays off?', answer: 'estimated payback for each alternative, before you invest.' },
     ],
-    unanswered: 'unanswered',
+    unanswered: 'Today: unanswered',
+    answerLabel: 'With SymHive:',
     problemsTitle: 'Typical problems',
     problems: [
-      'Tools and systems that do not talk to each other',
+      'Simulation studies that take months',
       'Investments approved without prior proof',
       'Bottlenecks only discovered on the shop floor',
       'Models that go stale after a single project',

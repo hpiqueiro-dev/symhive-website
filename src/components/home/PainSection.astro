@@ -20,8 +20,11 @@ const { pain, shade = false } = Astro.props;
       <div class="win pain-console">
         <div class="wh"><i></i><i></i><i></i><span>{pain.questionsTitle}</span></div>
         <ol>
-          {pain.questions.map((question, i) => (
-            <li style={`--i:${i}`}><span class="prompt" aria-hidden="true">&gt;</span><span class="q">{question}</span><span class="status">{pain.unanswered}</span></li>
+          {pain.questions.map(({ question, answer }, i) => (
+            <li style={`--i:${i}`}>
+              <span class="prompt" aria-hidden="true">&gt;</span><span class="q">{question}</span><span class="status">{pain.unanswered}</span>
+              <p class="answer"><strong>{pain.answerLabel}</strong> {answer}</p>
+            </li>
           ))}
         </ol>
         <p class="cursor" aria-hidden="true"><span class="prompt">&gt;</span><span class="cursor-block"></span></p>

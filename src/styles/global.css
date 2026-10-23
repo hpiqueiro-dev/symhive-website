@@ -534,26 +534,29 @@ details > summary::-webkit-details-marker { display: none; }
 .pain-statement { max-width: 17em; margin: 18px 0 22px; font-size: clamp(34px, 5.4vw, 70px); font-weight: 700; line-height: 1.05; letter-spacing: -.035em; }
 .pain-statement em { font-style: normal; background: linear-gradient(90deg, var(--amber), #ff7a6b); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .pain-lead { max-width: 40em; margin: 0; color: var(--mut); font-size: clamp(17px, 1.5vw, 19px); line-height: 1.55; }
-.pain-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); gap: 24px; margin-top: clamp(36px, 5vw, 56px); }
+.pain-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; margin-top: clamp(36px, 5vw, 56px); }
 .pain-console { max-width: none; margin: 0; }
 .pain-console ol { margin: 0; padding: 6px 0 0; list-style: none; }
 .pain-console li { display: grid; grid-template-columns: 16px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 15px 22px; border-bottom: 1px solid rgba(25, 211, 230, .1); }
 .prompt { color: var(--cyan); font: 500 15px var(--font-mono); }
 .pain-console .q { color: var(--ink); font-size: 16px; }
-.pain-console .status { padding: 3px 10px; border: 1px solid rgba(255, 122, 107, .45); border-radius: 999px; color: #ff7a6b; font: 500 11px var(--font-mono); letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
+.pain-console .status { padding: 3px 10px; border: 1px solid rgba(255, 122, 107, .28); border-radius: 999px; background: rgba(255, 122, 107, .16); color: #ff7a6b; font: 500 11px var(--font-mono); letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
+.pain-console .answer { grid-column: 2 / -1; margin: 0; color: var(--mut); font-size: 14.5px; line-height: 1.5; overflow-wrap: anywhere; }
+.pain-console .answer strong { color: var(--amber); font-weight: 600; }
 .pain-console .cursor { display: flex; align-items: center; gap: 12px; margin: 0; padding: 14px 22px 18px; }
 .cursor-block { display: inline-block; width: 9px; height: 18px; background: var(--cyan); animation: blink 1s steps(1) infinite; }
-.pain-problems { display: flex; flex-direction: column; padding: 20px 22px; border: 1px solid rgba(255, 122, 107, .28); border-radius: 18px; background: rgba(3, 8, 10, .94); }
+.pain-problems { padding: 20px 22px; border: 1px solid rgba(255, 122, 107, .28); border-radius: 18px; background: rgba(3, 8, 10, .94); }
 .pain-problems h3 { margin-bottom: 8px; font-size: 18px; }
-/* A lista ocupa a altura da consola ao lado, com as linhas distribuídas. */
-.pain-problems ul { display: flex; flex: 1; flex-direction: column; justify-content: space-around; margin: 0; padding: 0; list-style: none; }
-.pain-problems li { display: flex; align-items: center; gap: 12px; padding: 9px 0; border-top: 1px solid var(--line); color: var(--mut); font-size: 14px; line-height: 1.4; }
-.pain-problems li:first-child { border-top: 0; }
+/* Os problemas ficam por baixo da consola, numa grelha 2x2. */
+.pain-problems ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 0; padding: 0; list-style: none; }
+.pain-problems li { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; color: var(--mut); font-size: 14px; line-height: 1.4; }
 .alert { display: grid; flex: none; place-items: center; width: 26px; height: 30px; background: rgba(255, 122, 107, .16); clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); color: #ff7a6b; font: 700 13px var(--font-mono); }
 @media (max-width: 860px) {
-  .pain-grid { grid-template-columns: minmax(0, 1fr); }
   .pain-console li { grid-template-columns: 16px minmax(0, 1fr); padding: 14px 18px; }
   .pain-console .status { grid-column: 2; justify-self: start; }
+}
+@media (max-width: 560px) {
+  .pain-problems ul { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* Página principal: entrada → SymHive → saída verificada. */
