@@ -105,7 +105,7 @@ const pt: HomeContent = {
   pain: {
     label: 'O problema',
     statement: ['Mudar a operação custa caro.', 'Descobrir que foi a decisão errada custa muito mais.'],
-    lead: 'Cada mudança na operação começa com uma pergunta, e a simulação tem a resposta. O problema é o tempo e as tecnologias: um modelo feito à mão demora meses, e as decisões continuam a ser tomadas com folhas de cálculo e intuição. A SymHive muda isso.',
+    lead: 'Cada mudança na operação começa com uma pergunta, e a simulação pode responder-lhe. O problema é que um modelo feito à mão demora meses, por isso as decisões continuam a ser tomadas com folhas de cálculo e intuição. A SymHive muda isso.',
     questionsTitle: 'Perguntas que hoje ficam sem resposta',
     questions: [
       { question: 'E se a procura aumentar 20% no próximo trimestre?', answer: 'capacidade, gargalos e recursos necessários para cada cenário de procura.' },
@@ -124,7 +124,7 @@ const pt: HomeContent = {
     ],
   },
   solution: {
-    title: 'Os seus dados entram. Decisões validadas saem.',
+    title: 'Os seus dados entram. Decisões fundamentadas saem.',
     description: 'Estamos a construir a SymHive, onde ligamos os dados que já existem nas empresas e devolvemos cenários comparáveis.',
     inputsLabel: 'Entrada',
     question: { title: 'Decisão a tomar' },
@@ -136,7 +136,7 @@ const pt: HomeContent = {
       { title: 'Simulação gerada', description: 'Construída automaticamente, em low code.' },
       { title: 'Cenários comparados', description: 'Alternativas avaliadas com os mesmos critérios.' },
       { title: 'KPIs estruturados', description: 'Indicadores para defender cada decisão.' },
-      { title: 'Interoperabilidade', description: 'Resultados implementados no seu sistema.' },
+      { title: 'Interoperabilidade', description: 'Resultados exportáveis para os seus sistemas.' },
     ],
     more: 'Conhecer o produto',
   },
@@ -208,7 +208,7 @@ const en: HomeContent = {
   pain: {
     label: 'The problem',
     statement: ['Changing the operation is expensive.', 'Finding out it was the wrong call costs far more.'],
-    lead: 'Every change to the operation starts with a question, and simulation has the answer. The problem is time and technology: a model built by hand takes months, and decisions are still made with spreadsheets and gut feeling. SymHive changes that.',
+    lead: 'Every change to the operation starts with a question, and simulation can answer it. The problem is that a model built by hand takes months, so decisions are still made with spreadsheets and gut feeling. SymHive changes that.',
     questionsTitle: 'Questions left unanswered today',
     questions: [
       { question: 'What if demand grows 20% next quarter?', answer: 'capacity, bottlenecks and resources needed for each demand scenario.' },
@@ -227,7 +227,7 @@ const en: HomeContent = {
     ],
   },
   solution: {
-    title: 'Your data goes in. Validated decisions come out.',
+    title: 'Your data goes in. Evidence-based decisions come out.',
     description: 'We are building SymHive, connecting the data companies already have and returning comparable scenarios.',
     inputsLabel: 'Input',
     question: { title: 'Decision to make' },
@@ -239,7 +239,7 @@ const en: HomeContent = {
       { title: 'Generated simulation', description: 'Built automatically, with low code.' },
       { title: 'Compared scenarios', description: 'Alternatives assessed with the same criteria.' },
       { title: 'Structured KPIs', description: 'Indicators to defend every decision.' },
-      { title: 'Interoperability', description: 'Results implemented in your system.' },
+      { title: 'Interoperability', description: 'Results you can export to your systems.' },
     ],
     more: 'Explore the product',
   },

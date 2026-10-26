@@ -44,14 +44,14 @@ export interface CasesContent {
 const pt: CasesContent = {
   meta: {
     title: 'Casos de uso — SymHive',
-    description: 'Indústrias, problemas e casos de uso em que a SymHive gerou modelos de simulação para apoiar decisões.',
+    description: 'Indústrias e problemas em que a SymHive gera modelos de simulação para apoiar decisões.',
   },
   hero: {
     badge: 'Casos de uso',
     titleAmber: 'Construída para',
     titleCyan: 'desafios industriais reais',
     lead: 'Atuamos onde a operação é complexa, onde cada mudança afeta o sistema inteiro e cada decisão tem impacto em toda a fábrica.',
-    proof: { text: '+10 projetos de simulação desenvolvidos pela equipa no INESC TEC' },
+    proof: { text: 'Mais de 10 projetos de simulação desenvolvidos pela equipa no INESC TEC' },
   },
   industries: {
     title: 'Indústrias onde atuamos',
@@ -78,7 +78,7 @@ const pt: CasesContent = {
         cases: [
           {
             title: 'Novo layout numa expansão',
-            industry: 'logistics',
+            industry: 'manufacturing',
             challenge: 'O novo layout resolve o gargalo ou apenas o muda de sítio? Numa expansão, como dispor as novas máquinas?',
             approach: 'Modelamos o layout atual e as alternativas a partir do CAD, com postos, filas e fluxos de material, e projetamos o crescimento previsto da empresa.',
             result: 'Produtividade, utilização, stock intermédio e gargalo de cada alternativa, hoje e no futuro, com a estratégia de contratação e compra de máquinas.',
@@ -92,7 +92,7 @@ const pt: CasesContent = {
         cases: [
           {
             title: 'Substituir empilhadores por AGVs',
-            industry: 'manufacturing',
+            industry: 'logistics',
             challenge: 'Quantos AGVs são precisos para substituir os empilhadores, quanto custam e em quanto tempo se pagam?',
             approach: 'Modelamos a frota atual e a nova tecnologia, com rotas, cargas e tempos de carregamento, e identificamos as alterações ao layout necessárias para a integrar.',
             result: 'Dimensão da frota, utilização, tempos de espera e estimativa de retorno, para a situação atual e para cenários de maior procura.',
@@ -106,10 +106,10 @@ const pt: CasesContent = {
         cases: [
           {
             title: 'Alocação de operadores por tarefa',
-            industry: 'warehouse',
+            industry: 'manufacturing',
             challenge: 'Quantos operadores alocar a cada tarefa para produzir mais, e como distribuí-los tendo em conta o tempo de ciclo de cada operação?',
-            approach: 'Modelamos a procura histórica e prevista, as equipas, os turnos e a frota.',
-            result: 'Dimensionamento por cenário de procura, com nível de serviço e custo.',
+            approach: 'Modelamos a procura histórica e prevista, as tarefas, os tempos de ciclo e os turnos.',
+            result: 'Número de operadores por tarefa e por turno, para cada cenário de procura, com nível de serviço e custo.',
           },
         ],
       },
@@ -131,15 +131,15 @@ const pt: CasesContent = {
   },
   note: 'Casos típicos dos projetos que desenvolvemos. Os resultados dependem dos dados e do contexto de cada operação.',
   contact: {
-    title: 'Junte-se ao nosso portefólio',
-    description: 'Junte-se às empresas que já ganharam com a simulação. Entre em contacto e mostramos o que a SymHive pode fazer pela sua operação.',
+    title: 'Tem um desafio parecido?',
+    description: 'Fale connosco e mostramos o que a SymHive pode fazer pela sua operação.',
   },
 };
 
 const en: CasesContent = {
   meta: {
     title: 'Use cases — SymHive',
-    description: 'Industries, problems and use cases where SymHive generated simulation models to support decisions.',
+    description: 'Industries and problems where SymHive generates simulation models to support decisions.',
   },
   hero: {
     badge: 'Use cases',
@@ -173,7 +173,7 @@ const en: CasesContent = {
         cases: [
           {
             title: 'New layout for an expansion',
-            industry: 'logistics',
+            industry: 'manufacturing',
             challenge: 'Does the new layout fix the bottleneck, or just move it? In an expansion, how should the new machines be arranged?',
             approach: 'We model the current layout and the alternatives from CAD, with stations, queues and material flows, and project the company’s expected growth.',
             result: 'Productivity, utilization, work-in-progress and the bottleneck of each alternative, today and in the future, with the hiring and machine purchasing strategy.',
@@ -187,7 +187,7 @@ const en: CasesContent = {
         cases: [
           {
             title: 'Replacing forklifts with AGVs',
-            industry: 'manufacturing',
+            industry: 'logistics',
             challenge: 'How many AGVs are needed to replace the forklifts, what do they cost and how long until they pay off?',
             approach: 'We model the current fleet and the new technology, with routes, loads and charging times, and identify the layout changes needed to integrate it.',
             result: 'Fleet size, utilization, waiting times and payback estimate, for the current situation and for higher-demand scenarios.',
@@ -201,10 +201,10 @@ const en: CasesContent = {
         cases: [
           {
             title: 'Assigning operators to tasks',
-            industry: 'warehouse',
+            industry: 'manufacturing',
             challenge: 'How many operators should be assigned to each task to produce more, and how should they be distributed given each operation’s cycle time?',
-            approach: 'We model historical and forecast demand, teams, shifts and the fleet.',
-            result: 'Sizing per demand scenario, with service level and cost.',
+            approach: 'We model historical and forecast demand, tasks, cycle times and shifts.',
+            result: 'Number of operators per task and per shift, for each demand scenario, with service level and cost.',
           },
         ],
       },
@@ -226,8 +226,8 @@ const en: CasesContent = {
   },
   note: 'Typical cases from the projects we develop. Results depend on the data and context of each operation.',
   contact: {
-    title: 'Join our portfolio',
-    description: 'Join the companies already winning with simulation. Get in touch and we will show you what SymHive can do for your operation.',
+    title: 'Facing a similar challenge?',
+    description: "Get in touch and we'll show you what SymHive can do for your operation.",
   },
 };
 

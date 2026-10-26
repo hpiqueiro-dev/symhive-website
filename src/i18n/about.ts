@@ -72,7 +72,7 @@ const pt: AboutContent = {
     ],
     facts: [
       '+100 conversas com a indústria no programa TechLaunch',
-      'Múltiplos projetos industriais no INESC TEC',
+      'Mais de 10 projetos industriais no INESC TEC',
       'Experiência em simulação, otimização e engenharia industrial',
     ],
   },
@@ -131,7 +131,7 @@ const en: AboutContent = {
     ],
     facts: [
       '100+ conversations with industry in the TechLaunch programme',
-      'Multiple industrial projects at INESC TEC',
+      '10+ industrial projects at INESC TEC',
       'Experience in simulation, optimization and industrial engineering',
     ],
   },
