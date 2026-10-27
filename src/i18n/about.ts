@@ -61,7 +61,7 @@ const pt: AboutContent = {
     badge: 'Sobre a SymHive',
     titleAmber: 'Construída por pessoas que conhecem',
     titleCyan: 'a simulação e a operação',
-    lead: 'Com o apoio do INESC TEC, dedicamo-nos à geração automática de modelos de simulação para sistemas industriais complexos.',
+    lead: 'Dedicamo-nos à geração automática de modelos de simulação para sistemas industriais complexos.',
   },
   story: {
     title: 'Porque existimos',
@@ -80,11 +80,11 @@ const pt: AboutContent = {
     title: 'Quem constrói a SymHive',
     linkedinLabel: 'LinkedIn de',
     members: withFounders([
-      { role: 'Estratégia e Engenharia', bio: 'Lidera a visão e a estratégia da empresa, ligando a simulação aos sistemas de negócio que movem as empresas industriais.' },
-      { role: 'Engenharia de Soluções', bio: 'Lidera a modelação e a execução técnica das nossas soluções de simulação.' },
-      { role: 'Arquitetura de Sistemas', bio: 'Responsável pela arquitetura tecnológica. Traduz os desafios de negócio em soluções técnicas e define como tudo se interliga numa só plataforma.' },
-      { role: 'Finanças e Administração', bio: 'Assegura a base administrativa, jurídica e financeira da empresa, transformando a estratégia em planos operacionais.' },
-      { role: 'Crescimento e Estratégia', bio: 'Traz um conhecimento profundo de vendas industriais e maturidade digital, impulsionando o crescimento comercial e as relações estratégicas.' },
+      { role: 'Estratégia e engenharia', bio: 'Lidera a visão e a estratégia da empresa, ligando a simulação aos sistemas de negócio que movem as empresas industriais.' },
+      { role: 'Engenharia de soluções', bio: 'Lidera a modelação e a execução técnica das nossas soluções de simulação.' },
+      { role: 'Arquitetura de sistemas', bio: 'Responsável pela arquitetura tecnológica. Traduz os desafios de negócio em soluções técnicas e define como tudo se interliga numa só plataforma.' },
+      { role: 'Finanças e administração', bio: 'Assegura a base administrativa, jurídica e financeira da empresa, transformando a estratégia em planos operacionais.' },
+      { role: 'Crescimento e estratégia', bio: 'Traz um conhecimento profundo de vendas industriais e de transformação digital, impulsionando o crescimento comercial e as relações estratégicas.' },
     ]),
   },
   origins: {
@@ -92,7 +92,7 @@ const pt: AboutContent = {
     patent: 'Patente pendente',
     title: 'Origem na investigação',
     paragraphs: [
-      'Com o apoio do INESC TEC, a SymHive nasce da investigação em simulação, otimização e gémeos digitais e de anos de projetos com a indústria.',
+      'A SymHive nasce da investigação em simulação, otimização e gémeos digitais e de anos de projetos com a indústria.',
       'Hoje levamos esse conhecimento do laboratório para o chão de fábrica, numa plataforma que fica mais inteligente a cada projeto e que permite a qualquer empresa industrial tomar decisões informadas.',
       'A tecnologia de geração automática de modelos tem um pedido de patente submetido.',
     ],
@@ -120,7 +120,7 @@ const en: AboutContent = {
     badge: 'About SymHive',
     titleAmber: 'Built by people who know',
     titleCyan: 'simulation and operations',
-    lead: 'Backed by INESC TEC, we are dedicated to the automatic generation of simulation models for complex industrial systems.',
+    lead: 'We are dedicated to the automatic generation of simulation models for complex industrial systems.',
   },
   story: {
     title: 'Why we exist',
@@ -132,18 +132,18 @@ const en: AboutContent = {
     facts: [
       'More than 100 conversations with industry in the TechLaunch programme',
       'More than 10 industrial projects at INESC TEC',
-      'Experience in simulation, optimization and industrial engineering',
+      'Experience in simulation, optimisation and industrial engineering',
     ],
   },
   team: {
     title: 'The people building SymHive',
     linkedinLabel: 'LinkedIn profile of',
     members: withFounders([
-      { role: 'Strategy & Engineering', bio: "Leads the company's vision and strategy, connecting simulation with the business systems that drive industrial companies." },
-      { role: 'Solutions Engineering', bio: 'Leads the modelling and technical delivery of our simulation solutions.' },
-      { role: 'Systems Architecture', bio: 'Responsible for the technology architecture. Translates business challenges into technical solutions and defines how everything connects into a single platform.' },
-      { role: 'Finance & Administration', bio: 'Provides the administrative, legal and financial backbone of the company, turning strategy into operational plans.' },
-      { role: 'Growth & Strategy', bio: 'Brings deep knowledge of industrial sales and digital maturity, driving commercial growth and strategic relationships.' },
+      { role: 'Strategy & engineering', bio: "Leads the company's vision and strategy, connecting simulation with the business systems that drive industrial companies." },
+      { role: 'Solutions engineering', bio: 'Leads the modelling and technical delivery of our simulation solutions.' },
+      { role: 'Systems architecture', bio: 'Responsible for the technology architecture. Translates business challenges into technical solutions and defines how everything connects into a single platform.' },
+      { role: 'Finance & administration', bio: 'Provides the administrative, legal and financial backbone of the company, turning strategy into operational plans.' },
+      { role: 'Growth & strategy', bio: 'Brings deep knowledge of industrial sales and digital transformation, driving commercial growth and strategic relationships.' },
     ]),
   },
   origins: {
@@ -151,7 +151,7 @@ const en: AboutContent = {
     patent: 'Patent pending',
     title: 'Research origins',
     paragraphs: [
-      'Backed by INESC TEC, SymHive was born from research in simulation, optimization and digital twins, and from years of projects with industry.',
+      'SymHive was born from research in simulation, optimisation and digital twins, and from years of projects with industry.',
       'Today we take that knowledge from the lab to the shop floor, in a platform that gets smarter with every project and lets any industrial company make informed decisions.',
       'Our automatic model generation technology is patent pending.',
     ],
