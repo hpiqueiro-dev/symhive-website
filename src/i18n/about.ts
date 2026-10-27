@@ -101,7 +101,7 @@ const pt: AboutContent = {
   contacts: {
     title: 'Contactos',
     description: 'Fale diretamente com a equipa da SymHive.',
-    pending: 'Por definir',
+    pending: 'Por preencher',
     items: [
       { type: 'email', label: 'Email', value: null },
       { type: 'phone', label: 'Telefone', value: null },

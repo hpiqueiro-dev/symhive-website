@@ -81,7 +81,7 @@ const pt: ProductContent = {
       { label: 'Utilização', value: '86%' },
       { label: 'Retorno', value: '14 meses' },
     ],
-    caption: 'Versão piloto · Patente pendente · Validada em quatro ambientes industriais',
+    caption: 'Versão piloto · Patente pendente · Validada em quatro ambientes industriais · Dados ilustrativos',
   },
   features: {
     title: 'Plataforma de apoio à decisão industrial',
@@ -169,7 +169,7 @@ const en: ProductContent = {
       { label: 'Utilisation', value: '86%' },
       { label: 'Payback', value: '14 months' },
     ],
-    caption: 'Pilot version · Patent pending · Validated in four industrial environments',
+    caption: 'Pilot version · Patent pending · Validated in four industrial environments · Illustrative data',
   },
   features: {
     title: 'Industrial decision support platform',

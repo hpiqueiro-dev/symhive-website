@@ -174,11 +174,13 @@ details > summary::-webkit-details-marker { display: none; }
 @keyframes dash { to { stroke-dashoffset: -22; } }
 .cv .loop { fill: none; stroke: #2a4a52; stroke-width: 1.4; stroke-dasharray: 3 6; transition: stroke .2s; }
 .cv .loop.hl { stroke: var(--amber); }
-.panel { padding: 22px 22px 24px; }
+.panel { display: flex; flex-direction: column; justify-content: center; padding: 22px 22px 24px; }
 .panel label { display: flex; justify-content: space-between; margin-bottom: 8px; color: var(--mut); font-size: 13px; }
 .panel label b { color: var(--ink); font-weight: 600; }
 .panel input[type=range] { width: 100%; margin: 0 0 20px; accent-color: var(--amber); }
-.kpi { margin-bottom: 9px; padding: 11px 14px; border: 1px solid rgba(25, 211, 230, .16); border-radius: 10px; background: rgba(25, 211, 230, .05); }
+/* KPIs numa linha por baixo do esquema e dos controlos. */
+.kpis { display: grid; grid-column: 1 / -1; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; padding: 18px 22px 22px; border-top: 1px solid rgba(25, 211, 230, .14); }
+.kpi { padding: 11px 14px; border: 1px solid rgba(25, 211, 230, .16); border-radius: 10px; background: rgba(25, 211, 230, .05); }
 .kpi small { display: block; color: var(--mut); font-size: 12px; }
 .kpi b { color: var(--amber); font: 500 24px/1.25 var(--font-mono); }
 .kpi b.kpi-text { font-size: 17px; }
@@ -191,6 +193,7 @@ details > summary::-webkit-details-marker { display: none; }
   .wb { grid-template-columns: minmax(0, 1fr); }
   .cv { border-right: 0; border-bottom: 1px solid rgba(25, 211, 230, .14); }
 }
+@media (max-width: 600px) { .kpis { grid-template-columns: minmax(0, 1fr); } }
 
 /* ---------- impacto ---------- */
 .impact h2 { max-width: 14em; margin-bottom: clamp(28px, 4vw, 44px); font-size: clamp(32px, 5vw, 64px); font-weight: 700; line-height: 1.04; letter-spacing: -.035em; }

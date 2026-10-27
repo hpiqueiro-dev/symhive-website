@@ -48,10 +48,12 @@ const labels = JSON.stringify({
           <input id="sim-agvs" type="range" data-i="n" min="1" max="10" value="4" aria-label={s.agvs.aria} />
           <label for="sim-stations">{s.stations.label} <b data-o="s">3</b></label>
           <input id="sim-stations" type="range" data-i="s" min="1" max="6" value="3" aria-label={s.stations.aria} />
+          <p class="ill">{s.note}</p>
+        </div>
+        <div class="kpis">
           <div class="kpi" aria-live="polite"><small>{s.kpis.throughput}</small><b data-o="th"></b><span class="dl" data-o="dl"></span></div>
           <div class="kpi"><small>{s.kpis.utilization}</small><b data-o="ut"></b></div>
           <div class="kpi"><small>{s.kpis.bottleneck}</small><b class="kpi-text" data-o="bn"></b></div>
-          <p class="ill">{s.note}</p>
         </div>
       </div>
     </div>
