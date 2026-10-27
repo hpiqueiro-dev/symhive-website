@@ -76,7 +76,7 @@ const pt: CommonContent = {
 const en: CommonContent = {
   skipLink: 'Skip to content',
   nav: {
-    label: 'Main',
+    label: 'Main navigation',
     menu: 'Menu',
     home: 'Home',
     homeSections: [

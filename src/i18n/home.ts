@@ -125,7 +125,7 @@ const pt: HomeContent = {
   },
   solution: {
     title: 'Os seus dados entram. Decisões fundamentadas saem.',
-    description: 'Estamos a construir a SymHive, onde ligamos os dados que já existem nas empresas e devolvemos cenários comparáveis.',
+    description: 'A SymHive liga os dados que a sua empresa já tem e devolve cenários comparáveis.',
     inputsLabel: 'Entrada',
     question: { title: 'Decisão a tomar' },
     inputs: ['ERP / MES', 'Máquinas e sensores', 'Layouts CAD', 'Folhas de cálculo'],
@@ -163,7 +163,7 @@ const pt: HomeContent = {
     symhive: { label: 'Com a SymHive', weeks: 8 },
     weeks: 'semanas',
     more: 'Ver casos de uso',
-    source: 'Estimativas com base em estudos de simulação anteriores e projetos-piloto da equipa no INESC TEC. Os valores podem mudar com base na complexidade do projeto.',
+    source: 'Estimativas com base em estudos de simulação anteriores e projetos-piloto da equipa no INESC TEC. Os valores variam consoante a complexidade do projeto.',
   },
   stats: {
     label: 'Principais resultados',
@@ -228,7 +228,7 @@ const en: HomeContent = {
   },
   solution: {
     title: 'Your data goes in. Evidence-based decisions come out.',
-    description: 'We are building SymHive, connecting the data companies already have and returning comparable scenarios.',
+    description: 'SymHive connects the data your company already has and returns comparable scenarios.',
     inputsLabel: 'Input',
     question: { title: 'Decision to make' },
     inputs: ['ERP / MES', 'Machines and sensors', 'CAD layouts', 'Spreadsheets'],
@@ -265,7 +265,7 @@ const en: HomeContent = {
     symhive: { label: 'With SymHive', weeks: 8 },
     weeks: 'weeks',
     more: 'See use cases',
-    source: 'Estimates based on previous simulation studies and pilot projects by the team at INESC TEC. Values may change depending on project complexity.',
+    source: 'Estimates based on previous simulation studies and pilot projects by the team at INESC TEC. Values vary depending on project complexity.',
   },
   stats: {
     label: 'Key results',
@@ -278,7 +278,7 @@ const en: HomeContent = {
   steps: {
     title: 'From your data to a decision, in four steps',
     items: [
-      { title: 'Connect', description: 'Describe your system, connect your data and the decision you need to make.' },
+      { title: 'Connect', description: 'Describe your system, connect your data and define the decision you need to make.' },
       { title: 'Generate', description: 'The simulation is generated automatically from a growing component library.' },
       { title: 'Test', description: 'Run experiments and explore alternative scenarios with the same criteria.' },
       { title: 'Decide', description: 'Compare outcomes and turn simulation results into actionable insights.' },

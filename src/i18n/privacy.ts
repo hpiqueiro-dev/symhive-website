@@ -79,7 +79,7 @@ const pt: PrivacyContent = {
     },
     {
       title: 'Alterações a esta política',
-      paragraphs: ['Podemos atualizar esta política quando o site ou a forma como tratamos os dados mudar. A data da última atualização aparece no topo da página.'],
+      paragraphs: ['Podemos atualizar esta política quando o site ou a forma como tratamos os dados mudarem. A data da última atualização aparece no topo da página.'],
     },
   ],
 };

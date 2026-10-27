@@ -85,7 +85,7 @@ const pt: ProductContent = {
   },
   features: {
     title: 'Plataforma de apoio à decisão industrial',
-    description: 'Múltiplas capacidades que trabalham juntas, do primeiro dado ao último indicador. Algumas já estão em uso, outras estão a ser desenvolvidas com os primeiros projetos.',
+    description: 'Várias capacidades que funcionam em conjunto, do primeiro dado ao último indicador. Algumas já estão em uso, outras estão a ser desenvolvidas com os primeiros projetos.',
     statusLabels: { available: 'Disponível', development: 'Em desenvolvimento', planned: 'Planeado' },
     items: [
       { title: 'Geração automática', description: 'O modelo de simulação é construído a partir dos dados, em low code.', tag: 'Patente pendente', status: 'development' },
@@ -118,7 +118,7 @@ const pt: ProductContent = {
         'Modelo gerado a partir dos dados',
         'Simulação em low code',
         'Cerca de 8 semanas até decidir',
-        'Várias alternativas de cenários comparadas',
+        'Várias alternativas comparadas',
         'O modelo é recalibrado quando a operação muda',
         'Retorno estimado antes de investir',
       ],
@@ -173,7 +173,7 @@ const en: ProductContent = {
   },
   features: {
     title: 'Industrial decision support platform',
-    description: 'Multiple capabilities working together, from the first data point to the last indicator. Some are already in use, others are being developed with our first projects.',
+    description: 'Several capabilities working together, from the first data point to the last indicator. Some are already in use, others are being developed with our first projects.',
     statusLabels: { available: 'Available', development: 'In development', planned: 'Planned' },
     items: [
       { title: 'Automatic generation', description: 'The simulation model is built from the data, with low code.', tag: 'Patent pending', status: 'development' },
@@ -206,7 +206,7 @@ const en: ProductContent = {
         'Model generated from the data',
         'Low-code simulation',
         'Around 8 weeks to decide',
-        'Several alternative scenarios compared',
+        'Several alternatives compared',
         'The model is recalibrated when operations change',
         'Estimated payback before investing',
       ],
