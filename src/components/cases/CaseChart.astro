@@ -1,0 +1,92 @@
+---
+// Gráfico ilustrativo do resultado de cada caso. As barras e curvas desenham-se quando o problema abre.
+import type { CaseChartKind, CasesContent } from '../../i18n/cases';
+
+interface Props {
+  kind: CaseChartKind;
+  charts: CasesContent['charts'];
+}
+
+const { kind, charts } = Astro.props;
+const c = charts[kind];
+
+const layout = [
+  { label: c.labels[0], value: 108 },
+  { label: c.labels[1], value: 131 },
+  { label: c.labels[2], value: 152, best: true },
+];
+// Tempo de espera (min) para 2 a 8 AGVs; o ponto ótimo é o de 5 AGVs.
+const fleet = [42, 27, 16, 9, 7, 6, 5.5];
+const fx = (i: number) => 40 + i * 50;
+const fy = (v: number) => 118 - v * 2.2;
+const curve = fleet.map((v, i) => `${i ? 'L' : 'M'}${fx(i)} ${fy(v).toFixed(1)}`).join(' ');
+const staffing = [
+  { shift: c.labels[2], now: 9, next: 11 },
+  { shift: c.labels[3], now: 9, next: 8 },
+  { shift: c.labels[4], now: 6, next: 5 },
+];
+// Plano: blocos de produção com trocas (setup) entre eles.
+const planNow = [34, 22, 40, 18, 30, 26, 20, 36, 24, 28];
+const planNext = [70, 64, 82, 76];
+const gantt = (blocks: number[]) => {
+  let x = 0;
+  return blocks.map((w) => {
+    const seg = { x, w };
+    x += w + 6;
+    return seg;
+  });
+};
+---
+
+<figure class="case-chart">
+  <figcaption>{c.title}</figcaption>
+  <svg viewBox="0 0 360 140" role="img" aria-label={c.title}>
+    {kind === 'layout' && layout.map((b, i) => (
+      <g class:list={['hbar', { best: b.best }]} style={`--i:${i}`}>
+        <text class="lbl" x="0" y={i * 40 + 30}>{b.label}</text>
+        <rect class="track" x="80" y={i * 40 + 18} width="230" height="16" rx="2" />
+        <rect class="fill" x="80" y={i * 40 + 18} width={(b.value / 160) * 230} height="16" rx="2" />
+        <text class="val" x={88 + (b.value / 160) * 230} y={i * 40 + 31}>{b.value}</text>
+      </g>
+    ))}
+
+    {kind === 'fleet' && <>
+      <line class="axis" x1="30" y1="122" x2="350" y2="122" />
+      {fleet.map((_, i) => <text class="tick" x={fx(i)} y="136">{i + 2}</text>)}
+      <text class="lbl" x="350" y="80" text-anchor="end">{c.labels[0]}</text>
+      <text class="lbl" x="34" y="14">{c.labels[1]}</text>
+      <path class="curve" pathLength="1" d={curve} />
+      <line class="opt-line" x1={fx(3)} y1="20" x2={fx(3)} y2="122" />
+      <circle class="opt" cx={fx(3)} cy={fy(fleet[3])} r="5" />
+      <text class="val" x={fx(3) + 10} y="34">{c.labels[2]}</text>
+    </>}
+
+    {kind === 'staffing' && <>
+      <line class="axis" x1="0" y1="112" x2="360" y2="112" />
+      {staffing.map((s, i) => (
+        <g style={`--i:${i}`}>
+          <rect class="vbar now" x={30 + i * 115} y={112 - s.now * 8} width="30" height={s.now * 8} rx="2" />
+          <rect class="vbar next" x={64 + i * 115} y={112 - s.next * 8} width="30" height={s.next * 8} rx="2" />
+          <text class="tick" x={62 + i * 115} y="130">{s.shift}</text>
+          <text class="val small" x={45 + i * 115} y={106 - s.now * 8}>{s.now}</text>
+          <text class="val small" x={79 + i * 115} y={106 - s.next * 8}>{s.next}</text>
+        </g>
+      ))}
+      <rect class="key now" x="250" y="2" width="10" height="10" rx="2" /><text class="lbl" x="264" y="11">{c.labels[0]}</text>
+      <rect class="key next" x="300" y="2" width="10" height="10" rx="2" /><text class="lbl" x="314" y="11">{c.labels[1]}</text>
+    </>}
+
+    {kind === 'sequence' && [planNow, planNext].map((plan, row) => (
+      <g transform={`translate(0 ${row * 56})`} style={`--i:${row}`}>
+        <text class="lbl" x="0" y="20">{c.labels[row]}</text>
+        <g transform="translate(0 28)">
+          {gantt(plan).map((seg, i) => <>
+            <rect class:list={['job', `j${i % 4}`]} x={(seg.x / 340) * 360} y="0" width={(seg.w / 340) * 360} height="18" rx="2" />
+            {i > 0 && <rect class="setup" x={((seg.x - 6) / 340) * 360} y="0" width={(6 / 340) * 360} height="18" />}
+          </>)}
+        </g>
+        <text class="val" x="360" y="20" text-anchor="end">{c.labels[row + 2]}</text>
+      </g>
+    ))}
+  </svg>
+</figure>

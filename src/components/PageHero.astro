@@ -6,9 +6,11 @@ interface Props {
 }
 
 const { hero } = Astro.props;
+const hasVisual = Astro.slots.has('visual');
 ---
 
-<section class="container page-hero" aria-labelledby="page-title">
+<section class:list={['container page-hero', { 'with-visual': hasVisual }]} aria-labelledby="page-title">
+  <div class="page-hero-text">
   <span class="pill"><i></i>{hero.badge}</span>
   <h1 id="page-title">
     <span class="a">{hero.titleAmber}</span>
@@ -18,4 +20,6 @@ const { hero } = Astro.props;
   <p class="lead">{hero.lead}</p>
   {hero.proof && <p class="pill amber hero-proof"><i></i>{hero.proof.badge && <b>{hero.proof.badge}</b>}{hero.proof.text}</p>}
   <slot />
+  </div>
+  {hasVisual && <div class="page-hero-visual"><slot name="visual" /></div>}
 </section>

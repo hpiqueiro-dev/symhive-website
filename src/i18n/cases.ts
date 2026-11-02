@@ -6,9 +6,13 @@ import type { Locale } from './locales';
 
 export type IndustryKey = 'manufacturing' | 'warehouse' | 'logistics' | 'supplyChain';
 
+/** Gráfico ilustrativo que acompanha o resultado de um caso. */
+export type CaseChartKind = 'layout' | 'fleet' | 'staffing' | 'sequence';
+
 export interface CaseStudy {
   title: string;
   industry: IndustryKey;
+  chart: CaseChartKind;
   challenge: string;
   approach: string;
   result: string;
@@ -36,6 +40,8 @@ export interface CasesContent {
     labels: { challenge: string; approach: string; result: string };
     items: Problem[];
   };
+  /** Título e etiquetas de cada gráfico (valores ilustrativos). */
+  charts: Record<CaseChartKind, { title: string; labels: string[] }>;
   note: string;
   /** Substitui o título e o texto da secção de contacto nesta página (versão compacta). */
   contact: { title: string; description: string };
@@ -79,6 +85,7 @@ const pt: CasesContent = {
           {
             title: 'Novo layout numa expansão',
             industry: 'manufacturing',
+            chart: 'layout',
             challenge: 'O novo layout resolve o gargalo ou apenas o muda de sítio? Numa expansão, como dispor as novas máquinas?',
             approach: 'Modelamos o layout atual e as alternativas a partir do CAD, com postos, filas e fluxos de material, e projetamos o crescimento previsto da empresa.',
             result: 'Produção por hora, utilização, stock intermédio e gargalo de cada alternativa, e a estratégia de contratação e de compra de máquinas que daí resulta.',
@@ -93,6 +100,7 @@ const pt: CasesContent = {
           {
             title: 'Substituir empilhadores por AGVs',
             industry: 'logistics',
+            chart: 'fleet',
             challenge: 'Quantos AGVs são precisos para substituir os empilhadores, quanto custam e em quanto tempo se pagam?',
             approach: 'Modelamos a frota atual e a nova tecnologia, com rotas, cargas e tempos de carregamento, e identificamos as alterações ao layout necessárias para a integrar.',
             result: 'Dimensão da frota, utilização, tempos de espera e estimativa de retorno, para a situação atual e para cenários de maior procura.',
@@ -107,6 +115,7 @@ const pt: CasesContent = {
           {
             title: 'Alocação de operadores por tarefa',
             industry: 'manufacturing',
+            chart: 'staffing',
             challenge: 'Quantos operadores alocar a cada tarefa para produzir mais, e como distribuí-los tendo em conta o tempo de ciclo de cada operação?',
             approach: 'Modelamos a procura histórica e prevista, as tarefas, os tempos de ciclo e os turnos.',
             result: 'Número de operadores por tarefa e por turno, para cada cenário de procura, com nível de serviço e custo.',
@@ -121,6 +130,7 @@ const pt: CasesContent = {
           {
             title: 'Sequência de produção com menos trocas',
             industry: 'manufacturing',
+            chart: 'sequence',
             challenge: 'Que sequência de produção cumpre os prazos com menos trocas?',
             approach: 'Modelamos a capacidade dos buffers e os tempos de setup e de produção, com distribuições estatísticas. Testamos alterações ao plano para medir o ganho de cada uma.',
             result: 'Cumprimento de prazos, ocupação e stock intermédio de cada plano diário, semanal ou mensal.',
@@ -128,6 +138,12 @@ const pt: CasesContent = {
         ],
       },
     ],
+  },
+  charts: {
+    layout: { title: 'Produção por hora de cada alternativa (unid./h)', labels: ['Atual', 'Layout A', 'Layout B'] },
+    fleet: { title: 'Tempo médio de espera por dimensão da frota', labels: ['N.º de AGVs', 'Espera (min)', '5 AGVs: ponto ótimo'] },
+    staffing: { title: 'Operadores por turno', labels: ['Atual', 'Proposto', 'Turno 1', 'Turno 2', 'Turno 3'] },
+    sequence: { title: 'Sequência de produção numa semana', labels: ['Plano atual', 'Plano proposto', '9 trocas', '3 trocas'] },
   },
   note: 'Casos típicos dos projetos que desenvolvemos. Os resultados dependem dos dados e do contexto de cada operação.',
   contact: {
@@ -174,6 +190,7 @@ const en: CasesContent = {
           {
             title: 'New layout for an expansion',
             industry: 'manufacturing',
+            chart: 'layout',
             challenge: 'Does the new layout fix the bottleneck, or just move it? In an expansion, how should the new machines be arranged?',
             approach: "We model the current layout and the alternatives from CAD, with stations, queues and material flows, and project the company's expected growth.",
             result: 'Throughput, utilisation, work-in-progress and the bottleneck of each alternative, and the resulting hiring and machine purchasing strategy.',
@@ -188,6 +205,7 @@ const en: CasesContent = {
           {
             title: 'Replacing forklifts with AGVs',
             industry: 'logistics',
+            chart: 'fleet',
             challenge: 'How many AGVs are needed to replace the forklifts, what do they cost and how long until they pay off?',
             approach: 'We model the current fleet and the new technology, with routes, loads and charging times, and identify the layout changes needed to integrate it.',
             result: 'Fleet size, utilisation, waiting times and payback estimate, for the current situation and for higher-demand scenarios.',
@@ -202,6 +220,7 @@ const en: CasesContent = {
           {
             title: 'Assigning operators to tasks',
             industry: 'manufacturing',
+            chart: 'staffing',
             challenge: "How many operators should be assigned to each task to produce more, and how should they be distributed given each operation's cycle time?",
             approach: 'We model historical and forecast demand, tasks, cycle times and shifts.',
             result: 'Number of operators per task and per shift, for each demand scenario, with service level and cost.',
@@ -216,6 +235,7 @@ const en: CasesContent = {
           {
             title: 'Production sequence with fewer changeovers',
             industry: 'manufacturing',
+            chart: 'sequence',
             challenge: 'Which production sequence meets deadlines with the fewest changeovers?',
             approach: 'We model buffer capacity and setup and production times, with statistical distributions. We test changes to the plan to measure the gain from each one.',
             result: 'On-time delivery, utilisation and work-in-progress for each daily, weekly or monthly plan.',
@@ -223,6 +243,12 @@ const en: CasesContent = {
         ],
       },
     ],
+  },
+  charts: {
+    layout: { title: 'Throughput of each alternative (units/h)', labels: ['Current', 'Layout A', 'Layout B'] },
+    fleet: { title: 'Average waiting time by fleet size', labels: ['No. of AGVs', 'Wait (min)', '5 AGVs: optimum'] },
+    staffing: { title: 'Operators per shift', labels: ['Current', 'Proposed', 'Shift 1', 'Shift 2', 'Shift 3'] },
+    sequence: { title: 'Production sequence over one week', labels: ['Current plan', 'Proposed plan', '9 changeovers', '3 changeovers'] },
   },
   note: 'Typical cases from the projects we develop. Results depend on the data and context of each operation.',
   contact: {

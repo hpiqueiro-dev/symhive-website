@@ -2,6 +2,9 @@
 import SiteLayout from '../../layouts/SiteLayout.astro';
 import PageHero from '../PageHero.astro';
 import IndustryIcon from '../IndustryIcon.astro';
+import IndustryScene from '../cases/IndustryScene.astro';
+import CasesHeroScene from '../cases/CasesHeroScene.astro';
+import CaseChart from '../cases/CaseChart.astro';
 import { casesContent, type DecisionType, type IndustryKey } from '../../i18n/cases';
 import type { Locale } from '../../i18n/locales';
 
@@ -22,14 +25,16 @@ const rows = 1 + Math.max(...columns.map((type) => numbered.filter((problem) => 
 ---
 
 <SiteLayout locale={locale} page="cases" title={t.meta.title} description={t.meta.description} contactText={t.contact} contactCompact contactShade>
-  <PageHero hero={t.hero} />
+  <PageHero hero={t.hero}>
+    <CasesHeroScene slot="visual" labels={Object.fromEntries(industries.map(([key, item]) => [key, item.title])) as Record<IndustryKey, string>} />
+  </PageHero>
 
   <section class="sec shade" id="industries" aria-labelledby="industries-title">
     <div class="container">
       <h2 class="sec-h2" id="industries-title">{t.industries.title}</h2>
       <ul class="industries">
         {industries.map(([key, item]) => (
-          <li><IndustryIcon industry={key} /><h3>{item.title}</h3><p>{item.description}</p></li>
+          <li><IndustryScene industry={key} /><h3>{item.title}</h3><p>{item.description}</p></li>
         ))}
       </ul>
     </div>
@@ -64,6 +69,7 @@ const rows = 1 + Math.max(...columns.map((type) => numbered.filter((problem) => 
                           <div><dt>{p.labels.approach}</dt><dd>{item.approach}</dd></div>
                           <div><dt>{p.labels.result}</dt><dd class="y">{item.result}</dd></div>
                         </dl>
+                        <CaseChart kind={item.chart} charts={t.charts} />
                       </article>
                     ))}
                   </div>
