@@ -1,29 +1,160 @@
 ---
+import type { HomeContent } from '../../i18n/home';
+
 interface Props {
   label: string;
+  plant: HomeContent['hero']['plant'];
 }
 
-const { label } = Astro.props;
-const wheels = [130, 190, 250, 310, 370, 430, 490];
+const { label, plant } = Astro.props;
 ---
 
-<svg class="factory" viewBox="0 0 560 460" role="img" aria-label={label}>
-  <g>
-    <path class="draw" pathLength="1" style="--d:.1s" d="M40 340H520M40 366H520M40 340V366M520 340V366" />
-    <path class="draw" pathLength="1" style="--d:.4s" d="M86 300h90v40H86zM131 300V230" />
-    <circle class="draw" pathLength="1" style="--d:.7s" cx="131" cy="222" r="15" />
-    <path class="draw" pathLength="1" style="--d:1s" d="M140 210L226 150" />
-    <circle class="draw" pathLength="1" style="--d:1.2s" cx="236" cy="144" r="13" />
-    <path class="draw" pathLength="1" style="--d:1.4s" d="M246 152L296 196M296 196l-16 4M296 196l-4 -18" />
-    <path class="draw" pathLength="1" style="--d:1.2s" d="M380 140h140v200H380zM380 200h140M380 270h140M450 140v200" />
-    <path class="draw" pathLength="1" style="--d:1.8s" d="M395 160h40v32h-40zM465 160h40v32h-40zM395 220h40v38h-40z" />
-    {wheels.map((cx, i) => <circle class="draw" pathLength="1" style={`--d:${(1.6 + i * 0.05).toFixed(2)}s`} cx={cx} cy="353" r="6" />)}
+<svg class="plant" viewBox="0 0 560 500" role="img" aria-label={label}>
+  <polygon class="floor" points="226.0,120.0 530.0,295.5 319.5,417.0 15.6,241.5"/>
+  <line class="grid" x1="249.4" y1="133.5" x2="38.9" y2="255.0"/>
+  <line class="grid" x1="272.8" y1="147.0" x2="62.3" y2="268.5"/>
+  <line class="grid" x1="296.1" y1="160.5" x2="85.7" y2="282.0"/>
+  <line class="grid" x1="319.5" y1="174.0" x2="109.1" y2="295.5"/>
+  <line class="grid" x1="342.9" y1="187.5" x2="132.5" y2="309.0"/>
+  <line class="grid" x1="366.3" y1="201.0" x2="155.9" y2="322.5"/>
+  <line class="grid" x1="389.7" y1="214.5" x2="179.2" y2="336.0"/>
+  <line class="grid" x1="413.1" y1="228.0" x2="202.6" y2="349.5"/>
+  <line class="grid" x1="436.4" y1="241.5" x2="226.0" y2="363.0"/>
+  <line class="grid" x1="459.8" y1="255.0" x2="249.4" y2="376.5"/>
+  <line class="grid" x1="483.2" y1="268.5" x2="272.8" y2="390.0"/>
+  <line class="grid" x1="506.6" y1="282.0" x2="296.1" y2="403.5"/>
+  <line class="grid" x1="202.6" y1="133.5" x2="506.6" y2="309.0"/>
+  <line class="grid" x1="179.2" y1="147.0" x2="483.2" y2="322.5"/>
+  <line class="grid" x1="155.9" y1="160.5" x2="459.8" y2="336.0"/>
+  <line class="grid" x1="132.5" y1="174.0" x2="436.4" y2="349.5"/>
+  <line class="grid" x1="109.1" y1="187.5" x2="413.1" y2="363.0"/>
+  <line class="grid" x1="85.7" y1="201.0" x2="389.7" y2="376.5"/>
+  <line class="grid" x1="62.3" y1="214.5" x2="366.3" y2="390.0"/>
+  <line class="grid" x1="38.9" y1="228.0" x2="342.9" y2="403.5"/>
+  <path class="lane" d="M165.2,171.3 L436.4,327.9 L317.2,396.8 L46.0,240.2 Z"/>
+  <g class="box rack"><polygon class="fl" points="415.4,264.5 490.2,307.7 490.2,221.3 415.4,178.1"/><polygon class="fr" points="511.3,295.5 490.2,307.7 490.2,221.3 511.3,209.1"/><polygon class="ft" points="436.4,165.9 511.3,209.1 490.2,221.3 415.4,178.1"/></g>
+  <line class="shelf" x1="415.4" y1="236.1" x2="490.2" y2="279.3"/>
+  <line class="shelf" x1="415.4" y1="207.8" x2="490.2" y2="250.9"/>
+  <g class="box crate"><polygon class="fl" points="425.9,208.4 442.3,217.9 442.3,203.0 425.9,193.6"/><polygon class="fr" points="456.3,209.8 442.3,217.9 442.3,203.0 456.3,194.9"/><polygon class="ft" points="439.9,185.5 456.3,194.9 442.3,203.0 425.9,193.6"/></g>
+  <g class="box crate"><polygon class="fl" points="447.0,220.6 463.3,230.0 463.3,215.2 447.0,205.7"/><polygon class="fr" points="477.4,221.9 463.3,230.0 463.3,215.2 477.4,207.1"/><polygon class="ft" points="461.0,197.6 477.4,207.1 463.3,215.2 447.0,205.7"/></g>
+  <g class="box crate"><polygon class="fl" points="470.3,234.1 486.7,243.5 486.7,228.7 470.3,219.2"/><polygon class="fr" points="500.7,235.4 486.7,243.5 486.7,228.7 500.7,220.6"/><polygon class="ft" points="484.4,211.1 500.7,220.6 486.7,228.7 470.3,219.2"/></g>
+  <g class="box rack"><polygon class="fl" points="380.3,284.7 455.1,327.9 455.1,241.5 380.3,198.3"/><polygon class="fr" points="476.2,315.8 455.1,327.9 455.1,241.5 476.2,229.3"/><polygon class="ft" points="401.4,186.2 476.2,229.3 455.1,241.5 380.3,198.3"/></g>
+  <line class="shelf" x1="380.3" y1="256.3" x2="455.1" y2="299.5"/>
+  <line class="shelf" x1="380.3" y1="228.0" x2="455.1" y2="271.2"/>
+  <g class="box crate"><polygon class="fl" points="390.8,228.7 407.2,238.1 407.2,223.3 390.8,213.8"/><polygon class="fr" points="421.2,230.0 407.2,238.1 407.2,223.3 421.2,215.2"/><polygon class="ft" points="404.9,205.7 421.2,215.2 407.2,223.3 390.8,213.8"/></g>
+  <g class="box crate"><polygon class="fl" points="411.9,240.8 428.3,250.3 428.3,235.4 411.9,226.0"/><polygon class="fr" points="442.3,242.2 428.3,250.3 428.3,235.4 442.3,227.3"/><polygon class="ft" points="425.9,217.9 442.3,227.3 428.3,235.4 411.9,226.0"/></g>
+  <g class="box crate"><polygon class="fl" points="435.3,254.3 451.6,263.8 451.6,248.9 435.3,239.5"/><polygon class="fr" points="465.7,255.7 451.6,263.8 451.6,248.9 465.7,240.8"/><polygon class="ft" points="449.3,231.4 465.7,240.8 451.6,248.9 435.3,239.5"/></g>
+  <g class="box machine"><polygon class="fl" points="195.6,153.8 230.7,174.0 230.7,138.9 195.6,118.7"/><polygon class="fr" points="261.1,156.4 230.7,174.0 230.7,138.9 261.1,121.3"/><polygon class="ft" points="226.0,101.1 261.1,121.3 230.7,138.9 195.6,118.7"/></g>
+  <g class="box panel"><polygon class="fl" points="214.3,114.6 230.7,124.1 230.7,117.3 214.3,107.8"/><polygon class="fr" points="242.4,117.3 230.7,124.1 230.7,117.3 242.4,110.6"/><polygon class="ft" points="226.0,101.1 242.4,110.6 230.7,117.3 214.3,107.8"/></g>
+  <g class="box machine"><polygon class="fl" points="242.4,180.8 277.4,201.0 277.4,165.9 242.4,145.7"/><polygon class="fr" points="307.8,183.4 277.4,201.0 277.4,165.9 307.8,148.3"/><polygon class="ft" points="272.8,128.1 307.8,148.3 277.4,165.9 242.4,145.7"/></g>
+  <g class="box panel"><polygon class="fl" points="261.1,141.6 277.4,151.1 277.4,144.3 261.1,134.8"/><polygon class="fr" points="289.1,144.3 277.4,151.1 277.4,144.3 289.1,137.5"/><polygon class="ft" points="272.8,128.1 289.1,137.5 277.4,144.3 261.1,134.8"/></g>
+  <g class="box machine"><polygon class="fl" points="289.1,207.8 324.2,228.0 324.2,192.9 289.1,172.7"/><polygon class="fr" points="354.6,210.4 324.2,228.0 324.2,192.9 354.6,175.3"/><polygon class="ft" points="319.5,155.1 354.6,175.3 324.2,192.9 289.1,172.7"/></g>
+  <g class="box panel"><polygon class="fl" points="307.8,168.6 324.2,178.1 324.2,171.3 307.8,161.8"/><polygon class="fr" points="335.9,171.3 324.2,178.1 324.2,171.3 335.9,164.5"/><polygon class="ft" points="319.5,155.1 335.9,164.5 324.2,171.3 307.8,161.8"/></g>
+  <g class="box belt"><polygon class="fl" points="123.1,201.0 300.8,303.6 300.8,291.5 123.1,188.8"/><polygon class="fr" points="319.5,292.8 300.8,303.6 300.8,291.5 319.5,280.7"/><polygon class="ft" points="141.8,178.0 319.5,280.7 300.8,291.5 123.1,188.8"/></g>
+  <line class="roller" x1="155.9" y1="186.2" x2="137.1" y2="196.9"/>
+  <line class="roller" x1="169.9" y1="194.3" x2="151.2" y2="205.0"/>
+  <line class="roller" x1="183.9" y1="202.3" x2="165.2" y2="213.2"/>
+  <line class="roller" x1="197.9" y1="210.5" x2="179.2" y2="221.3"/>
+  <line class="roller" x1="212.0" y1="218.6" x2="193.3" y2="229.3"/>
+  <line class="roller" x1="226.0" y1="226.7" x2="207.3" y2="237.5"/>
+  <line class="roller" x1="240.0" y1="234.8" x2="221.3" y2="245.5"/>
+  <line class="roller" x1="254.1" y1="242.8" x2="235.4" y2="253.7"/>
+  <line class="roller" x1="268.1" y1="251.0" x2="249.4" y2="261.8"/>
+  <line class="roller" x1="282.1" y1="259.1" x2="263.4" y2="269.9"/>
+  <line class="roller" x1="296.1" y1="267.1" x2="277.4" y2="277.9"/>
+  <line class="roller" x1="310.2" y1="275.3" x2="291.5" y2="286.1"/>
+  <g class="box robot"><polygon class="fl" points="307.8,307.6 328.9,319.8 328.9,306.3 307.8,294.1"/><polygon class="fr" points="349.9,307.6 328.9,319.8 328.9,306.3 349.9,294.1"/><polygon class="ft" points="328.9,282.0 349.9,294.1 328.9,306.3 307.8,294.1"/></g>
+  <path class="arm" d="M328.9,294.1 L328.9,250.9 L305.5,230.7 L298.5,256.3"/>
+  <circle class="joint" cx="328.9" cy="250.9" r="4"/>
+  <circle class="joint" cx="305.5" cy="230.7" r="4"/>
+  <g class="box machine hot"><polygon class="fl" points="144.2,280.6 200.3,313.0 200.3,283.3 144.2,250.9"/><polygon class="fr" points="233.0,294.1 200.3,313.0 200.3,283.3 233.0,264.4"/><polygon class="ft" points="176.9,232.1 233.0,264.4 200.3,283.3 144.2,250.9"/></g>
+  <g class="box machine"><polygon class="fl" points="223.7,326.5 270.4,353.5 270.4,329.2 223.7,302.2"/><polygon class="fr" points="303.2,334.6 270.4,353.5 270.4,329.2 303.2,310.3"/><polygon class="ft" points="256.4,283.3 303.2,310.3 270.4,329.2 223.7,302.2"/></g>
+  <g class="box part"><polygon class="fl" points="113.8,249.6 123.1,255.0 123.1,244.2 113.8,238.8"/><polygon class="fr" points="132.5,249.6 123.1,255.0 123.1,244.2 132.5,238.8"/><polygon class="ft" points="123.1,233.4 132.5,238.8 123.1,244.2 113.8,238.8"/></g>
+  <g class="box part"><polygon class="fl" points="127.8,257.7 137.1,263.1 137.1,252.3 127.8,246.9"/><polygon class="fr" points="146.5,257.7 137.1,263.1 137.1,252.3 146.5,246.9"/><polygon class="ft" points="137.1,241.5 146.5,246.9 137.1,252.3 127.8,246.9"/></g>
+  <g class="box part"><polygon class="fl" points="141.8,265.8 151.2,271.2 151.2,260.4 141.8,255.0"/><polygon class="fr" points="160.5,265.8 151.2,271.2 151.2,260.4 160.5,255.0"/><polygon class="ft" points="151.2,249.6 160.5,255.0 151.2,260.4 141.8,255.0"/></g>
+  <g class="mover"><rect x="-6" y="-9" width="12" height="9" rx="1"/><animateMotion dur="6s" begin="-0s" repeatCount="indefinite" path="M139.5,182.1 L307.8,279.3"/></g><g class="mover"><rect x="-6" y="-9" width="12" height="9" rx="1"/><animateMotion dur="6s" begin="-1.5s" repeatCount="indefinite" path="M139.5,182.1 L307.8,279.3"/></g><g class="mover"><rect x="-6" y="-9" width="12" height="9" rx="1"/><animateMotion dur="6s" begin="-3s" repeatCount="indefinite" path="M139.5,182.1 L307.8,279.3"/></g><g class="mover"><rect x="-6" y="-9" width="12" height="9" rx="1"/><animateMotion dur="6s" begin="-4.5s" repeatCount="indefinite" path="M139.5,182.1 L307.8,279.3"/></g>
+  <g class="agv"><rect x="-9" y="-6" width="18" height="12" rx="2"/><animateMotion dur="8.8s" begin="-0s" repeatCount="indefinite" path="M165.2,171.3 L436.4,327.9 L317.2,396.8 L46.0,240.2 Z"/></g><g class="agv"><rect x="-9" y="-6" width="18" height="12" rx="2"/><animateMotion dur="8.8s" begin="-2.2s" repeatCount="indefinite" path="M165.2,171.3 L436.4,327.9 L317.2,396.8 L46.0,240.2 Z"/></g><g class="agv"><rect x="-9" y="-6" width="18" height="12" rx="2"/><animateMotion dur="8.8s" begin="-4.4s" repeatCount="indefinite" path="M165.2,171.3 L436.4,327.9 L317.2,396.8 L46.0,240.2 Z"/></g><g class="agv"><rect x="-9" y="-6" width="18" height="12" rx="2"/><animateMotion dur="8.8s" begin="-6.6s" repeatCount="indefinite" path="M165.2,171.3 L436.4,327.9 L317.2,396.8 L46.0,240.2 Z"/></g>
+  <circle class="pulse" cx="188.6" cy="257.7" r="10"/>
+  <g class="tag ">
+    <line class="lead" x1="275.1" y1="138.9" x2="235.1" y2="77.9"/>
+    <circle class="dot" cx="275.1" cy="138.9" r="3"/>
+    <rect x="227.1" y="58.9" width="120" height="38" rx="4"/>
+    <text x="235.1" y="73.9" class="t">{plant.cnc[0]}</text>
+    <text x="235.1" y="89.9" class="v">{plant.cnc[1]}</text>
   </g>
-  <g class="am">
-    {['3s', '5.4s', '7.8s'].map((delay) => <rect class="belt am" style={`--d:${delay}`} x="60" y="312" width="34" height="26" />)}
+  <g class="tag ">
+    <line class="lead" x1="452.8" y1="197.0" x2="442.8" y2="144.0"/>
+    <circle class="dot" cx="452.8" cy="197.0" r="3"/>
+    <rect x="434.8" y="125.0" width="99" height="38" rx="4"/>
+    <text x="442.8" y="140.0" class="t">{plant.warehouse[0]}</text>
+    <text x="442.8" y="156.0" class="v">{plant.warehouse[1]}</text>
   </g>
-  <g class="agv am">
-    <path class="draw am" pathLength="1" style="--d:2.2s" d="M60 418h76v-26H60zM60 418v6M136 418v6" />
-    <circle class="am" cx="76" cy="424" r="5" /><circle class="am" cx="122" cy="424" r="5" />
+  <g class="tag hot">
+    <line class="lead" x1="188.6" y1="257.7" x2="38.6" y2="302.7"/>
+    <circle class="dot" cx="188.6" cy="257.7" r="3"/>
+    <rect x="30.6" y="283.7" width="172" height="38" rx="4"/>
+    <text x="38.6" y="298.7" class="t">{plant.bottleneck[0]}</text>
+    <text x="38.6" y="314.7" class="v">{plant.bottleneck[1]}</text>
+  </g>
+  <g class="tag ">
+    <line class="lead" x1="371.0" y1="365.7" x2="377.0" y2="386.7"/>
+    <circle class="dot" cx="371.0" cy="365.7" r="3"/>
+    <rect x="369.0" y="367.7" width="120" height="38" rx="4"/>
+    <text x="377.0" y="382.7" class="t">{plant.agvs[0]}</text>
+    <text x="377.0" y="398.7" class="v">{plant.agvs[1]}</text>
+  </g>
+  <g class="scenario">
+    <rect x="388" y="6" width="166" height="62" rx="5"/>
+    <text x="400" y="26" class="t">{plant.scenario}</text>
+    <text x="400" y="54" class="big">142</text>
+    <text x="462" y="54" class="v">{plant.unitsPerHour} <tspan class="up">+18%</tspan></text>
   </g>
 </svg>
+
+<style>
+  .plant { width: 100%; height: auto; overflow: visible; font-family: var(--font-body, Inter, sans-serif); }
+  .floor { fill: rgba(25, 211, 230, .035); stroke: rgba(25, 211, 230, .35); stroke-width: 1; }
+  .grid { stroke: rgba(25, 211, 230, .1); stroke-width: 1; }
+  .lane { fill: none; stroke: rgba(245, 166, 35, .45); stroke-width: 1.4; stroke-dasharray: 5 6; }
+  .box polygon { stroke: rgba(25, 211, 230, .75); stroke-width: 1; stroke-linejoin: round; }
+  .ft { fill: #12333a; }
+  .fl { fill: #0c2328; }
+  .fr { fill: #08191d; }
+  .panel .ft { fill: #19d3e6; fill-opacity: .55; }
+  .rack .ft { fill: #0e2a30; }
+  .shelf { stroke: rgba(25, 211, 230, .6); stroke-width: 1; }
+  .crate polygon { stroke: rgba(245, 166, 35, .7); }
+  .crate .ft { fill: #5a3f12; } .crate .fl { fill: #3d2b0c; } .crate .fr { fill: #2c1f09; }
+  .belt .ft { fill: #0f2c32; }
+  .roller { stroke: rgba(25, 211, 230, .35); stroke-width: 1; }
+  .robot .ft { fill: #1a3d44; }
+  .arm { fill: none; stroke: #e8f1f2; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; opacity: .9; }
+  .joint { fill: #050b0d; stroke: #f5a623; stroke-width: 2; }
+  .hot polygon { stroke: #ff7a6b; }
+  .hot .ft { fill: #3a1c18; } .hot .fl { fill: #2a1411; } .hot .fr { fill: #1f0e0c; }
+  .part polygon { stroke: rgba(245, 166, 35, .9); }
+  .part .ft { fill: #f5a623; } .part .fl { fill: #b87a14; } .part .fr { fill: #8a5a0d; }
+  .mover rect { fill: #f5a623; stroke: #050b0d; stroke-width: 1; }
+  .agv rect { fill: #f5a623; stroke: #050b0d; stroke-width: 1.5; }
+  .pulse { fill: none; stroke: #ff7a6b; stroke-width: 1.5; transform-box: fill-box; transform-origin: center; animation: plant-pulse 2.4s ease-out infinite; }
+  @keyframes plant-pulse { from { opacity: .9; transform: scale(.6); } to { opacity: 0; transform: scale(2.4); } }
+  .tag rect { fill: rgba(5, 11, 13, .92); stroke: rgba(25, 211, 230, .45); }
+  .tag .lead { stroke: rgba(25, 211, 230, .5); stroke-width: 1; }
+  .tag .dot { fill: #19d3e6; }
+  .tag.hot rect, .tag.hot .lead { stroke: #ff7a6b; }
+  .tag.hot .dot { fill: #ff7a6b; }
+  .t { fill: #9db4b8; font-size: 11px; }
+  .v { fill: #e8f1f2; font-size: 12.5px; font-weight: 600; }
+  .tag.hot .v { fill: #ff7a6b; }
+  .scenario rect { fill: rgba(5, 11, 13, .92); stroke: rgba(245, 166, 35, .6); }
+  .big { fill: #f5a623; font: 700 28px var(--font-display, sans-serif); letter-spacing: -.02em; }
+  .up { fill: #3ddc97; }
+  @media (prefers-reduced-motion: reduce) { .pulse { animation: none; } }
+</style>
+
+<script>
+  // SMIL motion ignores the CSS reduced-motion rule, so pause it explicitly.
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll<SVGSVGElement>('svg.plant').forEach((svg) => svg.pauseAnimations());
+  }
+</script>

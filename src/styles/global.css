@@ -142,15 +142,6 @@ details > summary::-webkit-details-marker { display: none; }
 .hero .lead { max-width: 30em; margin: 0; color: var(--mut); font-size: clamp(17px, 1.5vw, 19px); line-height: 1.55; }
 @media (max-width: 900px) { .hero { grid-template-columns: minmax(0, 1fr); } }
 
-.factory { width: 100%; height: auto; overflow: visible; filter: drop-shadow(0 0 6px rgba(25, 211, 230, .55)); }
-.factory * { fill: none; stroke: var(--cyan); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
-.factory .am { stroke: var(--amber); }
-.factory .draw { stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 2.6s cubic-bezier(.5, 0, .2, 1) forwards; animation-delay: var(--d, 0s); }
-@keyframes draw { to { stroke-dashoffset: 0; } }
-.factory .belt { opacity: 0; animation: belt 7s linear infinite; animation-delay: var(--d, 0s); }
-@keyframes belt { 0% { transform: translateX(0); opacity: 0; } 8% { opacity: 1; } 92% { opacity: 1; } 100% { transform: translateX(330px); opacity: 0; } }
-.factory .agv { animation: agv 9s ease-in-out infinite alternate; }
-@keyframes agv { from { transform: translateX(0); } to { transform: translateX(250px); } }
 
 /* ---------- simulador ---------- */
 /* Secções alternam entre sem fundo e com fundo sombreado (.shade), decidido em cada página. */
@@ -701,7 +692,5 @@ footer b { color: var(--ink); }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
-  .factory .draw { stroke-dashoffset: 0 !important; }
-  .factory .belt { opacity: 1; }
   html { scroll-behavior: auto; }
 }

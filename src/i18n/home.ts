@@ -11,6 +11,15 @@ export interface HomeContent {
     titleRest: string;
     lead: string;
     illustrationLabel: string;
+    /** Etiquetas da fábrica ilustrada (valores ilustrativos). */
+    plant: {
+      scenario: string;
+      unitsPerHour: string;
+      cnc: [string, string];
+      warehouse: [string, string];
+      bottleneck: [string, string];
+      agvs: [string, string];
+    };
   };
   /** Faixa discreta logo abaixo do hero, com factos verificáveis. */
   credentials: { label: string; items: string[] };
@@ -92,7 +101,15 @@ const pt: HomeContent = {
     titleCyan: 'fábrica no digital.',
     titleRest: 'Implemente a decisão no terreno.',
     lead: 'A SymHive torna a simulação mais rápida e fácil de escalar, gerando automaticamente modelos de sistemas industriais complexos a partir dos seus dados de produção e devolvendo KPIs que pode defender.',
-    illustrationLabel: 'Esquema de uma fábrica com braço robótico, tapete transportador, armazém e AGV',
+    illustrationLabel: 'Gémeo digital de uma fábrica com máquinas CNC, tapete transportador, braço robótico, armazém e AGVs, com o gargalo na montagem assinalado',
+    plant: {
+      scenario: 'Cenário B · simulado',
+      unitsPerHour: 'unid./h',
+      cnc: ['CNC 02', '81% utilização'],
+      warehouse: ['Armazém', '62% ocupado'],
+      bottleneck: ['Montagem · gargalo', '96% utilização'],
+      agvs: ['AGVs', '4 ativos · 71%'],
+    },
   },
   credentials: {
     label: 'Credenciais',
@@ -195,7 +212,15 @@ const en: HomeContent = {
     titleCyan: "factory's future digitally.",
     titleRest: 'Implement the decision on the shop floor.',
     lead: 'SymHive makes simulation faster and easier to scale, automatically generating models of complex industrial systems from your production data and returning KPIs you can defend.',
-    illustrationLabel: 'Wireframe of a factory with a robot arm, conveyor belt, warehouse and AGV',
+    illustrationLabel: 'Digital twin of a factory with CNC machines, a conveyor belt, a robot arm, a warehouse and AGVs, with the assembly bottleneck highlighted',
+    plant: {
+      scenario: 'Scenario B · simulated',
+      unitsPerHour: 'units/h',
+      cnc: ['CNC 02', '81% utilisation'],
+      warehouse: ['Warehouse', '62% full'],
+      bottleneck: ['Assembly · bottleneck', '96% utilisation'],
+      agvs: ['AGVs', '4 active · 71%'],
+    },
   },
   credentials: {
     label: 'Credentials',
