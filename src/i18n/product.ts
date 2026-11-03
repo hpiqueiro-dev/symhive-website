@@ -59,7 +59,7 @@ const pt: ProductContent = {
   hero: {
     badge: 'Produto',
     titleAmber: 'Uma plataforma.',
-    titleCyan: 'Dos dados à decisão.',
+    titleCyan: 'Dos dados à decisão',
     lead: 'A SymHive liga os seus dados e sistemas, gera a simulação 3D automaticamente e devolve indicadores para comparar cada opção.',
   },
   preview: {
@@ -147,7 +147,7 @@ const en: ProductContent = {
   hero: {
     badge: 'Product',
     titleAmber: 'One platform.',
-    titleCyan: 'From data to decision.',
+    titleCyan: 'From data to decision',
     lead: 'SymHive connects your data and systems, generates the 3D simulation automatically and returns the indicators to compare every option.',
   },
   preview: {

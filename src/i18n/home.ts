@@ -98,8 +98,8 @@ const pt: HomeContent = {
   },
   hero: {
     titleAmber: 'Simule o futuro da sua',
-    titleCyan: 'fábrica no digital.',
-    titleRest: 'Implemente a decisão no terreno.',
+    titleCyan: 'fábrica no digital',
+    titleRest: 'Implemente a decisão no terreno',
     lead: 'A SymHive torna a simulação mais rápida e fácil de escalar, gerando automaticamente modelos de sistemas industriais complexos a partir dos seus dados de produção e devolvendo KPIs que pode defender.',
     illustrationLabel: 'Esquema de uma fábrica com braço robótico, tapete transportador, armazém e AGV',
     plant: {
@@ -121,7 +121,7 @@ const pt: HomeContent = {
   },
   pain: {
     label: 'O problema',
-    statement: ['Mudar a operação custa caro.', 'Descobrir que foi a decisão errada custa muito mais.'],
+    statement: ['Mudar a operação custa caro.', 'Descobrir que foi a decisão errada custa muito mais'],
     lead: 'Cada mudança na operação começa com uma pergunta, e a simulação pode responder-lhe. O problema é que um modelo feito à mão demora meses, por isso as decisões continuam a ser tomadas com folhas de cálculo e intuição. A SymHive muda isso.',
     questionsTitle: 'Perguntas que hoje ficam sem resposta',
     questions: [
@@ -141,7 +141,7 @@ const pt: HomeContent = {
     ],
   },
   solution: {
-    title: 'Os seus dados entram. Decisões fundamentadas saem.',
+    title: 'Os seus dados entram. Decisões fundamentadas saem',
     description: 'A SymHive liga os dados que a sua empresa já tem e devolve cenários comparáveis.',
     inputsLabel: 'Entrada',
     question: { title: 'Decisão a tomar' },
@@ -209,8 +209,8 @@ const en: HomeContent = {
   },
   hero: {
     titleAmber: 'Simulate your',
-    titleCyan: "factory's future digitally.",
-    titleRest: 'Implement the decision on the shop floor.',
+    titleCyan: "factory's future digitally",
+    titleRest: 'Implement the decision on the shop floor',
     lead: 'SymHive makes simulation faster and easier to scale, automatically generating models of complex industrial systems from your production data and returning KPIs you can defend.',
     illustrationLabel: 'Wireframe of a factory with a robot arm, conveyor belt, warehouse and AGV',
     plant: {
@@ -232,7 +232,7 @@ const en: HomeContent = {
   },
   pain: {
     label: 'The problem',
-    statement: ['Changing the operation is expensive.', 'Finding out it was the wrong call costs far more.'],
+    statement: ['Changing the operation is expensive.', 'Finding out it was the wrong call costs far more'],
     lead: 'Every change to the operation starts with a question, and simulation can answer it. The problem is that a model built by hand takes months, so decisions are still made with spreadsheets and gut feeling. SymHive changes that.',
     questionsTitle: 'Questions left unanswered today',
     questions: [
@@ -252,7 +252,7 @@ const en: HomeContent = {
     ],
   },
   solution: {
-    title: 'Your data goes in. Evidence-based decisions come out.',
+    title: 'Your data goes in. Evidence-based decisions come out',
     description: 'SymHive connects the data your company already has and returns comparable scenarios.',
     inputsLabel: 'Input',
     question: { title: 'Decision to make' },
