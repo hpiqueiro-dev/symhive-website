@@ -62,14 +62,23 @@ const rows = 1 + Math.max(...columns.map((type) => numbered.filter((problem) => 
                       <article class="case">
                         <header>
                           <h4>{item.title}</h4>
-                          <span class="tag"><IndustryIcon industry={item.industry} />{t.industries.items[item.industry].title}</span>
+                          <span class="case-tags">
+                            {item.real && <span class="tag real">{p.labels.realCase}</span>}
+                            <span class="tag"><IndustryIcon industry={item.industry} />{t.industries.items[item.industry].title}</span>
+                          </span>
                         </header>
                         <dl>
                           <div><dt>{p.labels.challenge}</dt><dd>{item.challenge}</dd></div>
                           <div><dt>{p.labels.approach}</dt><dd>{item.approach}</dd></div>
-                          <div><dt>{p.labels.result}</dt><dd class="y">{item.result}</dd></div>
+                          <div><dt>{p.labels.result}</dt>
+                            {item.results
+                              ? <dd class="y"><ul class="case-results">{item.results.map((r) => <li><b>{r.value}</b><span>{r.text}</span></li>)}</ul></dd>
+                              : <dd class="y">{item.result}</dd>}
+                          </div>
                         </dl>
-                        <CaseChart kind={item.chart} charts={t.charts} />
+                        <div class="case-charts">
+                          {item.charts.map((kind) => <CaseChart kind={kind} charts={t.charts} />)}
+                        </div>
                       </article>
                     ))}
                   </div>

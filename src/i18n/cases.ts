@@ -1,21 +1,26 @@
 import type { PageHeroContent, PageMeta } from './common';
 import type { Locale } from './locales';
 
-// Enquanto as empresas não autorizam a publicação dos seus casos, cada problema mostra um caso típico
-// (sem nome de cliente). Quando houver autorização, basta acrescentar casos ao array `cases` de cada problema.
+// Cada problema mostra um caso típico (sem nome de cliente) ou, quando a empresa autoriza, um caso real
+// (`real: true`, com os resultados medidos em `results`). Para acrescentar casos, basta usar o array `cases`.
 
 export type IndustryKey = 'manufacturing' | 'warehouse' | 'logistics' | 'supplyChain';
 
 /** Gráfico ilustrativo que acompanha o resultado de um caso. */
-export type CaseChartKind = 'layout' | 'fleet' | 'staffing' | 'sequence';
+export type CaseChartKind = 'layout' | 'fleet' | 'staffing' | 'sequence' | 'distance' | 'largeItems';
 
 export interface CaseStudy {
   title: string;
   industry: IndustryKey;
-  chart: CaseChartKind;
+  /** Caso real de uma empresa (mostra a etiqueta "Caso real"). */
+  real?: boolean;
+  /** Um ou mais gráficos; os casos reais só usam valores medidos. */
+  charts: CaseChartKind[];
   challenge: string;
   approach: string;
-  result: string;
+  /** Resultado em texto (casos típicos) ou lista de indicadores (casos reais). */
+  result?: string;
+  results?: { value: string; text: string }[];
 }
 
 export type DecisionType = 'strategic' | 'operational';
@@ -37,7 +42,7 @@ export interface CasesContent {
     description: string;
     /** Cabeçalho de cada coluna: os dois tipos de decisão. */
     decisions: Record<DecisionType, { title: string; description: string }>;
-    labels: { challenge: string; approach: string; result: string };
+    labels: { challenge: string; approach: string; result: string; realCase: string };
     items: Problem[];
   };
   /** Título e etiquetas de cada gráfico (valores ilustrativos). */
@@ -75,7 +80,7 @@ const pt: CasesContent = {
       strategic: { title: 'Estratégicas', description: 'Mudam a estrutura da operação a médio e longo prazo: novos layouts, investimento em equipamentos e expansões.' },
       operational: { title: 'Operacionais', description: 'Afinam a operação no dia a dia: planos de produção, equipas, turnos e alocação de recursos.' },
     },
-    labels: { challenge: 'Desafio', approach: 'Abordagem', result: 'Resultado' },
+    labels: { challenge: 'Desafio', approach: 'Abordagem', result: 'Resultado', realCase: 'Caso real' },
     items: [
       {
         type: 'strategic',
@@ -85,10 +90,22 @@ const pt: CasesContent = {
           {
             title: 'Novo layout numa expansão',
             industry: 'manufacturing',
-            chart: 'layout',
+            charts: ['layout'],
             challenge: 'O novo layout resolve o gargalo ou apenas o muda de sítio? Numa expansão, como dispor as novas máquinas?',
             approach: 'Modelamos o layout atual e as alternativas a partir do CAD, com postos, filas e fluxos de material, e projetamos o crescimento previsto da empresa.',
             result: 'Produção por hora, utilização, stock intermédio e gargalo de cada alternativa, e a estratégia de contratação e de compra de máquinas que daí resulta.',
+          },
+          {
+            title: 'Triplicar a área de uma fábrica de carpintaria',
+            industry: 'manufacturing',
+            real: true,
+            charts: ['distance', 'largeItems'],
+            challenge: 'Um fabricante de produtos de carpintaria quer triplicar a sua área fabril. Precisava de definir o layout, os investimentos e a equipa, sem pôr em risco a produção atual.',
+            approach: 'Construímos um modelo de simulação 3D de eventos discretos validado com um ano de dados reais. Comparámos três cenários de expansão com três níveis de procura e múltiplas replicações, e projetámos o crescimento previsto da empresa.',
+            results: [
+              { value: '+11%', text: 'de produção anual com novos postos de trabalho' },
+              { value: '2×', text: 'potencial para duplicar a produção semanal' },
+            ],
           },
         ],
       },
@@ -100,7 +117,7 @@ const pt: CasesContent = {
           {
             title: 'Substituir empilhadores por AGVs',
             industry: 'logistics',
-            chart: 'fleet',
+            charts: ['fleet'],
             challenge: 'Quantos AGVs são precisos para substituir os empilhadores, quanto custam e em quanto tempo se pagam?',
             approach: 'Modelamos a frota atual e a nova tecnologia, com rotas, cargas e tempos de carregamento, e identificamos as alterações ao layout necessárias para a integrar.',
             result: 'Dimensão da frota, utilização, tempos de espera e estimativa de retorno, para a situação atual e para cenários de maior procura.',
@@ -115,7 +132,7 @@ const pt: CasesContent = {
           {
             title: 'Alocação de operadores por tarefa',
             industry: 'manufacturing',
-            chart: 'staffing',
+            charts: ['staffing'],
             challenge: 'Quantos operadores alocar a cada tarefa para produzir mais, e como distribuí-los tendo em conta o tempo de ciclo de cada operação?',
             approach: 'Modelamos a procura histórica e prevista, as tarefas, os tempos de ciclo e os turnos.',
             result: 'Número de operadores por tarefa e por turno, para cada cenário de procura, com nível de serviço e custo.',
@@ -130,7 +147,7 @@ const pt: CasesContent = {
           {
             title: 'Sequência de produção com menos trocas',
             industry: 'manufacturing',
-            chart: 'sequence',
+            charts: ['sequence'],
             challenge: 'Que sequência de produção cumpre os prazos com menos trocas?',
             approach: 'Modelamos a capacidade dos buffers e os tempos de setup e de produção, com distribuições estatísticas. Testamos alterações ao plano para medir o ganho de cada uma.',
             result: 'Cumprimento de prazos, ocupação e stock intermédio de cada plano diário, semanal ou mensal.',
@@ -144,8 +161,10 @@ const pt: CasesContent = {
     fleet: { title: 'Tempo médio de espera por dimensão da frota', labels: ['N.º de AGVs', 'Espera (min)', '5 AGVs: ponto ótimo'] },
     staffing: { title: 'Operadores por turno', labels: ['Atual', 'Proposto', 'Turno 1', 'Turno 2', 'Turno 3'] },
     sequence: { title: 'Sequência de produção numa semana', labels: ['Plano atual', 'Plano proposto', '9 trocas', '3 trocas'] },
+    distance: { title: 'Distância por produto (atual = 100)', labels: ['Atual', 'Novo layout', '−18%'] },
+    largeItems: { title: 'Produtos de grandes dimensões', labels: ['Atual', '+1 posto'] },
   },
-  note: 'Casos típicos dos projetos que desenvolvemos. Os resultados dependem dos dados e do contexto de cada operação.',
+  note: 'Os casos sem a etiqueta "Caso real" são casos típicos dos projetos que desenvolvemos. Os resultados dependem dos dados e do contexto de cada operação.',
   contact: {
     title: 'Tem um desafio parecido?',
     description: 'Fale connosco e mostramos o que a SymHive pode fazer pela sua operação.',
@@ -180,7 +199,7 @@ const en: CasesContent = {
       strategic: { title: 'Strategic', description: 'Change the structure of the operation in the medium and long term: new layouts, equipment investment and expansions.' },
       operational: { title: 'Operational', description: 'Fine-tune the operation day to day: production plans, teams, shifts and resource allocation.' },
     },
-    labels: { challenge: 'Challenge', approach: 'Approach', result: 'Result' },
+    labels: { challenge: 'Challenge', approach: 'Approach', result: 'Result', realCase: 'Real case' },
     items: [
       {
         type: 'strategic',
@@ -190,10 +209,22 @@ const en: CasesContent = {
           {
             title: 'New layout for an expansion',
             industry: 'manufacturing',
-            chart: 'layout',
+            charts: ['layout'],
             challenge: 'Does the new layout fix the bottleneck, or just move it? In an expansion, how should the new machines be arranged?',
             approach: "We model the current layout and the alternatives from CAD, with stations, queues and material flows, and project the company's expected growth.",
             result: 'Throughput, utilisation, work-in-progress and the bottleneck of each alternative, and the resulting hiring and machine purchasing strategy.',
+          },
+          {
+            title: 'Tripling the floor space of a carpentry plant',
+            industry: 'manufacturing',
+            real: true,
+            charts: ['distance', 'largeItems'],
+            challenge: 'A manufacturer of carpentry products wants to triple its factory floor space. It needed to define the layout, the investments and the team without putting current production at risk.',
+            approach: "We built a 3D discrete-event simulation model validated with a year of real data. We compared three expansion scenarios across three demand levels with multiple replications, and projected the company's expected growth.",
+            results: [
+              { value: '+11%', text: 'annual output with new workstations' },
+              { value: '2×', text: 'potential to double weekly output' },
+            ],
           },
         ],
       },
@@ -205,7 +236,7 @@ const en: CasesContent = {
           {
             title: 'Replacing forklifts with AGVs',
             industry: 'logistics',
-            chart: 'fleet',
+            charts: ['fleet'],
             challenge: 'How many AGVs are needed to replace the forklifts, what do they cost and how long until they pay off?',
             approach: 'We model the current fleet and the new technology, with routes, loads and charging times, and identify the layout changes needed to integrate it.',
             result: 'Fleet size, utilisation, waiting times and payback estimate, for the current situation and for higher-demand scenarios.',
@@ -220,7 +251,7 @@ const en: CasesContent = {
           {
             title: 'Assigning operators to tasks',
             industry: 'manufacturing',
-            chart: 'staffing',
+            charts: ['staffing'],
             challenge: "How many operators should be assigned to each task to produce more, and how should they be distributed given each operation's cycle time?",
             approach: 'We model historical and forecast demand, tasks, cycle times and shifts.',
             result: 'Number of operators per task and per shift, for each demand scenario, with service level and cost.',
@@ -235,7 +266,7 @@ const en: CasesContent = {
           {
             title: 'Production sequence with fewer changeovers',
             industry: 'manufacturing',
-            chart: 'sequence',
+            charts: ['sequence'],
             challenge: 'Which production sequence meets deadlines with the fewest changeovers?',
             approach: 'We model buffer capacity and setup and production times, with statistical distributions. We test changes to the plan to measure the gain from each one.',
             result: 'On-time delivery, utilisation and work-in-progress for each daily, weekly or monthly plan.',
@@ -249,8 +280,10 @@ const en: CasesContent = {
     fleet: { title: 'Average waiting time by fleet size', labels: ['No. of AGVs', 'Wait (min)', '5 AGVs: optimum'] },
     staffing: { title: 'Operators per shift', labels: ['Current', 'Proposed', 'Shift 1', 'Shift 2', 'Shift 3'] },
     sequence: { title: 'Production sequence over one week', labels: ['Current plan', 'Proposed plan', '9 changeovers', '3 changeovers'] },
+    distance: { title: 'Distance per product (current = 100)', labels: ['Current', 'New layout', '−18%'] },
+    largeItems: { title: 'Large-format products', labels: ['Current', '+1 station'] },
   },
-  note: 'Typical cases from the projects we develop. Results depend on the data and context of each operation.',
+  note: 'Cases without the "Real case" label are typical cases from the projects we develop. Results depend on the data and context of each operation.',
   contact: {
     title: 'Facing a similar challenge?',
     description: "Get in touch and we'll show you what SymHive can do for your operation.",

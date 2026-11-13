@@ -28,6 +28,17 @@ const staffing = [
 // Plano: blocos de produção com trocas (setup) entre eles.
 const planNow = [34, 22, 40, 18, 30, 26, 20, 36, 24, 28];
 const planNext = [70, 64, 82, 76];
+// Casos reais: só valores medidos. Distância em índice (atual = 100) e multiplicador de produtos grandes.
+const distance = [
+  { label: c.labels[0], value: 100 },
+  { label: c.labels[1], value: 82, best: true },
+];
+const largeItems = [
+  { label: c.labels[0], value: 1 },
+  { label: c.labels[1], value: 3 },
+];
+// Os gráficos dos casos reais aparecem lado a lado, por isso usam uma área mais estreita.
+const compact = kind === 'distance' || kind === 'largeItems';
 const gantt = (blocks: number[]) => {
   let x = 0;
   return blocks.map((w) => {
@@ -40,7 +51,27 @@ const gantt = (blocks: number[]) => {
 
 <figure class="case-chart">
   <figcaption>{c.title}</figcaption>
-  <svg viewBox="0 0 360 140" role="img" aria-label={c.title}>
+  <svg viewBox={compact ? '0 0 240 112' : '0 0 360 140'} role="img" aria-label={c.title}>
+    {kind === 'distance' && distance.map((b, i) => (
+      <g class:list={['hbar', { best: b.best }]} style={`--i:${i}`}>
+        <text class="lbl" x="0" y={i * 44 + 34}>{b.label}</text>
+        <rect class="track" x="80" y={i * 44 + 21} width="100" height="18" rx="2" />
+        <rect class="fill" x="80" y={i * 44 + 21} width={b.value} height="18" rx="2" />
+        <text class="val" x={88 + b.value} y={i * 44 + 35}>{b.value}{b.best && <tspan class="gain" dx="6">{c.labels[2]}</tspan>}</text>
+      </g>
+    ))}
+
+    {kind === 'largeItems' && <>
+      <line class="axis" x1="20" y1="90" x2="220" y2="90" />
+      {largeItems.map((b, i) => (
+        <g style={`--i:${i}`}>
+          <rect class:list={['vbar', i ? 'next' : 'now']} x={58 + i * 84} y={90 - b.value * 24} width="40" height={b.value * 24} rx="2" />
+          <text class="val small" x={78 + i * 84} y={83 - b.value * 24}>{b.value}×</text>
+          <text class="tick" x={78 + i * 84} y="106">{b.label}</text>
+        </g>
+      ))}
+    </>}
+
     {kind === 'layout' && layout.map((b, i) => (
       <g class:list={['hbar', { best: b.best }]} style={`--i:${i}`}>
         <text class="lbl" x="0" y={i * 40 + 30}>{b.label}</text>
