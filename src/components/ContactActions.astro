@@ -6,25 +6,26 @@ interface Props {
   contact: CommonContent['contact'];
   /** Sem email configurado: `link` aponta para a secção de contacto, `pending` mostra o aviso. */
   fallback: 'link' | 'pending';
-  /** Mostra só o botão do piloto, como botão principal. */
-  pilotOnly?: boolean;
+  /** Mostra só um dos botões (demonstração ou piloto), como botão principal. */
+  only?: 'demo' | 'pilot';
 }
 
-const { contact, fallback, pilotOnly = false } = Astro.props;
+const { contact, fallback, only } = Astro.props;
 const demo = contactHref(contact.demo.subject);
 const pilot = contactHref(contact.pilot.subject);
+const single = only && { href: only === 'demo' ? demo : pilot, label: contact[only].label };
 ---
 
-{pilotOnly && (pilot || fallback === 'link') ? (
+{single && (single.href || fallback === 'link') ? (
   <div class="ctas">
-    <a class="btn amber" href={pilot ?? '#contact'}>{contact.pilot.label}</a>
+    <a class="btn amber" href={single.href ?? '#contact'}>{single.label}</a>
   </div>
-) : demo && pilot ? (
+) : !only && demo && pilot ? (
   <div class="ctas">
     <a class="btn amber" href={demo}>{contact.demo.label}</a>
     <a class="btn ghost" href={pilot}>{contact.pilot.label}</a>
   </div>
-) : fallback === 'link' ? (
+) : !only && fallback === 'link' ? (
   <div class="ctas">
     <a class="btn amber" href="#contact">{contact.demo.label}</a>
     <a class="btn ghost" href="#contact">{contact.pilot.label}</a>

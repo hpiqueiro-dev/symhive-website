@@ -16,7 +16,7 @@ export type Page = (typeof pages)[number] | 'privacy';
 const slugs: Record<Page, Record<Locale, string>> = {
   home: { pt: '', en: '' },
   product: { pt: 'produto', en: 'product' },
-  cases: { pt: 'casos-de-estudo', en: 'case-studies' },
+  cases: { pt: 'casos-de-uso', en: 'use-cases' },
   about: { pt: 'sobre', en: 'about' },
   privacy: { pt: 'privacidade', en: 'privacy' },
 };

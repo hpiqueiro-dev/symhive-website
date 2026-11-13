@@ -45,7 +45,7 @@ export interface CommonContent {
   };
   /** contacts é o botão do rodapé que leva à secção de contactos da página Sobre. */
   /** copyright é o nome depois de «© ano»; o ano é calculado no build. */
-  footer: { label: string; contacts: string; poweredBy: string; organisation: string; copyright: string };
+  footer: { label: string; contacts: string; backedBy: string; organisation: string; copyright: string };
 }
 
 const pt: CommonContent = {
@@ -59,24 +59,24 @@ const pt: CommonContent = {
       { id: 'impact', label: 'Resultados' },
       { id: 'solution', label: 'Como funciona' },
     ],
-    pages: { home: 'Início', product: 'Produto', cases: 'Casos de Estudo', about: 'Sobre', privacy: 'Política de privacidade' },
+    pages: { home: 'Início', product: 'Produto', cases: 'Casos de uso', about: 'Sobre', privacy: 'Política de privacidade' },
     languageLabel: 'Mudar para inglês',
     cta: 'Pedir demonstração',
   },
   contact: {
-    title: 'Veja a sua linha a funcionar em semanas, não em meses.',
+    title: 'Veja a sua linha a funcionar em poucas semanas',
     description: 'Fale-nos da sua operação. Mostramos-lhe o que a SymHive pode fazer com ela.',
     demo: { label: 'Pedir demonstração', subject: 'Pedido de demonstração — SymHive' },
     pilot: { label: 'Iniciar um piloto', subject: 'Projeto-piloto — SymHive' },
     pending: 'Canal de contacto em preparação',
   },
-  footer: { label: 'Rodapé', contacts: 'Contactos', poweredBy: 'Com o apoio do', organisation: 'INESC TEC', copyright: 'SymHive' },
+  footer: { label: 'Rodapé', contacts: 'Contactos', backedBy: 'Com o apoio do', organisation: 'INESC TEC', copyright: 'SymHive' },
 };
 
 const en: CommonContent = {
   skipLink: 'Skip to content',
   nav: {
-    label: 'Main',
+    label: 'Main navigation',
     menu: 'Menu',
     home: 'Home',
     homeSections: [
@@ -84,18 +84,18 @@ const en: CommonContent = {
       { id: 'impact', label: 'Results' },
       { id: 'solution', label: 'How it works' },
     ],
-    pages: { home: 'Home', product: 'Product', cases: 'Case Studies', about: 'About', privacy: 'Privacy policy' },
+    pages: { home: 'Home', product: 'Product', cases: 'Use cases', about: 'About', privacy: 'Privacy policy' },
     languageLabel: 'Mudar para português',
     cta: 'Request a demo',
   },
   contact: {
-    title: 'See your own line running in weeks, not months.',
+    title: 'See your own line running in just a few weeks',
     description: "Tell us about your operation. We'll show you what SymHive can do with it.",
     demo: { label: 'Request a demo', subject: 'Demo request — SymHive' },
     pilot: { label: 'Start a pilot', subject: 'Pilot project — SymHive' },
     pending: 'Contact channel coming soon',
   },
-  footer: { label: 'Footer', contacts: 'Contacts', poweredBy: 'Backed by', organisation: 'INESC TEC', copyright: 'SymHive' },
+  footer: { label: 'Footer', contacts: 'Contacts', backedBy: 'Backed by', organisation: 'INESC TEC', copyright: 'SymHive' },
 };
 
 export const commonContent: Record<Locale, CommonContent> = { pt, en };

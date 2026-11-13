@@ -1,7 +1,8 @@
 export const site = {
   name: 'SymHive',
-  // Substituir pelo endereço público quando estiver definido. Ativa os botões de contacto.
-  contactEmail: null as string | null,
+  // Endereço usado por todos os botões de contacto (demonstração, piloto e projeto).
+  contactEmail: 'geral@symhive.pt' as string | null,
+  contactPhone: '+351 936 331 825' as string | null,
 };
 
 export function contactHref(subject: string): string | null {

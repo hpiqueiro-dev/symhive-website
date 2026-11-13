@@ -23,10 +23,10 @@ const pt: PrivacyContent = {
   hero: {
     badge: 'Legal',
     titleAmber: 'Política de',
-    titleCyan: 'privacidade.',
+    titleCyan: 'privacidade',
     lead: 'Como tratamos os dados pessoais de quem visita este site ou entra em contacto connosco.',
   },
-  updated: { label: 'Última atualização', value: null },
+  updated: { label: 'Última atualização', value: '18 de outubro de 2026' },
   company: {
     title: 'Responsável pelo tratamento',
     items: [
@@ -79,7 +79,7 @@ const pt: PrivacyContent = {
     },
     {
       title: 'Alterações a esta política',
-      paragraphs: ['Podemos atualizar esta política quando o site ou a forma como tratamos os dados mudar. A data da última atualização aparece no topo da página.'],
+      paragraphs: ['Podemos atualizar esta política quando o site ou a forma como tratamos os dados mudarem. A data da última atualização aparece no topo da página.'],
     },
   ],
 };
@@ -92,10 +92,10 @@ const en: PrivacyContent = {
   hero: {
     badge: 'Legal',
     titleAmber: 'Privacy',
-    titleCyan: 'policy.',
+    titleCyan: 'policy',
     lead: 'How we process the personal data of people who visit this site or get in touch with us.',
   },
-  updated: { label: 'Last updated', value: null },
+  updated: { label: 'Last updated', value: '18 October 2026' },
   company: {
     title: 'Data controller',
     items: [

@@ -1,6 +1,6 @@
 # SymHive Website
 
-Landing page institucional da SymHive, criada com Astro, TypeScript e CSS. O HTML é gerado estaticamente em português (`/`) e inglês (`/en/`), com quatro páginas por língua: página principal, Produto (`/produto/`, `/en/product/`), Casos de estudo (`/casos-de-estudo/`, `/en/case-studies/`) e Sobre (`/sobre/`, `/en/about/`). O JavaScript serve apenas para animações, simulador e fecho dos menus; o conteúdo e a navegação funcionam sem ele.
+Landing page institucional da SymHive, criada com Astro, TypeScript e CSS. O HTML é gerado estaticamente em português (`/`) e inglês (`/en/`), com quatro páginas por língua: página principal, Produto (`/produto/`, `/en/product/`), Casos de uso (`/casos-de-uso/`, `/en/use-cases/`) e Sobre (`/sobre/`, `/en/about/`). O JavaScript serve apenas para animações, simulador e fecho dos menus; o conteúdo e a navegação funcionam sem ele.
 
 ## Desenvolvimento
 
@@ -28,14 +28,8 @@ npm run build
 - `src/components/`: cabeçalho com submenu e menu móvel, rodapé, fundo, topo das páginas interiores (`PageHero`), grelha de hexágonos (`HexGrid`) e contacto.
 - `src/styles/global.css`: estilos e tokens da identidade visual.
 - `src/config/site.ts`: endereço de contacto. Definir `contactEmail` para ativar os botões «Pedir demonstração» e «Iniciar um piloto».
-- `src/assets/fonts/`: Inter, JetBrains Mono e Space Grotesk alojadas localmente (licença OFL). A DM Sans é usada apenas pelos protótipos.
+- `src/assets/fonts/`: Inter, JetBrains Mono e Space Grotesk alojadas localmente (licença OFL).
 - `public/images/`: logótipo extraído da apresentação SymHive e imagem para partilha.
-
-## Protótipos de design
-
-Abrir `/prototipos/` no servidor de desenvolvimento para comparar a primeira coleção de quatro propostas visuais, ou `/prototipos/novos/` para ver outras quatro direções com SVGs animados editáveis em `public/illustrations/`. Cada proposta tem uma página própria e um seletor fixo para alternar entre elas. A página principal atual permanece em `/`.
-
-As duas propostas finais que combinam as direções escolhidas estão em `/prototipos/finais/`. O painel «Escolhe uma hipótese» é interativo nas duas páginas.
 
 ## GitHub Pages
 

@@ -2,6 +2,9 @@
 import SiteLayout from '../../layouts/SiteLayout.astro';
 import PageHero from '../PageHero.astro';
 import IndustryIcon from '../IndustryIcon.astro';
+import IndustryScene from '../cases/IndustryScene.astro';
+import CasesHeroScene from '../cases/CasesHeroScene.astro';
+import CaseChart from '../cases/CaseChart.astro';
 import { casesContent, type DecisionType, type IndustryKey } from '../../i18n/cases';
 import type { Locale } from '../../i18n/locales';
 
@@ -17,17 +20,21 @@ const pad = (n: number) => String(n).padStart(2, '0');
 // Problemas agrupados por tipo de decisão, mantendo a numeração global (01–04).
 const numbered = p.items.map((problem, i) => ({ ...problem, n: i + 1 }));
 const columns: DecisionType[] = ['strategic', 'operational'];
+// As duas colunas partilham as linhas (subgrid): cabeçalho + um problema por linha, para as caixas ficarem ao mesmo nível.
+const rows = 1 + Math.max(...columns.map((type) => numbered.filter((problem) => problem.type === type).length));
 ---
 
 <SiteLayout locale={locale} page="cases" title={t.meta.title} description={t.meta.description} contactText={t.contact} contactCompact contactShade>
-  <PageHero hero={t.hero} />
+  <PageHero hero={t.hero}>
+    <CasesHeroScene slot="visual" labels={Object.fromEntries(industries.map(([key, item]) => [key, item.title])) as Record<IndustryKey, string>} />
+  </PageHero>
 
   <section class="sec shade" id="industries" aria-labelledby="industries-title">
     <div class="container">
       <h2 class="sec-h2" id="industries-title">{t.industries.title}</h2>
       <ul class="industries">
         {industries.map(([key, item]) => (
-          <li><IndustryIcon industry={key} /><h3>{item.title}</h3><p>{item.description}</p></li>
+          <li><IndustryScene industry={key} /><h3>{item.title}</h3><p>{item.description}</p></li>
         ))}
       </ul>
     </div>
@@ -37,7 +44,7 @@ const columns: DecisionType[] = ['strategic', 'operational'];
     <div class="container">
       <h2 class="sec-h2" id="problems-title">{p.title}</h2>
       <p class="sec-lead problems-lead">{p.description}</p>
-      <div class="problem-columns">
+      <div class="problem-columns" style={`--rows: ${rows}`}>
         {columns.map((type) => (
           <div class:list={['problem-col', type]}>
             <div class="decision-head"><h3>{p.decisions[type].title}</h3><p>{p.decisions[type].description}</p></div>
@@ -55,13 +62,23 @@ const columns: DecisionType[] = ['strategic', 'operational'];
                       <article class="case">
                         <header>
                           <h4>{item.title}</h4>
-                          <span class="tag"><IndustryIcon industry={item.industry} />{t.industries.items[item.industry].title}</span>
+                          <span class="case-tags">
+                            {item.real && <span class="tag real">{p.labels.realCase}</span>}
+                            <span class="tag"><IndustryIcon industry={item.industry} />{t.industries.items[item.industry].title}</span>
+                          </span>
                         </header>
                         <dl>
                           <div><dt>{p.labels.challenge}</dt><dd>{item.challenge}</dd></div>
                           <div><dt>{p.labels.approach}</dt><dd>{item.approach}</dd></div>
-                          <div><dt>{p.labels.result}</dt><dd class="y">{item.result}</dd></div>
+                          <div><dt>{p.labels.result}</dt>
+                            {item.results
+                              ? <dd class="y"><ul class="case-results">{item.results.map((r) => <li><b>{r.value}</b><span>{r.text}</span></li>)}</ul></dd>
+                              : <dd class="y">{item.result}</dd>}
+                          </div>
                         </dl>
+                        <div class="case-charts">
+                          {item.charts.map((kind) => <CaseChart kind={kind} charts={t.charts} />)}
+                        </div>
                       </article>
                     ))}
                   </div>

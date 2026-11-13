@@ -20,7 +20,7 @@ const { contact, compact = false, shade = false } = Astro.props;
         <h2 id="contact-title">{contact.title}</h2>
         <p>{contact.description}</p>
       </div>
-      <ContactActions contact={contact} fallback="pending" />
+      <ContactActions contact={contact} fallback="pending" only="demo" />
     </div>
   </div>
 </section>
